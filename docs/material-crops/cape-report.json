@@ -1,0 +1,85 @@
+{
+  "ok": true,
+  "verdict": "pass",
+  "confidence": 0.86,
+  "estimatedFidelity": 0.86,
+  "targetThreshold": 0.7,
+  "materialId": "cape-cloth",
+  "sourceImage": "/workspace/scratch/363230f53301/docs/material-crops/cape.png",
+  "outDir": "/workspace/scratch/363230f53301/public/textures/nyxalune/cape",
+  "palette": [
+    "#1E2337",
+    "#3F4055",
+    "#F7EFE4",
+    "#716963",
+    "#AC9E8A"
+  ],
+  "maps": {
+    "albedo": {
+      "path": "/workspace/scratch/363230f53301/public/textures/nyxalune/cape/cape-cloth_albedo.png",
+      "url": "cape-cloth_albedo.png",
+      "channel": "albedo",
+      "source": "reference-pixel-extraction"
+    },
+    "roughness": {
+      "path": "/workspace/scratch/363230f53301/public/textures/nyxalune/cape/cape-cloth_roughness.png",
+      "url": "cape-cloth_roughness.png",
+      "channel": "roughness",
+      "source": "reference-pixel-extraction"
+    },
+    "height": {
+      "path": "/workspace/scratch/363230f53301/public/textures/nyxalune/cape/cape-cloth_height.png",
+      "url": "cape-cloth_height.png",
+      "channel": "height",
+      "source": "reference-pixel-extraction"
+    },
+    "normal": {
+      "path": "/workspace/scratch/363230f53301/public/textures/nyxalune/cape/cape-cloth_normal.png",
+      "url": "cape-cloth_normal.png",
+      "channel": "normal",
+      "source": "reference-pixel-extraction"
+    },
+    "ao": {
+      "path": "/workspace/scratch/363230f53301/public/textures/nyxalune/cape/cape-cloth_ao.png",
+      "url": "cape-cloth_ao.png",
+      "channel": "ao",
+      "source": "reference-pixel-extraction"
+    }
+  },
+  "diagnostics": {
+    "sourceWidth": 310,
+    "sourceHeight": 260,
+    "mapSize": 1024,
+    "cropBBoxPixels": {
+      "x": 0,
+      "y": 0,
+      "width": 310,
+      "height": 260
+    },
+    "mask": {
+      "backgroundColor": "#BCB0A2",
+      "backgroundNoise": 41.049,
+      "transparentPixelFraction": 0.0,
+      "foregroundCoverage": 0.6348
+    },
+    "mapStats": {
+      "valueRange": 0.8477,
+      "heightP90Gradient": 0.06807,
+      "roughnessBase": 0.716,
+      "roughnessVariation": 0.129,
+      "normalStrength": 0.236,
+      "blurRadius": 21
+    },
+    "palette": [
+      "#1E2337",
+      "#3F4055",
+      "#F7EFE4",
+      "#716963",
+      "#AC9E8A"
+    ]
+  },
+  "warnings": [
+    "single-image inverse rendering cannot prove true physical PBR; confidence is capped"
+  ],
+  "limitation": "single-image PBR extraction is an estimate; 70%+ extraction confidence still needs render screenshot review"
+}

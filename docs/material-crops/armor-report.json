@@ -1,0 +1,85 @@
+{
+  "ok": true,
+  "verdict": "pass",
+  "confidence": 0.86,
+  "estimatedFidelity": 0.86,
+  "targetThreshold": 0.7,
+  "materialId": "armor-ivory",
+  "sourceImage": "/workspace/scratch/363230f53301/docs/material-crops/armor-cloth.png",
+  "outDir": "/workspace/scratch/363230f53301/public/textures/nyxalune/armor",
+  "palette": [
+    "#2C3049",
+    "#454869",
+    "#161B2D",
+    "#736B69",
+    "#B0A291"
+  ],
+  "maps": {
+    "albedo": {
+      "path": "/workspace/scratch/363230f53301/public/textures/nyxalune/armor/armor-ivory_albedo.png",
+      "url": "armor-ivory_albedo.png",
+      "channel": "albedo",
+      "source": "reference-pixel-extraction"
+    },
+    "roughness": {
+      "path": "/workspace/scratch/363230f53301/public/textures/nyxalune/armor/armor-ivory_roughness.png",
+      "url": "armor-ivory_roughness.png",
+      "channel": "roughness",
+      "source": "reference-pixel-extraction"
+    },
+    "height": {
+      "path": "/workspace/scratch/363230f53301/public/textures/nyxalune/armor/armor-ivory_height.png",
+      "url": "armor-ivory_height.png",
+      "channel": "height",
+      "source": "reference-pixel-extraction"
+    },
+    "normal": {
+      "path": "/workspace/scratch/363230f53301/public/textures/nyxalune/armor/armor-ivory_normal.png",
+      "url": "armor-ivory_normal.png",
+      "channel": "normal",
+      "source": "reference-pixel-extraction"
+    },
+    "ao": {
+      "path": "/workspace/scratch/363230f53301/public/textures/nyxalune/armor/armor-ivory_ao.png",
+      "url": "armor-ivory_ao.png",
+      "channel": "ao",
+      "source": "reference-pixel-extraction"
+    }
+  },
+  "diagnostics": {
+    "sourceWidth": 250,
+    "sourceHeight": 250,
+    "mapSize": 1024,
+    "cropBBoxPixels": {
+      "x": 0,
+      "y": 0,
+      "width": 250,
+      "height": 250
+    },
+    "mask": {
+      "backgroundColor": "#DACCBF",
+      "backgroundNoise": 61.131,
+      "transparentPixelFraction": 0.0,
+      "foregroundCoverage": 0.6566
+    },
+    "mapStats": {
+      "valueRange": 0.5577,
+      "heightP90Gradient": 0.08433,
+      "roughnessBase": 0.722,
+      "roughnessVariation": 0.157,
+      "normalStrength": 0.255,
+      "blurRadius": 21
+    },
+    "palette": [
+      "#2C3049",
+      "#454869",
+      "#161B2D",
+      "#736B69",
+      "#B0A291"
+    ]
+  },
+  "warnings": [
+    "single-image inverse rendering cannot prove true physical PBR; confidence is capped"
+  ],
+  "limitation": "single-image PBR extraction is an estimate; 70%+ extraction confidence still needs render screenshot review"
+}

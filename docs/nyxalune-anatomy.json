@@ -1,0 +1,113 @@
+{
+  "sourceImage": "/workspace/scratch/363230f53301/public/characters/optimized/zukan-001-reference.png",
+  "overlayImage": "/workspace/scratch/363230f53301/docs/nyxalune-landmarks.png",
+  "overlayLegend": {
+    "C": "center symmetry axis",
+    "1..N": "head-unit horizontal ticks (blue, dashed)",
+    "H": "hairline guide (default fraction of the first head-unit band)",
+    "E": "eye line guide",
+    "N": "nose base guide",
+    "M": "mouth line guide",
+    "S": "shoulder line guide (default fraction, adjust to observed pose)",
+    "P": "hip line guide (default fraction, adjust to observed pose)",
+    "grayDashed": "rule-of-thirds compositional grid"
+  },
+  "anatomy": {
+    "styleHeads": 2.7,
+    "proportions": {
+      "headUnit": 0.38,
+      "torso": 1.62,
+      "legs": 0.7,
+      "shoulderWidth": 1.42,
+      "hipWidth": 0.86
+    },
+    "pose": {
+      "type": "neutral bilateral stance with a slight three-quarter torso turn",
+      "jointAngles": {
+        "neck": [
+          0,
+          -5,
+          0
+        ],
+        "leftShoulder": [
+          8,
+          0,
+          -12
+        ],
+        "rightShoulder": [
+          5,
+          0,
+          10
+        ],
+        "leftElbow": [
+          -14,
+          0,
+          0
+        ],
+        "rightElbow": [
+          -10,
+          0,
+          0
+        ],
+        "leftWrist": [
+          3,
+          0,
+          0
+        ],
+        "rightWrist": [
+          -3,
+          0,
+          0
+        ],
+        "leftHip": [
+          1,
+          0,
+          -5
+        ],
+        "rightHip": [
+          1,
+          0,
+          5
+        ],
+        "leftKnee": [
+          4,
+          0,
+          0
+        ],
+        "rightKnee": [
+          3,
+          0,
+          0
+        ],
+        "leftAnkle": [
+          -2,
+          0,
+          0
+        ],
+        "rightAnkle": [
+          -2,
+          0,
+          0
+        ]
+      }
+    },
+    "faceLandmarks": {
+      "hairline": 0.03,
+      "eyeLine": 0.57,
+      "eyeSpacing": 0.22,
+      "noseBase": 0.7,
+      "mouthLine": 0.78,
+      "earTop": 0.43,
+      "earBottom": 0.72
+    },
+    "features": [
+      "forehead crest",
+      "high mantle collar",
+      "split cape",
+      "scales-of-justice tabard",
+      "curled tail"
+    ],
+    "confidence": 0.72
+  },
+  "authoringInstruction": "Open overlayImage and read the reference against its head-unit ticks, thirds grid, face-line guides, shoulder/hip lines, and center axis. Replace every null/placeholder value in anatomy with normalized coordinates or joint angles actually observed; the drawn guide lines are generic starting positions, not measurements."
+}

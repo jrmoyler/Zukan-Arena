@@ -1,0 +1,85 @@
+{
+  "ok": true,
+  "verdict": "pass",
+  "confidence": 0.86,
+  "estimatedFidelity": 0.86,
+  "targetThreshold": 0.7,
+  "materialId": "crest-metal",
+  "sourceImage": "/workspace/scratch/363230f53301/docs/material-crops/crest-gold.png",
+  "outDir": "/workspace/scratch/363230f53301/public/textures/nyxalune/gold",
+  "palette": [
+    "#4B507E",
+    "#2C3150",
+    "#73749E",
+    "#C3B092",
+    "#7C6F60"
+  ],
+  "maps": {
+    "albedo": {
+      "path": "/workspace/scratch/363230f53301/public/textures/nyxalune/gold/crest-metal_albedo.png",
+      "url": "crest-metal_albedo.png",
+      "channel": "albedo",
+      "source": "reference-pixel-extraction"
+    },
+    "roughness": {
+      "path": "/workspace/scratch/363230f53301/public/textures/nyxalune/gold/crest-metal_roughness.png",
+      "url": "crest-metal_roughness.png",
+      "channel": "roughness",
+      "source": "reference-pixel-extraction"
+    },
+    "height": {
+      "path": "/workspace/scratch/363230f53301/public/textures/nyxalune/gold/crest-metal_height.png",
+      "url": "crest-metal_height.png",
+      "channel": "height",
+      "source": "reference-pixel-extraction"
+    },
+    "normal": {
+      "path": "/workspace/scratch/363230f53301/public/textures/nyxalune/gold/crest-metal_normal.png",
+      "url": "crest-metal_normal.png",
+      "channel": "normal",
+      "source": "reference-pixel-extraction"
+    },
+    "ao": {
+      "path": "/workspace/scratch/363230f53301/public/textures/nyxalune/gold/crest-metal_ao.png",
+      "url": "crest-metal_ao.png",
+      "channel": "ao",
+      "source": "reference-pixel-extraction"
+    }
+  },
+  "diagnostics": {
+    "sourceWidth": 170,
+    "sourceHeight": 140,
+    "mapSize": 1024,
+    "cropBBoxPixels": {
+      "x": 0,
+      "y": 31,
+      "width": 157,
+      "height": 109
+    },
+    "mask": {
+      "backgroundColor": "#E9E2D9",
+      "backgroundNoise": 62.753,
+      "transparentPixelFraction": 0.0,
+      "foregroundCoverage": 0.5055
+    },
+    "mapStats": {
+      "valueRange": 0.5459,
+      "heightP90Gradient": 0.05874,
+      "roughnessBase": 0.694,
+      "roughnessVariation": 0.108,
+      "normalStrength": 0.225,
+      "blurRadius": 21
+    },
+    "palette": [
+      "#4B507E",
+      "#2C3150",
+      "#73749E",
+      "#C3B092",
+      "#7C6F60"
+    ]
+  },
+  "warnings": [
+    "single-image inverse rendering cannot prove true physical PBR; confidence is capped"
+  ],
+  "limitation": "single-image PBR extraction is an estimate; 70%+ extraction confidence still needs render screenshot review"
+}

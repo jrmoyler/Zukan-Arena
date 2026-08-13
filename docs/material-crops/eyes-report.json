@@ -1,0 +1,85 @@
+{
+  "ok": true,
+  "verdict": "pass",
+  "confidence": 0.86,
+  "estimatedFidelity": 0.86,
+  "targetThreshold": 0.7,
+  "materialId": "eye-glass",
+  "sourceImage": "/workspace/scratch/363230f53301/docs/material-crops/eyes.png",
+  "outDir": "/workspace/scratch/363230f53301/public/textures/nyxalune/eyes",
+  "palette": [
+    "#383E65",
+    "#595E8E",
+    "#A89EA0",
+    "#151A2E",
+    "#847664"
+  ],
+  "maps": {
+    "albedo": {
+      "path": "/workspace/scratch/363230f53301/public/textures/nyxalune/eyes/eye-glass_albedo.png",
+      "url": "eye-glass_albedo.png",
+      "channel": "albedo",
+      "source": "reference-pixel-extraction"
+    },
+    "roughness": {
+      "path": "/workspace/scratch/363230f53301/public/textures/nyxalune/eyes/eye-glass_roughness.png",
+      "url": "eye-glass_roughness.png",
+      "channel": "roughness",
+      "source": "reference-pixel-extraction"
+    },
+    "height": {
+      "path": "/workspace/scratch/363230f53301/public/textures/nyxalune/eyes/eye-glass_height.png",
+      "url": "eye-glass_height.png",
+      "channel": "height",
+      "source": "reference-pixel-extraction"
+    },
+    "normal": {
+      "path": "/workspace/scratch/363230f53301/public/textures/nyxalune/eyes/eye-glass_normal.png",
+      "url": "eye-glass_normal.png",
+      "channel": "normal",
+      "source": "reference-pixel-extraction"
+    },
+    "ao": {
+      "path": "/workspace/scratch/363230f53301/public/textures/nyxalune/eyes/eye-glass_ao.png",
+      "url": "eye-glass_ao.png",
+      "channel": "ao",
+      "source": "reference-pixel-extraction"
+    }
+  },
+  "diagnostics": {
+    "sourceWidth": 230,
+    "sourceHeight": 120,
+    "mapSize": 1024,
+    "cropBBoxPixels": {
+      "x": 13,
+      "y": 0,
+      "width": 191,
+      "height": 120
+    },
+    "mask": {
+      "backgroundColor": "#ECE3D6",
+      "backgroundNoise": 38.794,
+      "transparentPixelFraction": 0.0,
+      "foregroundCoverage": 0.6865
+    },
+    "mapStats": {
+      "valueRange": 0.5572,
+      "heightP90Gradient": 0.06721,
+      "roughnessBase": 0.699,
+      "roughnessVariation": 0.121,
+      "normalStrength": 0.235,
+      "blurRadius": 21
+    },
+    "palette": [
+      "#383E65",
+      "#595E8E",
+      "#A89EA0",
+      "#151A2E",
+      "#847664"
+    ]
+  },
+  "warnings": [
+    "single-image inverse rendering cannot prove true physical PBR; confidence is capped"
+  ],
+  "limitation": "single-image PBR extraction is an estimate; 70%+ extraction confidence still needs render screenshot review"
+}
