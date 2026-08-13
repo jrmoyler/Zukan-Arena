@@ -73,7 +73,6 @@ export class ZukanArenaGame {
   private readonly ui: HTMLDivElement;
   private readonly scene = new THREE.Scene();
   private readonly camera = new THREE.PerspectiveCamera(38, 1, 0.1, 90);
-  private readonly clock = new THREE.Clock();
   private readonly raycaster = new THREE.Raycaster();
   private readonly pointer = new THREE.Vector2();
   private readonly aimPoint = new THREE.Vector3(2, 0, 0);
@@ -107,6 +106,7 @@ export class ZukanArenaGame {
   private resultTimer?: number;
   private physics?: PhysicsBridge;
   private disposed = false;
+  private lastFrameTime = performance.now();
 
   constructor(host: HTMLElement) {
     this.host = host;
@@ -505,7 +505,7 @@ export class ZukanArenaGame {
     if (this.screen !== 'battle') return;
     this.paused = !this.paused;
     if (!this.paused) {
-      this.clock.getDelta();
+      this.lastFrameTime = performance.now();
       this.renderBattleHud();
       return;
     }
@@ -689,9 +689,10 @@ export class ZukanArenaGame {
     this.updateBattleHud();
   }
 
-  private readonly animate = (): void => {
+  private readonly animate = (timestamp = performance.now()): void => {
     this.animationFrame = requestAnimationFrame(this.animate);
-    const delta = Math.min(this.clock.getDelta(), 0.05);
+    const delta = Math.min(Math.max(0, (timestamp - this.lastFrameTime) / 1_000), 0.05);
+    this.lastFrameTime = timestamp;
     if (!this.paused) this.elapsed += delta;
     if (!this.paused && !this.reducedMotion) this.arena.update(delta, this.elapsed);
     if (!this.paused) this.vfx.update(delta);

@@ -8,6 +8,9 @@ if (!host) throw new Error('Missing #app host');
 try {
   new ZukanArenaGame(host);
 } catch (error) {
-  console.error('[Zukan Arena] Boot failed', error);
+  if (error instanceof Error && error.message === 'WebGL 2 unavailable') {
+    console.info('[Zukan Arena] Compatibility notice displayed.');
+  } else {
+    console.error('[Zukan Arena] Boot failed', error);
+  }
 }
-
