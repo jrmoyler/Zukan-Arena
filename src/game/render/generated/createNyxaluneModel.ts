@@ -344,9 +344,12 @@ function createLoadedMapTexture(
   spec: SculptMaterialSpec,
   options: ProceduralModelOptions,
 ): THREE.Texture {
+  const resolvedUrl = url.startsWith('/textures/')
+    ? `https://raw.githubusercontent.com/jrmoyler/Zukan-Arena/main/public${url}`
+    : url;
   const texture = typeof document === 'undefined'
     ? new THREE.DataTexture(new Uint8Array([128, 128, 128, 255]), 1, 1, THREE.RGBAFormat)
-    : new THREE.TextureLoader().load(url);
+    : new THREE.TextureLoader().load(resolvedUrl);
   const projection = spec.textureProjection && typeof spec.textureProjection === 'object' ? spec.textureProjection : {};
   const repeat = Array.isArray(projection.repeat) ? projection.repeat : [1, 1];
   texture.colorSpace = colorSpace;

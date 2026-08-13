@@ -1,6 +1,7 @@
 import * as THREE from 'three';
 import { mergeGeometries } from 'three/addons/utils/BufferGeometryUtils.js';
 import type { ElementKind, FighterDefinition, RigArchetype, TeamKind } from '../types';
+import { assetUrl } from '../data/assets';
 import { createNyxaluneZukanFighterRigFamilyModel } from './generated/createNyxaluneModel';
 
 export type FighterAnimation = 'idle' | 'run' | 'cast' | 'hit' | 'ko';
@@ -528,7 +529,7 @@ export function createFighterRig(fighter: FighterDefinition, quality: 'high' | '
   });
   if (fighter.id === 'zukan-001' && typeof document !== 'undefined') {
     const loader = new THREE.TextureLoader();
-    loader.load('/textures/nyxalune/skin/skin-indigo_normal.png', (texture) => {
+    loader.load(assetUrl('/textures/nyxalune/skin/skin-indigo_normal.png'), (texture) => {
       texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
       texture.repeat.set(2.4, 2.4);
       if (disposed) return texture.dispose();
@@ -537,7 +538,7 @@ export function createFighterRig(fighter: FighterDefinition, quality: 'high' | '
       portraitMaterial.normalScale.setScalar(0.34);
       portraitMaterial.needsUpdate = true;
     });
-    loader.load('/textures/nyxalune/skin/skin-indigo_roughness.png', (texture) => {
+    loader.load(assetUrl('/textures/nyxalune/skin/skin-indigo_roughness.png'), (texture) => {
       texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
       texture.repeat.set(2.4, 2.4);
       if (disposed) return texture.dispose();

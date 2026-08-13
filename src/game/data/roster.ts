@@ -1,4 +1,5 @@
 import { archetypeFor } from './archetypes';
+import { assetUrl } from './assets';
 import type { ElementKind, FighterDefinition, FighterRole } from '../types';
 
 interface ElementStats {
@@ -114,7 +115,7 @@ function createFighter([index, name, epithet, element, role]: RosterRow): Fighte
     element,
     role,
     archetype: archetypeFor(index),
-    portrait: `/characters/optimized/zukan-${paddedIndex}.webp`,
+    portrait: assetUrl(`/characters/optimized/zukan-${paddedIndex}.webp`),
     maxHp: elementStats.maxHp + roleStats.maxHp,
     speed: elementStats.speed + roleStats.speed,
     power: elementStats.power + roleStats.power,
