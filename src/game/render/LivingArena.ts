@@ -591,29 +591,43 @@ export class LivingArena extends THREE.Group {
   }
 
   private buildLighting(castShadows: boolean): THREE.DirectionalLight {
-    const sky = new THREE.HemisphereLight('#fff4dc', '#22363b', 1.45);
+    // Cinematic porcelain-colosseum lighting: warm key, cool rim, soft sky fill + subtle bounce
+    const sky = new THREE.HemisphereLight('#fff6e8', '#1e2f36', 1.55);
     sky.name = 'arena-warm-sky-fill';
     this.add(sky);
 
-    const key = new THREE.DirectionalLight('#ffe4bd', 3.1);
+    const key = new THREE.DirectionalLight('#ffe8c8', 3.35);
     key.name = 'arena-sun-key';
-    key.position.set(-7.5, 13.5, 8.5);
+    key.position.set(-8.2, 14.2, 9.0);
     key.castShadow = castShadows;
-    key.shadow.mapSize.set(this.quality === 'high' ? 2048 : 1024, this.quality === 'high' ? 2048 : 1024);
-    key.shadow.camera.left = -15;
-    key.shadow.camera.right = 15;
-    key.shadow.camera.top = 12;
-    key.shadow.camera.bottom = -12;
+    const mapSize = this.quality === 'high' ? 2048 : 1024;
+    key.shadow.mapSize.set(mapSize, mapSize);
+    key.shadow.camera.left = -16;
+    key.shadow.camera.right = 16;
+    key.shadow.camera.top = 13;
+    key.shadow.camera.bottom = -13;
     key.shadow.camera.near = 1;
-    key.shadow.camera.far = 35;
-    key.shadow.bias = -0.00035;
-    key.shadow.normalBias = 0.035;
+    key.shadow.camera.far = 38;
+    key.shadow.bias = -0.00028;
+    key.shadow.normalBias = 0.028;
+    key.shadow.radius = this.quality === 'high' ? 2.5 : 1.2;
     this.add(key);
 
-    const rim = new THREE.DirectionalLight('#8bcfc7', 0.72);
+    const rim = new THREE.DirectionalLight('#7fd4cc', 0.95);
     rim.name = 'arena-cool-rim';
-    rim.position.set(8, 5, -10);
+    rim.position.set(9.5, 6.5, -11.5);
     this.add(rim);
+
+    const fill = new THREE.DirectionalLight('#d8e8f0', 0.38);
+    fill.name = 'arena-soft-fill';
+    fill.position.set(4.5, 7.0, 6.0);
+    this.add(fill);
+
+    const bounce = new THREE.DirectionalLight('#f5e6c8', 0.22);
+    bounce.name = 'arena-floor-bounce';
+    bounce.position.set(0, -2.5, 2);
+    this.add(bounce);
+
     return key;
   }
 
