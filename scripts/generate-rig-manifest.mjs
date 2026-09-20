@@ -1,38 +1,24 @@
 import { readFile, writeFile } from 'node:fs/promises';
-
-const rosterSource = await readFile(new URL('../src/game/data/roster.ts', import.meta.url), 'utf8');
-const archetypeSource = await readFile(new URL('../src/game/data/archetypes.ts', import.meta.url), 'utf8');
-const rows = [...rosterSource.matchAll(/\[(\d+), '([^']+)', '([^']+)', '(earth|hydro|gale|plasma|nature|void)', '(Builder|Creator|Strategist)'\]/g)];
-const priorityMatch = archetypeSource.match(/const priority: RigArchetype\[\] = \[([^\]]+)\]/);
-const priority = priorityMatch?.[1]?.match(/'([^']+)'/g)?.map((value) => value.slice(1, -1)) ?? [];
-const groups = new Map();
-for (const match of archetypeSource.matchAll(/\s+(biped|quadruped|avian|serpentine|construct|swarm): \[([^\]]*)\]/g)) {
-  groups.set(match[1], match[2].split(',').map((value) => Number(value.trim())).filter(Boolean));
-}
-const archetypeFor = (index) => priority.find((archetype) => groups.get(archetype)?.includes(index)) ?? 'biped';
-const fighters = rows.map((match) => {
-  const index = Number(match[1]);
-  const id = `zukan-${String(index).padStart(3, '0')}`;
+import { createHash } from 'node:crypto';
+const root = new URL('../', import.meta.url);
+const source = await readFile(new URL('src/game/data/roster.ts', root), 'utf8');
+const approvals = JSON.parse(await readFile(new URL('public/characters/model-approvals.json', root), 'utf8'));
+const rows = [...source.matchAll(/\[(\d+), '([^']+)', '([^']+)', '(earth|hydro|gale|plasma|nature|void)', '(Builder|Creator|Strategist)'\]/g)];
+const fighters = await Promise.all(rows.map(async (match) => {
+  const id = `zukan-${match[1].padStart(3, '0')}`;
+  const reference = `characters/optimized/${id}.webp`;
+  const bytes = await readFile(new URL(`public/${reference}`, root));
   return {
-    id,
-    name: match[2],
-    element: match[4],
-    archetype: archetypeFor(index),
-    source: `/characters/optimized/${id}.webp`,
+    id, name: match[2], element: match[4], source: `/${reference}`,
+    sourceSha256: createHash('sha256').update(bytes).digest('hex'),
     runtime: {
-      format: 'three-skinned-mesh',
-      skeleton: 'zukan-unified-v2',
-      visualSeed: index,
-      materialSlots: ['projection', 'body', 'limb', 'accent', 'eyes'],
+      format: 'glb', model: `/characters/models/${id}.glb`,
+      status: approvals[id]?.status ?? 'pending',
       actions: ['idle', 'run', 'cast', 'hit', 'ko'],
-      textureRoute: 'segmented-front-projection-on-volumetric-shell',
-      sockets: ['ability', 'head', 'core'],
-      heroFactory: index === 1 ? 'src/game/render/generated/createNyxaluneModel.ts' : null,
+      sockets: ['socket_ability', 'socket_head', 'socket_core'],
+      fallback: null,
     },
   };
-});
-if (fighters.length !== 68) throw new Error(`Expected 68 fighters, found ${fighters.length}`);
-await writeFile(
-  new URL('../public/characters/rig-manifest.json', import.meta.url),
-  `${JSON.stringify({ schemaVersion: 1, generatedAt: '2026-08-13', fighters }, null, 2)}\n`,
-);
+}));
+if (fighters.length !== 68) throw new Error(`Expected 68 fighters, got ${fighters.length}`);
+await writeFile(new URL('public/characters/rig-manifest.json', root), `${JSON.stringify({ schemaVersion: 2, fighters }, null, 2)}\n`);

@@ -4,6 +4,7 @@ on:
   push:
     branches: [main]
   pull_request:
+    types: [opened, synchronize, reopened, ready_for_review]
 
 permissions:
   contents: read
@@ -21,7 +22,11 @@ jobs:
       - run: npm ci
       - run: npm run generate:manifest
       - run: git diff --exit-code -- public/characters/rig-manifest.json
+      - run: npm run verify:characters
       - run: npm run typecheck
       - run: npm test
       - run: npm run build
+      - name: Require all reference characters before merge review
+        if: github.event_name == 'pull_request' && github.event.pull_request.draft == false
+        run: node scripts/verify-character-assets.mjs --require-approved
 

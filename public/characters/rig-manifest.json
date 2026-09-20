@@ -1,24 +1,16 @@
 {
-  "schemaVersion": 1,
-  "generatedAt": "2026-08-13",
+  "schemaVersion": 2,
   "fighters": [
     {
       "id": "zukan-001",
       "name": "Nyxalune",
       "element": "void",
-      "archetype": "biped",
       "source": "/characters/optimized/zukan-001.webp",
+      "sourceSha256": "4f67eef1afe1a2f2aa4b054bd9ae51e25b939c9b8870ecc42dde72b078b13ae2",
       "runtime": {
-        "format": "three-skinned-mesh",
-        "skeleton": "zukan-unified-v2",
-        "visualSeed": 1,
-        "materialSlots": [
-          "projection",
-          "body",
-          "limb",
-          "accent",
-          "eyes"
-        ],
+        "format": "glb",
+        "model": "/characters/models/zukan-001.glb",
+        "status": "pending",
         "actions": [
           "idle",
           "run",
@@ -26,32 +18,24 @@
           "hit",
           "ko"
         ],
-        "textureRoute": "segmented-front-projection-on-volumetric-shell",
         "sockets": [
-          "ability",
-          "head",
-          "core"
+          "socket_ability",
+          "socket_head",
+          "socket_core"
         ],
-        "heroFactory": "src/game/render/generated/createNyxaluneModel.ts"
+        "fallback": null
       }
     },
     {
       "id": "zukan-002",
       "name": "Coralyn",
       "element": "nature",
-      "archetype": "biped",
       "source": "/characters/optimized/zukan-002.webp",
+      "sourceSha256": "5c0c08308c001f96f630cd5237d334d5fcdf8d7eb68da5a9478cc655bf48c991",
       "runtime": {
-        "format": "three-skinned-mesh",
-        "skeleton": "zukan-unified-v2",
-        "visualSeed": 2,
-        "materialSlots": [
-          "projection",
-          "body",
-          "limb",
-          "accent",
-          "eyes"
-        ],
+        "format": "glb",
+        "model": "/characters/models/zukan-002.glb",
+        "status": "pending",
         "actions": [
           "idle",
           "run",
@@ -59,32 +43,24 @@
           "hit",
           "ko"
         ],
-        "textureRoute": "segmented-front-projection-on-volumetric-shell",
         "sockets": [
-          "ability",
-          "head",
-          "core"
+          "socket_ability",
+          "socket_head",
+          "socket_core"
         ],
-        "heroFactory": null
+        "fallback": null
       }
     },
     {
       "id": "zukan-003",
       "name": "Mallowkin",
       "element": "gale",
-      "archetype": "biped",
       "source": "/characters/optimized/zukan-003.webp",
+      "sourceSha256": "7e6c9a4d2f469cf356993a3e1736fbbe828a13d87d4eb889faa6850b3f0f02c8",
       "runtime": {
-        "format": "three-skinned-mesh",
-        "skeleton": "zukan-unified-v2",
-        "visualSeed": 3,
-        "materialSlots": [
-          "projection",
-          "body",
-          "limb",
-          "accent",
-          "eyes"
-        ],
+        "format": "glb",
+        "model": "/characters/models/zukan-003.glb",
+        "status": "pending",
         "actions": [
           "idle",
           "run",
@@ -92,32 +68,24 @@
           "hit",
           "ko"
         ],
-        "textureRoute": "segmented-front-projection-on-volumetric-shell",
         "sockets": [
-          "ability",
-          "head",
-          "core"
+          "socket_ability",
+          "socket_head",
+          "socket_core"
         ],
-        "heroFactory": null
+        "fallback": null
       }
     },
     {
       "id": "zukan-004",
       "name": "Tidel Pip",
       "element": "hydro",
-      "archetype": "biped",
       "source": "/characters/optimized/zukan-004.webp",
+      "sourceSha256": "96062eded676824d7f677c578191ca7a2c9d18d566d9dbc0b859986188306c83",
       "runtime": {
-        "format": "three-skinned-mesh",
-        "skeleton": "zukan-unified-v2",
-        "visualSeed": 4,
-        "materialSlots": [
-          "projection",
-          "body",
-          "limb",
-          "accent",
-          "eyes"
-        ],
+        "format": "glb",
+        "model": "/characters/models/zukan-004.glb",
+        "status": "pending",
         "actions": [
           "idle",
           "run",
@@ -125,32 +93,24 @@
           "hit",
           "ko"
         ],
-        "textureRoute": "segmented-front-projection-on-volumetric-shell",
         "sockets": [
-          "ability",
-          "head",
-          "core"
+          "socket_ability",
+          "socket_head",
+          "socket_core"
         ],
-        "heroFactory": null
+        "fallback": null
       }
     },
     {
       "id": "zukan-005",
       "name": "Cirru Bluebell",
       "element": "hydro",
-      "archetype": "biped",
       "source": "/characters/optimized/zukan-005.webp",
+      "sourceSha256": "1041fb7ca244dffa65af6a54925a225c57e522094ca1cb9058001916cda67db1",
       "runtime": {
-        "format": "three-skinned-mesh",
-        "skeleton": "zukan-unified-v2",
-        "visualSeed": 5,
-        "materialSlots": [
-          "projection",
-          "body",
-          "limb",
-          "accent",
-          "eyes"
-        ],
+        "format": "glb",
+        "model": "/characters/models/zukan-005.glb",
+        "status": "pending",
         "actions": [
           "idle",
           "run",
@@ -158,32 +118,24 @@
           "hit",
           "ko"
         ],
-        "textureRoute": "segmented-front-projection-on-volumetric-shell",
         "sockets": [
-          "ability",
-          "head",
-          "core"
+          "socket_ability",
+          "socket_head",
+          "socket_core"
         ],
-        "heroFactory": null
+        "fallback": null
       }
     },
     {
       "id": "zukan-006",
       "name": "Mossprig",
       "element": "nature",
-      "archetype": "biped",
       "source": "/characters/optimized/zukan-006.webp",
+      "sourceSha256": "c082bdeae59815debd419fbd52e722775344ed2164541d6abcd0e3786acce2af",
       "runtime": {
-        "format": "three-skinned-mesh",
-        "skeleton": "zukan-unified-v2",
-        "visualSeed": 6,
-        "materialSlots": [
-          "projection",
-          "body",
-          "limb",
-          "accent",
-          "eyes"
-        ],
+        "format": "glb",
+        "model": "/characters/models/zukan-006.glb",
+        "status": "pending",
         "actions": [
           "idle",
           "run",
@@ -191,32 +143,24 @@
           "hit",
           "ko"
         ],
-        "textureRoute": "segmented-front-projection-on-volumetric-shell",
         "sockets": [
-          "ability",
-          "head",
-          "core"
+          "socket_ability",
+          "socket_head",
+          "socket_core"
         ],
-        "heroFactory": null
+        "fallback": null
       }
     },
     {
       "id": "zukan-007",
       "name": "Prism Chorus",
       "element": "plasma",
-      "archetype": "swarm",
       "source": "/characters/optimized/zukan-007.webp",
+      "sourceSha256": "ba40385c9978db4ccc8ab2d104529ca9cab5382516a2eb115550edcff8e797fe",
       "runtime": {
-        "format": "three-skinned-mesh",
-        "skeleton": "zukan-unified-v2",
-        "visualSeed": 7,
-        "materialSlots": [
-          "projection",
-          "body",
-          "limb",
-          "accent",
-          "eyes"
-        ],
+        "format": "glb",
+        "model": "/characters/models/zukan-007.glb",
+        "status": "pending",
         "actions": [
           "idle",
           "run",
@@ -224,32 +168,24 @@
           "hit",
           "ko"
         ],
-        "textureRoute": "segmented-front-projection-on-volumetric-shell",
         "sockets": [
-          "ability",
-          "head",
-          "core"
+          "socket_ability",
+          "socket_head",
+          "socket_core"
         ],
-        "heroFactory": null
+        "fallback": null
       }
     },
     {
       "id": "zukan-008",
       "name": "Vesper Talon",
       "element": "void",
-      "archetype": "quadruped",
       "source": "/characters/optimized/zukan-008.webp",
+      "sourceSha256": "81d632d9f6c46e91d53475c86946e7783a41e767295fafa6f6ae7a6c9860b6b5",
       "runtime": {
-        "format": "three-skinned-mesh",
-        "skeleton": "zukan-unified-v2",
-        "visualSeed": 8,
-        "materialSlots": [
-          "projection",
-          "body",
-          "limb",
-          "accent",
-          "eyes"
-        ],
+        "format": "glb",
+        "model": "/characters/models/zukan-008.glb",
+        "status": "pending",
         "actions": [
           "idle",
           "run",
@@ -257,32 +193,24 @@
           "hit",
           "ko"
         ],
-        "textureRoute": "segmented-front-projection-on-volumetric-shell",
         "sockets": [
-          "ability",
-          "head",
-          "core"
+          "socket_ability",
+          "socket_head",
+          "socket_core"
         ],
-        "heroFactory": null
+        "fallback": null
       }
     },
     {
       "id": "zukan-009",
       "name": "Sylva Crown",
       "element": "nature",
-      "archetype": "quadruped",
       "source": "/characters/optimized/zukan-009.webp",
+      "sourceSha256": "a1bafc0bc76b908234e8d5b99455d4c5dec682c1cc91de2e2efc603f1669595a",
       "runtime": {
-        "format": "three-skinned-mesh",
-        "skeleton": "zukan-unified-v2",
-        "visualSeed": 9,
-        "materialSlots": [
-          "projection",
-          "body",
-          "limb",
-          "accent",
-          "eyes"
-        ],
+        "format": "glb",
+        "model": "/characters/models/zukan-009.glb",
+        "status": "pending",
         "actions": [
           "idle",
           "run",
@@ -290,32 +218,24 @@
           "hit",
           "ko"
         ],
-        "textureRoute": "segmented-front-projection-on-volumetric-shell",
         "sockets": [
-          "ability",
-          "head",
-          "core"
+          "socket_ability",
+          "socket_head",
+          "socket_core"
         ],
-        "heroFactory": null
+        "fallback": null
       }
     },
     {
       "id": "zukan-010",
       "name": "Aeris Nightwing",
       "element": "gale",
-      "archetype": "avian",
       "source": "/characters/optimized/zukan-010.webp",
+      "sourceSha256": "d52f9da09057f8ea491b67cefb669aeeb5252872c0cd78d8e45c1b1826c1c9dd",
       "runtime": {
-        "format": "three-skinned-mesh",
-        "skeleton": "zukan-unified-v2",
-        "visualSeed": 10,
-        "materialSlots": [
-          "projection",
-          "body",
-          "limb",
-          "accent",
-          "eyes"
-        ],
+        "format": "glb",
+        "model": "/characters/models/zukan-010.glb",
+        "status": "pending",
         "actions": [
           "idle",
           "run",
@@ -323,32 +243,24 @@
           "hit",
           "ko"
         ],
-        "textureRoute": "segmented-front-projection-on-volumetric-shell",
         "sockets": [
-          "ability",
-          "head",
-          "core"
+          "socket_ability",
+          "socket_head",
+          "socket_core"
         ],
-        "heroFactory": null
+        "fallback": null
       }
     },
     {
       "id": "zukan-011",
       "name": "Tigris Undertow",
       "element": "hydro",
-      "archetype": "quadruped",
       "source": "/characters/optimized/zukan-011.webp",
+      "sourceSha256": "fbe5d7a5aaf2d661ab7c2fdd46e447c0f84512bdf69a7e9aa162f44503d033ea",
       "runtime": {
-        "format": "three-skinned-mesh",
-        "skeleton": "zukan-unified-v2",
-        "visualSeed": 11,
-        "materialSlots": [
-          "projection",
-          "body",
-          "limb",
-          "accent",
-          "eyes"
-        ],
+        "format": "glb",
+        "model": "/characters/models/zukan-011.glb",
+        "status": "pending",
         "actions": [
           "idle",
           "run",
@@ -356,32 +268,24 @@
           "hit",
           "ko"
         ],
-        "textureRoute": "segmented-front-projection-on-volumetric-shell",
         "sockets": [
-          "ability",
-          "head",
-          "core"
+          "socket_ability",
+          "socket_head",
+          "socket_core"
         ],
-        "heroFactory": null
+        "fallback": null
       }
     },
     {
       "id": "zukan-012",
       "name": "Brassburrow",
       "element": "earth",
-      "archetype": "quadruped",
       "source": "/characters/optimized/zukan-012.webp",
+      "sourceSha256": "c41b2e5c57dc5d505cfa68ec991888a4ea3c3d7f5f3931fbbea30f6956b75b7f",
       "runtime": {
-        "format": "three-skinned-mesh",
-        "skeleton": "zukan-unified-v2",
-        "visualSeed": 12,
-        "materialSlots": [
-          "projection",
-          "body",
-          "limb",
-          "accent",
-          "eyes"
-        ],
+        "format": "glb",
+        "model": "/characters/models/zukan-012.glb",
+        "status": "pending",
         "actions": [
           "idle",
           "run",
@@ -389,32 +293,24 @@
           "hit",
           "ko"
         ],
-        "textureRoute": "segmented-front-projection-on-volumetric-shell",
         "sockets": [
-          "ability",
-          "head",
-          "core"
+          "socket_ability",
+          "socket_head",
+          "socket_core"
         ],
-        "heroFactory": null
+        "fallback": null
       }
     },
     {
       "id": "zukan-013",
       "name": "Gaiadorn",
       "element": "earth",
-      "archetype": "quadruped",
       "source": "/characters/optimized/zukan-013.webp",
+      "sourceSha256": "b8b44834d8acaf23362c78eb556b82c326791086d138838b0608509bc1da9f3d",
       "runtime": {
-        "format": "three-skinned-mesh",
-        "skeleton": "zukan-unified-v2",
-        "visualSeed": 13,
-        "materialSlots": [
-          "projection",
-          "body",
-          "limb",
-          "accent",
-          "eyes"
-        ],
+        "format": "glb",
+        "model": "/characters/models/zukan-013.glb",
+        "status": "pending",
         "actions": [
           "idle",
           "run",
@@ -422,32 +318,24 @@
           "hit",
           "ko"
         ],
-        "textureRoute": "segmented-front-projection-on-volumetric-shell",
         "sockets": [
-          "ability",
-          "head",
-          "core"
+          "socket_ability",
+          "socket_head",
+          "socket_core"
         ],
-        "heroFactory": null
+        "fallback": null
       }
     },
     {
       "id": "zukan-014",
       "name": "Umbra Thread",
       "element": "void",
-      "archetype": "serpentine",
       "source": "/characters/optimized/zukan-014.webp",
+      "sourceSha256": "7fc3c646c2f89c29aabbe338a5197c67ecb0a17f414895a7e74d447421e3f79e",
       "runtime": {
-        "format": "three-skinned-mesh",
-        "skeleton": "zukan-unified-v2",
-        "visualSeed": 14,
-        "materialSlots": [
-          "projection",
-          "body",
-          "limb",
-          "accent",
-          "eyes"
-        ],
+        "format": "glb",
+        "model": "/characters/models/zukan-014.glb",
+        "status": "pending",
         "actions": [
           "idle",
           "run",
@@ -455,32 +343,24 @@
           "hit",
           "ko"
         ],
-        "textureRoute": "segmented-front-projection-on-volumetric-shell",
         "sockets": [
-          "ability",
-          "head",
-          "core"
+          "socket_ability",
+          "socket_head",
+          "socket_core"
         ],
-        "heroFactory": null
+        "fallback": null
       }
     },
     {
       "id": "zukan-015",
       "name": "Axolume",
       "element": "hydro",
-      "archetype": "quadruped",
       "source": "/characters/optimized/zukan-015.webp",
+      "sourceSha256": "5757aeeae9aa43bd4b8971be82c68d79b7fc888461b153d5d2f166ab2f820640",
       "runtime": {
-        "format": "three-skinned-mesh",
-        "skeleton": "zukan-unified-v2",
-        "visualSeed": 15,
-        "materialSlots": [
-          "projection",
-          "body",
-          "limb",
-          "accent",
-          "eyes"
-        ],
+        "format": "glb",
+        "model": "/characters/models/zukan-015.glb",
+        "status": "pending",
         "actions": [
           "idle",
           "run",
@@ -488,32 +368,24 @@
           "hit",
           "ko"
         ],
-        "textureRoute": "segmented-front-projection-on-volumetric-shell",
         "sockets": [
-          "ability",
-          "head",
-          "core"
+          "socket_ability",
+          "socket_head",
+          "socket_core"
         ],
-        "heroFactory": null
+        "fallback": null
       }
     },
     {
       "id": "zukan-016",
       "name": "Oakenhart",
       "element": "nature",
-      "archetype": "quadruped",
       "source": "/characters/optimized/zukan-016.webp",
+      "sourceSha256": "1d45bfbc89e04f09566f37930d1997317119f494471791500c01e5345aaa8df1",
       "runtime": {
-        "format": "three-skinned-mesh",
-        "skeleton": "zukan-unified-v2",
-        "visualSeed": 16,
-        "materialSlots": [
-          "projection",
-          "body",
-          "limb",
-          "accent",
-          "eyes"
-        ],
+        "format": "glb",
+        "model": "/characters/models/zukan-016.glb",
+        "status": "pending",
         "actions": [
           "idle",
           "run",
@@ -521,32 +393,24 @@
           "hit",
           "ko"
         ],
-        "textureRoute": "segmented-front-projection-on-volumetric-shell",
         "sockets": [
-          "ability",
-          "head",
-          "core"
+          "socket_ability",
+          "socket_head",
+          "socket_core"
         ],
-        "heroFactory": null
+        "fallback": null
       }
     },
     {
       "id": "zukan-017",
       "name": "Onyx Mane",
       "element": "earth",
-      "archetype": "quadruped",
       "source": "/characters/optimized/zukan-017.webp",
+      "sourceSha256": "d451768a1c919e1c55a71dd8c1e1ad164748083714c5d4cd8aa0564554abc440",
       "runtime": {
-        "format": "three-skinned-mesh",
-        "skeleton": "zukan-unified-v2",
-        "visualSeed": 17,
-        "materialSlots": [
-          "projection",
-          "body",
-          "limb",
-          "accent",
-          "eyes"
-        ],
+        "format": "glb",
+        "model": "/characters/models/zukan-017.glb",
+        "status": "pending",
         "actions": [
           "idle",
           "run",
@@ -554,32 +418,24 @@
           "hit",
           "ko"
         ],
-        "textureRoute": "segmented-front-projection-on-volumetric-shell",
         "sockets": [
-          "ability",
-          "head",
-          "core"
+          "socket_ability",
+          "socket_head",
+          "socket_core"
         ],
-        "heroFactory": null
+        "fallback": null
       }
     },
     {
       "id": "zukan-018",
       "name": "Cairnhoof",
       "element": "earth",
-      "archetype": "quadruped",
       "source": "/characters/optimized/zukan-018.webp",
+      "sourceSha256": "23fff7d9fe898bdcf95cfc1f15778b2ceffcf1cb77e4d8d059245da3d3f3d7ba",
       "runtime": {
-        "format": "three-skinned-mesh",
-        "skeleton": "zukan-unified-v2",
-        "visualSeed": 18,
-        "materialSlots": [
-          "projection",
-          "body",
-          "limb",
-          "accent",
-          "eyes"
-        ],
+        "format": "glb",
+        "model": "/characters/models/zukan-018.glb",
+        "status": "pending",
         "actions": [
           "idle",
           "run",
@@ -587,32 +443,24 @@
           "hit",
           "ko"
         ],
-        "textureRoute": "segmented-front-projection-on-volumetric-shell",
         "sockets": [
-          "ability",
-          "head",
-          "core"
+          "socket_ability",
+          "socket_head",
+          "socket_core"
         ],
-        "heroFactory": null
+        "fallback": null
       }
     },
     {
       "id": "zukan-019",
       "name": "Terra Shell",
       "element": "earth",
-      "archetype": "quadruped",
       "source": "/characters/optimized/zukan-019.webp",
+      "sourceSha256": "4f1d0c845f59c52d08c4ad1c9854fb714f3237683a8f64585484b144134ced9d",
       "runtime": {
-        "format": "three-skinned-mesh",
-        "skeleton": "zukan-unified-v2",
-        "visualSeed": 19,
-        "materialSlots": [
-          "projection",
-          "body",
-          "limb",
-          "accent",
-          "eyes"
-        ],
+        "format": "glb",
+        "model": "/characters/models/zukan-019.glb",
+        "status": "pending",
         "actions": [
           "idle",
           "run",
@@ -620,32 +468,24 @@
           "hit",
           "ko"
         ],
-        "textureRoute": "segmented-front-projection-on-volumetric-shell",
         "sockets": [
-          "ability",
-          "head",
-          "core"
+          "socket_ability",
+          "socket_head",
+          "socket_core"
         ],
-        "heroFactory": null
+        "fallback": null
       }
     },
     {
       "id": "zukan-020",
       "name": "Zephyra Flare",
       "element": "gale",
-      "archetype": "avian",
       "source": "/characters/optimized/zukan-020.webp",
+      "sourceSha256": "a4bf6706392e9990883f379c1eef104551d177b419c73958f2dd102737a85d24",
       "runtime": {
-        "format": "three-skinned-mesh",
-        "skeleton": "zukan-unified-v2",
-        "visualSeed": 20,
-        "materialSlots": [
-          "projection",
-          "body",
-          "limb",
-          "accent",
-          "eyes"
-        ],
+        "format": "glb",
+        "model": "/characters/models/zukan-020.glb",
+        "status": "pending",
         "actions": [
           "idle",
           "run",
@@ -653,32 +493,24 @@
           "hit",
           "ko"
         ],
-        "textureRoute": "segmented-front-projection-on-volumetric-shell",
         "sockets": [
-          "ability",
-          "head",
-          "core"
+          "socket_ability",
+          "socket_head",
+          "socket_core"
         ],
-        "heroFactory": null
+        "fallback": null
       }
     },
     {
       "id": "zukan-021",
       "name": "Rax Embercoil",
       "element": "plasma",
-      "archetype": "quadruped",
       "source": "/characters/optimized/zukan-021.webp",
+      "sourceSha256": "08b4599d2e6b9342101298eb43ddc1b72187006876d58489e25e79426a541e45",
       "runtime": {
-        "format": "three-skinned-mesh",
-        "skeleton": "zukan-unified-v2",
-        "visualSeed": 21,
-        "materialSlots": [
-          "projection",
-          "body",
-          "limb",
-          "accent",
-          "eyes"
-        ],
+        "format": "glb",
+        "model": "/characters/models/zukan-021.glb",
+        "status": "pending",
         "actions": [
           "idle",
           "run",
@@ -686,32 +518,24 @@
           "hit",
           "ko"
         ],
-        "textureRoute": "segmented-front-projection-on-volumetric-shell",
         "sockets": [
-          "ability",
-          "head",
-          "core"
+          "socket_ability",
+          "socket_head",
+          "socket_core"
         ],
-        "heroFactory": null
+        "fallback": null
       }
     },
     {
       "id": "zukan-022",
       "name": "Pebbleward",
       "element": "earth",
-      "archetype": "quadruped",
       "source": "/characters/optimized/zukan-022.webp",
+      "sourceSha256": "763face0794eafd26394ef3ed17e3f7e55954a9252c83601674b16cd7a0b878d",
       "runtime": {
-        "format": "three-skinned-mesh",
-        "skeleton": "zukan-unified-v2",
-        "visualSeed": 22,
-        "materialSlots": [
-          "projection",
-          "body",
-          "limb",
-          "accent",
-          "eyes"
-        ],
+        "format": "glb",
+        "model": "/characters/models/zukan-022.glb",
+        "status": "pending",
         "actions": [
           "idle",
           "run",
@@ -719,32 +543,24 @@
           "hit",
           "ko"
         ],
-        "textureRoute": "segmented-front-projection-on-volumetric-shell",
         "sockets": [
-          "ability",
-          "head",
-          "core"
+          "socket_ability",
+          "socket_head",
+          "socket_core"
         ],
-        "heroFactory": null
+        "fallback": null
       }
     },
     {
       "id": "zukan-023",
       "name": "Riptide Wyrm",
       "element": "hydro",
-      "archetype": "serpentine",
       "source": "/characters/optimized/zukan-023.webp",
+      "sourceSha256": "8f8b9e6c4b68027ed4e27bba34bf67918e82a9177e9c95c88d4eca87f64b8d81",
       "runtime": {
-        "format": "three-skinned-mesh",
-        "skeleton": "zukan-unified-v2",
-        "visualSeed": 23,
-        "materialSlots": [
-          "projection",
-          "body",
-          "limb",
-          "accent",
-          "eyes"
-        ],
+        "format": "glb",
+        "model": "/characters/models/zukan-023.glb",
+        "status": "pending",
         "actions": [
           "idle",
           "run",
@@ -752,32 +568,24 @@
           "hit",
           "ko"
         ],
-        "textureRoute": "segmented-front-projection-on-volumetric-shell",
         "sockets": [
-          "ability",
-          "head",
-          "core"
+          "socket_ability",
+          "socket_head",
+          "socket_core"
         ],
-        "heroFactory": null
+        "fallback": null
       }
     },
     {
       "id": "zukan-024",
       "name": "Briar Owl",
       "element": "nature",
-      "archetype": "biped",
       "source": "/characters/optimized/zukan-024.webp",
+      "sourceSha256": "02ad8baed02aa76f45e689d02acb9be541d83ab629315e1ef8d1d0a05db4d945",
       "runtime": {
-        "format": "three-skinned-mesh",
-        "skeleton": "zukan-unified-v2",
-        "visualSeed": 24,
-        "materialSlots": [
-          "projection",
-          "body",
-          "limb",
-          "accent",
-          "eyes"
-        ],
+        "format": "glb",
+        "model": "/characters/models/zukan-024.glb",
+        "status": "pending",
         "actions": [
           "idle",
           "run",
@@ -785,32 +593,24 @@
           "hit",
           "ko"
         ],
-        "textureRoute": "segmented-front-projection-on-volumetric-shell",
         "sockets": [
-          "ability",
-          "head",
-          "core"
+          "socket_ability",
+          "socket_head",
+          "socket_core"
         ],
-        "heroFactory": null
+        "fallback": null
       }
     },
     {
       "id": "zukan-025",
       "name": "Lunavex",
       "element": "void",
-      "archetype": "quadruped",
       "source": "/characters/optimized/zukan-025.webp",
+      "sourceSha256": "7bee31b7fe00af19802db7ae9300426939539653331c9128bcccbca5e23b7003",
       "runtime": {
-        "format": "three-skinned-mesh",
-        "skeleton": "zukan-unified-v2",
-        "visualSeed": 25,
-        "materialSlots": [
-          "projection",
-          "body",
-          "limb",
-          "accent",
-          "eyes"
-        ],
+        "format": "glb",
+        "model": "/characters/models/zukan-025.glb",
+        "status": "pending",
         "actions": [
           "idle",
           "run",
@@ -818,32 +618,24 @@
           "hit",
           "ko"
         ],
-        "textureRoute": "segmented-front-projection-on-volumetric-shell",
         "sockets": [
-          "ability",
-          "head",
-          "core"
+          "socket_ability",
+          "socket_head",
+          "socket_core"
         ],
-        "heroFactory": null
+        "fallback": null
       }
     },
     {
       "id": "zukan-026",
       "name": "Dunehop",
       "element": "earth",
-      "archetype": "quadruped",
       "source": "/characters/optimized/zukan-026.webp",
+      "sourceSha256": "7268dba74ef4082702b0cd1711f9ec7b1050afaaea03783ba2ed00eade7d3b18",
       "runtime": {
-        "format": "three-skinned-mesh",
-        "skeleton": "zukan-unified-v2",
-        "visualSeed": 26,
-        "materialSlots": [
-          "projection",
-          "body",
-          "limb",
-          "accent",
-          "eyes"
-        ],
+        "format": "glb",
+        "model": "/characters/models/zukan-026.glb",
+        "status": "pending",
         "actions": [
           "idle",
           "run",
@@ -851,32 +643,24 @@
           "hit",
           "ko"
         ],
-        "textureRoute": "segmented-front-projection-on-volumetric-shell",
         "sockets": [
-          "ability",
-          "head",
-          "core"
+          "socket_ability",
+          "socket_head",
+          "socket_core"
         ],
-        "heroFactory": null
+        "fallback": null
       }
     },
     {
       "id": "zukan-027",
       "name": "Sirocco Ink",
       "element": "gale",
-      "archetype": "avian",
       "source": "/characters/optimized/zukan-027.webp",
+      "sourceSha256": "a4d3a35d89ed9734f7db76fcc95e15b0cc14e606bb75fd3049664cb482c6294a",
       "runtime": {
-        "format": "three-skinned-mesh",
-        "skeleton": "zukan-unified-v2",
-        "visualSeed": 27,
-        "materialSlots": [
-          "projection",
-          "body",
-          "limb",
-          "accent",
-          "eyes"
-        ],
+        "format": "glb",
+        "model": "/characters/models/zukan-027.glb",
+        "status": "pending",
         "actions": [
           "idle",
           "run",
@@ -884,32 +668,24 @@
           "hit",
           "ko"
         ],
-        "textureRoute": "segmented-front-projection-on-volumetric-shell",
         "sockets": [
-          "ability",
-          "head",
-          "core"
+          "socket_ability",
+          "socket_head",
+          "socket_core"
         ],
-        "heroFactory": null
+        "fallback": null
       }
     },
     {
       "id": "zukan-028",
       "name": "Bublune",
       "element": "hydro",
-      "archetype": "biped",
       "source": "/characters/optimized/zukan-028.webp",
+      "sourceSha256": "8dd6840f7261461a5784f5104ad6cedc23cefd31b89a770e37b886d0d0b3a4bc",
       "runtime": {
-        "format": "three-skinned-mesh",
-        "skeleton": "zukan-unified-v2",
-        "visualSeed": 28,
-        "materialSlots": [
-          "projection",
-          "body",
-          "limb",
-          "accent",
-          "eyes"
-        ],
+        "format": "glb",
+        "model": "/characters/models/zukan-028.glb",
+        "status": "pending",
         "actions": [
           "idle",
           "run",
@@ -917,32 +693,24 @@
           "hit",
           "ko"
         ],
-        "textureRoute": "segmented-front-projection-on-volumetric-shell",
         "sockets": [
-          "ability",
-          "head",
-          "core"
+          "socket_ability",
+          "socket_head",
+          "socket_core"
         ],
-        "heroFactory": null
+        "fallback": null
       }
     },
     {
       "id": "zukan-029",
       "name": "Rosette Drift",
       "element": "gale",
-      "archetype": "biped",
       "source": "/characters/optimized/zukan-029.webp",
+      "sourceSha256": "ae9e8157d8895be1149e14c3b5388c93693b8a7b2e5b3dc1c4e24b13986f068c",
       "runtime": {
-        "format": "three-skinned-mesh",
-        "skeleton": "zukan-unified-v2",
-        "visualSeed": 29,
-        "materialSlots": [
-          "projection",
-          "body",
-          "limb",
-          "accent",
-          "eyes"
-        ],
+        "format": "glb",
+        "model": "/characters/models/zukan-029.glb",
+        "status": "pending",
         "actions": [
           "idle",
           "run",
@@ -950,32 +718,24 @@
           "hit",
           "ko"
         ],
-        "textureRoute": "segmented-front-projection-on-volumetric-shell",
         "sockets": [
-          "ability",
-          "head",
-          "core"
+          "socket_ability",
+          "socket_head",
+          "socket_core"
         ],
-        "heroFactory": null
+        "fallback": null
       }
     },
     {
       "id": "zukan-030",
       "name": "Helix Sprout",
       "element": "nature",
-      "archetype": "biped",
       "source": "/characters/optimized/zukan-030.webp",
+      "sourceSha256": "c4a944bbcc3016a0997b115090a68a325ad9359c449de9901d407221510d63e6",
       "runtime": {
-        "format": "three-skinned-mesh",
-        "skeleton": "zukan-unified-v2",
-        "visualSeed": 30,
-        "materialSlots": [
-          "projection",
-          "body",
-          "limb",
-          "accent",
-          "eyes"
-        ],
+        "format": "glb",
+        "model": "/characters/models/zukan-030.glb",
+        "status": "pending",
         "actions": [
           "idle",
           "run",
@@ -983,32 +743,24 @@
           "hit",
           "ko"
         ],
-        "textureRoute": "segmented-front-projection-on-volumetric-shell",
         "sockets": [
-          "ability",
-          "head",
-          "core"
+          "socket_ability",
+          "socket_head",
+          "socket_core"
         ],
-        "heroFactory": null
+        "fallback": null
       }
     },
     {
       "id": "zukan-031",
       "name": "Verdant Drake",
       "element": "nature",
-      "archetype": "biped",
       "source": "/characters/optimized/zukan-031.webp",
+      "sourceSha256": "c9b4fcb3f8fb2229b271a75ebfee9ed3ad6e9afe4c37bc6f3454ffa50e8d8ee0",
       "runtime": {
-        "format": "three-skinned-mesh",
-        "skeleton": "zukan-unified-v2",
-        "visualSeed": 31,
-        "materialSlots": [
-          "projection",
-          "body",
-          "limb",
-          "accent",
-          "eyes"
-        ],
+        "format": "glb",
+        "model": "/characters/models/zukan-031.glb",
+        "status": "pending",
         "actions": [
           "idle",
           "run",
@@ -1016,32 +768,24 @@
           "hit",
           "ko"
         ],
-        "textureRoute": "segmented-front-projection-on-volumetric-shell",
         "sockets": [
-          "ability",
-          "head",
-          "core"
+          "socket_ability",
+          "socket_head",
+          "socket_core"
         ],
-        "heroFactory": null
+        "fallback": null
       }
     },
     {
       "id": "zukan-032",
       "name": "Volt Sentinel",
       "element": "plasma",
-      "archetype": "construct",
       "source": "/characters/optimized/zukan-032.webp",
+      "sourceSha256": "9bf3391c7941024836f5d9a09fa97029df373448a626a9e01ccc46de8318695a",
       "runtime": {
-        "format": "three-skinned-mesh",
-        "skeleton": "zukan-unified-v2",
-        "visualSeed": 32,
-        "materialSlots": [
-          "projection",
-          "body",
-          "limb",
-          "accent",
-          "eyes"
-        ],
+        "format": "glb",
+        "model": "/characters/models/zukan-032.glb",
+        "status": "pending",
         "actions": [
           "idle",
           "run",
@@ -1049,32 +793,24 @@
           "hit",
           "ko"
         ],
-        "textureRoute": "segmented-front-projection-on-volumetric-shell",
         "sockets": [
-          "ability",
-          "head",
-          "core"
+          "socket_ability",
+          "socket_head",
+          "socket_core"
         ],
-        "heroFactory": null
+        "fallback": null
       }
     },
     {
       "id": "zukan-033",
       "name": "Marshal Amp",
       "element": "plasma",
-      "archetype": "construct",
       "source": "/characters/optimized/zukan-033.webp",
+      "sourceSha256": "38f0f63a707e58fdb1cff4129f221153b9baedad9319b12274c7d0ecf287c342",
       "runtime": {
-        "format": "three-skinned-mesh",
-        "skeleton": "zukan-unified-v2",
-        "visualSeed": 33,
-        "materialSlots": [
-          "projection",
-          "body",
-          "limb",
-          "accent",
-          "eyes"
-        ],
+        "format": "glb",
+        "model": "/characters/models/zukan-033.glb",
+        "status": "pending",
         "actions": [
           "idle",
           "run",
@@ -1082,32 +818,24 @@
           "hit",
           "ko"
         ],
-        "textureRoute": "segmented-front-projection-on-volumetric-shell",
         "sockets": [
-          "ability",
-          "head",
-          "core"
+          "socket_ability",
+          "socket_head",
+          "socket_core"
         ],
-        "heroFactory": null
+        "fallback": null
       }
     },
     {
       "id": "zukan-034",
       "name": "Solspark",
       "element": "plasma",
-      "archetype": "biped",
       "source": "/characters/optimized/zukan-034.webp",
+      "sourceSha256": "7f656fc887942598472a7e4424d464c8cbee4da0a87e6d7a7e12cf9d09b5abf2",
       "runtime": {
-        "format": "three-skinned-mesh",
-        "skeleton": "zukan-unified-v2",
-        "visualSeed": 34,
-        "materialSlots": [
-          "projection",
-          "body",
-          "limb",
-          "accent",
-          "eyes"
-        ],
+        "format": "glb",
+        "model": "/characters/models/zukan-034.glb",
+        "status": "pending",
         "actions": [
           "idle",
           "run",
@@ -1115,32 +843,24 @@
           "hit",
           "ko"
         ],
-        "textureRoute": "segmented-front-projection-on-volumetric-shell",
         "sockets": [
-          "ability",
-          "head",
-          "core"
+          "socket_ability",
+          "socket_head",
+          "socket_core"
         ],
-        "heroFactory": null
+        "fallback": null
       }
     },
     {
       "id": "zukan-035",
       "name": "Copperwing",
       "element": "gale",
-      "archetype": "avian",
       "source": "/characters/optimized/zukan-035.webp",
+      "sourceSha256": "4bbf47f14eda4a6abefcc719af1a335ad8900ff9218f1c585d7da213fa884545",
       "runtime": {
-        "format": "three-skinned-mesh",
-        "skeleton": "zukan-unified-v2",
-        "visualSeed": 35,
-        "materialSlots": [
-          "projection",
-          "body",
-          "limb",
-          "accent",
-          "eyes"
-        ],
+        "format": "glb",
+        "model": "/characters/models/zukan-035.glb",
+        "status": "pending",
         "actions": [
           "idle",
           "run",
@@ -1148,32 +868,24 @@
           "hit",
           "ko"
         ],
-        "textureRoute": "segmented-front-projection-on-volumetric-shell",
         "sockets": [
-          "ability",
-          "head",
-          "core"
+          "socket_ability",
+          "socket_head",
+          "socket_core"
         ],
-        "heroFactory": null
+        "fallback": null
       }
     },
     {
       "id": "zukan-036",
       "name": "Glacielle",
       "element": "hydro",
-      "archetype": "quadruped",
       "source": "/characters/optimized/zukan-036.webp",
+      "sourceSha256": "b34aa310cbea18994b21f756c550347b81c642b44c7ddcc1f74af87d9eb7717e",
       "runtime": {
-        "format": "three-skinned-mesh",
-        "skeleton": "zukan-unified-v2",
-        "visualSeed": 36,
-        "materialSlots": [
-          "projection",
-          "body",
-          "limb",
-          "accent",
-          "eyes"
-        ],
+        "format": "glb",
+        "model": "/characters/models/zukan-036.glb",
+        "status": "pending",
         "actions": [
           "idle",
           "run",
@@ -1181,32 +893,24 @@
           "hit",
           "ko"
         ],
-        "textureRoute": "segmented-front-projection-on-volumetric-shell",
         "sockets": [
-          "ability",
-          "head",
-          "core"
+          "socket_ability",
+          "socket_head",
+          "socket_core"
         ],
-        "heroFactory": null
+        "fallback": null
       }
     },
     {
       "id": "zukan-037",
       "name": "Arcloom",
       "element": "plasma",
-      "archetype": "construct",
       "source": "/characters/optimized/zukan-037.webp",
+      "sourceSha256": "a95ab07b98973f5f6e34cb07dd2c27831d01e6051efad387ecc443a12323067a",
       "runtime": {
-        "format": "three-skinned-mesh",
-        "skeleton": "zukan-unified-v2",
-        "visualSeed": 37,
-        "materialSlots": [
-          "projection",
-          "body",
-          "limb",
-          "accent",
-          "eyes"
-        ],
+        "format": "glb",
+        "model": "/characters/models/zukan-037.glb",
+        "status": "pending",
         "actions": [
           "idle",
           "run",
@@ -1214,32 +918,24 @@
           "hit",
           "ko"
         ],
-        "textureRoute": "segmented-front-projection-on-volumetric-shell",
         "sockets": [
-          "ability",
-          "head",
-          "core"
+          "socket_ability",
+          "socket_head",
+          "socket_core"
         ],
-        "heroFactory": null
+        "fallback": null
       }
     },
     {
       "id": "zukan-038",
       "name": "Auric Tinker",
       "element": "earth",
-      "archetype": "construct",
       "source": "/characters/optimized/zukan-038.webp",
+      "sourceSha256": "b853e1e2821af401841f9ad88f17f3bfeb8d3f332d06c3c808cae04cb5f27be4",
       "runtime": {
-        "format": "three-skinned-mesh",
-        "skeleton": "zukan-unified-v2",
-        "visualSeed": 38,
-        "materialSlots": [
-          "projection",
-          "body",
-          "limb",
-          "accent",
-          "eyes"
-        ],
+        "format": "glb",
+        "model": "/characters/models/zukan-038.glb",
+        "status": "pending",
         "actions": [
           "idle",
           "run",
@@ -1247,32 +943,24 @@
           "hit",
           "ko"
         ],
-        "textureRoute": "segmented-front-projection-on-volumetric-shell",
         "sockets": [
-          "ability",
-          "head",
-          "core"
+          "socket_ability",
+          "socket_head",
+          "socket_core"
         ],
-        "heroFactory": null
+        "fallback": null
       }
     },
     {
       "id": "zukan-039",
       "name": "Thornkin",
       "element": "nature",
-      "archetype": "biped",
       "source": "/characters/optimized/zukan-039.webp",
+      "sourceSha256": "5f9b255e038ca80ab38629ad28effb05c8433727f72466d11a7443f247325602",
       "runtime": {
-        "format": "three-skinned-mesh",
-        "skeleton": "zukan-unified-v2",
-        "visualSeed": 39,
-        "materialSlots": [
-          "projection",
-          "body",
-          "limb",
-          "accent",
-          "eyes"
-        ],
+        "format": "glb",
+        "model": "/characters/models/zukan-039.glb",
+        "status": "pending",
         "actions": [
           "idle",
           "run",
@@ -1280,32 +968,24 @@
           "hit",
           "ko"
         ],
-        "textureRoute": "segmented-front-projection-on-volumetric-shell",
         "sockets": [
-          "ability",
-          "head",
-          "core"
+          "socket_ability",
+          "socket_head",
+          "socket_core"
         ],
-        "heroFactory": null
+        "fallback": null
       }
     },
     {
       "id": "zukan-040",
       "name": "Redline Ravager",
       "element": "plasma",
-      "archetype": "biped",
       "source": "/characters/optimized/zukan-040.webp",
+      "sourceSha256": "f4d1f4527d39c0f08ea8d6989ff4516ead200f15960acd6163f7b56bb4fd69db",
       "runtime": {
-        "format": "three-skinned-mesh",
-        "skeleton": "zukan-unified-v2",
-        "visualSeed": 40,
-        "materialSlots": [
-          "projection",
-          "body",
-          "limb",
-          "accent",
-          "eyes"
-        ],
+        "format": "glb",
+        "model": "/characters/models/zukan-040.glb",
+        "status": "pending",
         "actions": [
           "idle",
           "run",
@@ -1313,32 +993,24 @@
           "hit",
           "ko"
         ],
-        "textureRoute": "segmented-front-projection-on-volumetric-shell",
         "sockets": [
-          "ability",
-          "head",
-          "core"
+          "socket_ability",
+          "socket_head",
+          "socket_core"
         ],
-        "heroFactory": null
+        "fallback": null
       }
     },
     {
       "id": "zukan-041",
       "name": "Amethyst Rift",
       "element": "void",
-      "archetype": "biped",
       "source": "/characters/optimized/zukan-041.webp",
+      "sourceSha256": "8b6ff85601167bf3a9970372b20934e8c72fc7d73783232e50d6dca925554530",
       "runtime": {
-        "format": "three-skinned-mesh",
-        "skeleton": "zukan-unified-v2",
-        "visualSeed": 41,
-        "materialSlots": [
-          "projection",
-          "body",
-          "limb",
-          "accent",
-          "eyes"
-        ],
+        "format": "glb",
+        "model": "/characters/models/zukan-041.glb",
+        "status": "pending",
         "actions": [
           "idle",
           "run",
@@ -1346,32 +1018,24 @@
           "hit",
           "ko"
         ],
-        "textureRoute": "segmented-front-projection-on-volumetric-shell",
         "sockets": [
-          "ability",
-          "head",
-          "core"
+          "socket_ability",
+          "socket_head",
+          "socket_core"
         ],
-        "heroFactory": null
+        "fallback": null
       }
     },
     {
       "id": "zukan-042",
       "name": "Bastion Block",
       "element": "earth",
-      "archetype": "quadruped",
       "source": "/characters/optimized/zukan-042.webp",
+      "sourceSha256": "3bfdb18f34b10ea4173ec2c4b50c63be521de4f15feaf1a2ed9dfff4911876d4",
       "runtime": {
-        "format": "three-skinned-mesh",
-        "skeleton": "zukan-unified-v2",
-        "visualSeed": 42,
-        "materialSlots": [
-          "projection",
-          "body",
-          "limb",
-          "accent",
-          "eyes"
-        ],
+        "format": "glb",
+        "model": "/characters/models/zukan-042.glb",
+        "status": "pending",
         "actions": [
           "idle",
           "run",
@@ -1379,32 +1043,24 @@
           "hit",
           "ko"
         ],
-        "textureRoute": "segmented-front-projection-on-volumetric-shell",
         "sockets": [
-          "ability",
-          "head",
-          "core"
+          "socket_ability",
+          "socket_head",
+          "socket_core"
         ],
-        "heroFactory": null
+        "fallback": null
       }
     },
     {
       "id": "zukan-043",
       "name": "Circuit Cub",
       "element": "plasma",
-      "archetype": "construct",
       "source": "/characters/optimized/zukan-043.webp",
+      "sourceSha256": "a7a9515ecf394afba40e5855956633665b1d2855ebfd59a2630abcbf2478142f",
       "runtime": {
-        "format": "three-skinned-mesh",
-        "skeleton": "zukan-unified-v2",
-        "visualSeed": 43,
-        "materialSlots": [
-          "projection",
-          "body",
-          "limb",
-          "accent",
-          "eyes"
-        ],
+        "format": "glb",
+        "model": "/characters/models/zukan-043.glb",
+        "status": "pending",
         "actions": [
           "idle",
           "run",
@@ -1412,32 +1068,24 @@
           "hit",
           "ko"
         ],
-        "textureRoute": "segmented-front-projection-on-volumetric-shell",
         "sockets": [
-          "ability",
-          "head",
-          "core"
+          "socket_ability",
+          "socket_head",
+          "socket_core"
         ],
-        "heroFactory": null
+        "fallback": null
       }
     },
     {
       "id": "zukan-044",
       "name": "Skyglass",
       "element": "gale",
-      "archetype": "avian",
       "source": "/characters/optimized/zukan-044.webp",
+      "sourceSha256": "b852437ea95b8738ab5f743243b1e354e5c6409d8d663b0d7f99bbc2294fbefb",
       "runtime": {
-        "format": "three-skinned-mesh",
-        "skeleton": "zukan-unified-v2",
-        "visualSeed": 44,
-        "materialSlots": [
-          "projection",
-          "body",
-          "limb",
-          "accent",
-          "eyes"
-        ],
+        "format": "glb",
+        "model": "/characters/models/zukan-044.glb",
+        "status": "pending",
         "actions": [
           "idle",
           "run",
@@ -1445,32 +1093,24 @@
           "hit",
           "ko"
         ],
-        "textureRoute": "segmented-front-projection-on-volumetric-shell",
         "sockets": [
-          "ability",
-          "head",
-          "core"
+          "socket_ability",
+          "socket_head",
+          "socket_core"
         ],
-        "heroFactory": null
+        "fallback": null
       }
     },
     {
       "id": "zukan-045",
       "name": "Maris Bell",
       "element": "hydro",
-      "archetype": "biped",
       "source": "/characters/optimized/zukan-045.webp",
+      "sourceSha256": "e70283bf9b86256eb75857b09503e77d07bb6001f3294ef3941ff1cff7cc6dc2",
       "runtime": {
-        "format": "three-skinned-mesh",
-        "skeleton": "zukan-unified-v2",
-        "visualSeed": 45,
-        "materialSlots": [
-          "projection",
-          "body",
-          "limb",
-          "accent",
-          "eyes"
-        ],
+        "format": "glb",
+        "model": "/characters/models/zukan-045.glb",
+        "status": "pending",
         "actions": [
           "idle",
           "run",
@@ -1478,32 +1118,24 @@
           "hit",
           "ko"
         ],
-        "textureRoute": "segmented-front-projection-on-volumetric-shell",
         "sockets": [
-          "ability",
-          "head",
-          "core"
+          "socket_ability",
+          "socket_head",
+          "socket_core"
         ],
-        "heroFactory": null
+        "fallback": null
       }
     },
     {
       "id": "zukan-046",
       "name": "Basalt Claw",
       "element": "earth",
-      "archetype": "quadruped",
       "source": "/characters/optimized/zukan-046.webp",
+      "sourceSha256": "ce9268b33784a3aa53afcae2822884cd3e8700b359232de07a5550500bbab159",
       "runtime": {
-        "format": "three-skinned-mesh",
-        "skeleton": "zukan-unified-v2",
-        "visualSeed": 46,
-        "materialSlots": [
-          "projection",
-          "body",
-          "limb",
-          "accent",
-          "eyes"
-        ],
+        "format": "glb",
+        "model": "/characters/models/zukan-046.glb",
+        "status": "pending",
         "actions": [
           "idle",
           "run",
@@ -1511,32 +1143,24 @@
           "hit",
           "ko"
         ],
-        "textureRoute": "segmented-front-projection-on-volumetric-shell",
         "sockets": [
-          "ability",
-          "head",
-          "core"
+          "socket_ability",
+          "socket_head",
+          "socket_core"
         ],
-        "heroFactory": null
+        "fallback": null
       }
     },
     {
       "id": "zukan-047",
       "name": "Astra Owl",
       "element": "gale",
-      "archetype": "avian",
       "source": "/characters/optimized/zukan-047.webp",
+      "sourceSha256": "528766ad0b7b415fb4e84ade46cb0f12a93ac502f1737b799944499eab314807",
       "runtime": {
-        "format": "three-skinned-mesh",
-        "skeleton": "zukan-unified-v2",
-        "visualSeed": 47,
-        "materialSlots": [
-          "projection",
-          "body",
-          "limb",
-          "accent",
-          "eyes"
-        ],
+        "format": "glb",
+        "model": "/characters/models/zukan-047.glb",
+        "status": "pending",
         "actions": [
           "idle",
           "run",
@@ -1544,32 +1168,24 @@
           "hit",
           "ko"
         ],
-        "textureRoute": "segmented-front-projection-on-volumetric-shell",
         "sockets": [
-          "ability",
-          "head",
-          "core"
+          "socket_ability",
+          "socket_head",
+          "socket_core"
         ],
-        "heroFactory": null
+        "fallback": null
       }
     },
     {
       "id": "zukan-048",
       "name": "Nullstar",
       "element": "void",
-      "archetype": "biped",
       "source": "/characters/optimized/zukan-048.webp",
+      "sourceSha256": "466a472258de97bb7f9b00f802bee20759ea75adc5c8450b6133e73e88f00b57",
       "runtime": {
-        "format": "three-skinned-mesh",
-        "skeleton": "zukan-unified-v2",
-        "visualSeed": 48,
-        "materialSlots": [
-          "projection",
-          "body",
-          "limb",
-          "accent",
-          "eyes"
-        ],
+        "format": "glb",
+        "model": "/characters/models/zukan-048.glb",
+        "status": "pending",
         "actions": [
           "idle",
           "run",
@@ -1577,32 +1193,24 @@
           "hit",
           "ko"
         ],
-        "textureRoute": "segmented-front-projection-on-volumetric-shell",
         "sockets": [
-          "ability",
-          "head",
-          "core"
+          "socket_ability",
+          "socket_head",
+          "socket_core"
         ],
-        "heroFactory": null
+        "fallback": null
       }
     },
     {
       "id": "zukan-049",
       "name": "Glitchwisp",
       "element": "void",
-      "archetype": "construct",
       "source": "/characters/optimized/zukan-049.webp",
+      "sourceSha256": "ee9cbe31d0a8f8e502e511d3854b9c0c1c4605c28e105469dc1162fc6f9cef3e",
       "runtime": {
-        "format": "three-skinned-mesh",
-        "skeleton": "zukan-unified-v2",
-        "visualSeed": 49,
-        "materialSlots": [
-          "projection",
-          "body",
-          "limb",
-          "accent",
-          "eyes"
-        ],
+        "format": "glb",
+        "model": "/characters/models/zukan-049.glb",
+        "status": "pending",
         "actions": [
           "idle",
           "run",
@@ -1610,32 +1218,24 @@
           "hit",
           "ko"
         ],
-        "textureRoute": "segmented-front-projection-on-volumetric-shell",
         "sockets": [
-          "ability",
-          "head",
-          "core"
+          "socket_ability",
+          "socket_head",
+          "socket_core"
         ],
-        "heroFactory": null
+        "fallback": null
       }
     },
     {
       "id": "zukan-050",
       "name": "Luminor Loam",
       "element": "earth",
-      "archetype": "biped",
       "source": "/characters/optimized/zukan-050.webp",
+      "sourceSha256": "a7744092ab8a88e8681ec5909656b6cf821562eeea8ebc8ca495ebc96d11200c",
       "runtime": {
-        "format": "three-skinned-mesh",
-        "skeleton": "zukan-unified-v2",
-        "visualSeed": 50,
-        "materialSlots": [
-          "projection",
-          "body",
-          "limb",
-          "accent",
-          "eyes"
-        ],
+        "format": "glb",
+        "model": "/characters/models/zukan-050.glb",
+        "status": "pending",
         "actions": [
           "idle",
           "run",
@@ -1643,32 +1243,24 @@
           "hit",
           "ko"
         ],
-        "textureRoute": "segmented-front-projection-on-volumetric-shell",
         "sockets": [
-          "ability",
-          "head",
-          "core"
+          "socket_ability",
+          "socket_head",
+          "socket_core"
         ],
-        "heroFactory": null
+        "fallback": null
       }
     },
     {
       "id": "zukan-051",
       "name": "Gilded Bud",
       "element": "nature",
-      "archetype": "biped",
       "source": "/characters/optimized/zukan-051.webp",
+      "sourceSha256": "2e6125a64e97ca7b77189f7ac618aee09c47a922e1a9fca8e549a7f10fcaa9b8",
       "runtime": {
-        "format": "three-skinned-mesh",
-        "skeleton": "zukan-unified-v2",
-        "visualSeed": 51,
-        "materialSlots": [
-          "projection",
-          "body",
-          "limb",
-          "accent",
-          "eyes"
-        ],
+        "format": "glb",
+        "model": "/characters/models/zukan-051.glb",
+        "status": "pending",
         "actions": [
           "idle",
           "run",
@@ -1676,32 +1268,24 @@
           "hit",
           "ko"
         ],
-        "textureRoute": "segmented-front-projection-on-volumetric-shell",
         "sockets": [
-          "ability",
-          "head",
-          "core"
+          "socket_ability",
+          "socket_head",
+          "socket_core"
         ],
-        "heroFactory": null
+        "fallback": null
       }
     },
     {
       "id": "zukan-052",
       "name": "Crimson Surge",
       "element": "plasma",
-      "archetype": "biped",
       "source": "/characters/optimized/zukan-052.webp",
+      "sourceSha256": "10453280eed7ec195c405beeff8e0327e4f69d3b636aba205edd3b25af969483",
       "runtime": {
-        "format": "three-skinned-mesh",
-        "skeleton": "zukan-unified-v2",
-        "visualSeed": 52,
-        "materialSlots": [
-          "projection",
-          "body",
-          "limb",
-          "accent",
-          "eyes"
-        ],
+        "format": "glb",
+        "model": "/characters/models/zukan-052.glb",
+        "status": "pending",
         "actions": [
           "idle",
           "run",
@@ -1709,32 +1293,24 @@
           "hit",
           "ko"
         ],
-        "textureRoute": "segmented-front-projection-on-volumetric-shell",
         "sockets": [
-          "ability",
-          "head",
-          "core"
+          "socket_ability",
+          "socket_head",
+          "socket_core"
         ],
-        "heroFactory": null
+        "fallback": null
       }
     },
     {
       "id": "zukan-053",
       "name": "Viridian Skyrake",
       "element": "gale",
-      "archetype": "avian",
       "source": "/characters/optimized/zukan-053.webp",
+      "sourceSha256": "418c66ab9b9e457febbdde006ce61a5d32fa516be3ad5c36fceb66651d56d34d",
       "runtime": {
-        "format": "three-skinned-mesh",
-        "skeleton": "zukan-unified-v2",
-        "visualSeed": 53,
-        "materialSlots": [
-          "projection",
-          "body",
-          "limb",
-          "accent",
-          "eyes"
-        ],
+        "format": "glb",
+        "model": "/characters/models/zukan-053.glb",
+        "status": "pending",
         "actions": [
           "idle",
           "run",
@@ -1742,32 +1318,24 @@
           "hit",
           "ko"
         ],
-        "textureRoute": "segmented-front-projection-on-volumetric-shell",
         "sockets": [
-          "ability",
-          "head",
-          "core"
+          "socket_ability",
+          "socket_head",
+          "socket_core"
         ],
-        "heroFactory": null
+        "fallback": null
       }
     },
     {
       "id": "zukan-054",
       "name": "Shardshade",
       "element": "void",
-      "archetype": "biped",
       "source": "/characters/optimized/zukan-054.webp",
+      "sourceSha256": "0f6318ec5a6e9ba578ec091a11ec2cd322c6cec6c1452f2f7959b0ea2cf48bdd",
       "runtime": {
-        "format": "three-skinned-mesh",
-        "skeleton": "zukan-unified-v2",
-        "visualSeed": 54,
-        "materialSlots": [
-          "projection",
-          "body",
-          "limb",
-          "accent",
-          "eyes"
-        ],
+        "format": "glb",
+        "model": "/characters/models/zukan-054.glb",
+        "status": "pending",
         "actions": [
           "idle",
           "run",
@@ -1775,32 +1343,24 @@
           "hit",
           "ko"
         ],
-        "textureRoute": "segmented-front-projection-on-volumetric-shell",
         "sockets": [
-          "ability",
-          "head",
-          "core"
+          "socket_ability",
+          "socket_head",
+          "socket_core"
         ],
-        "heroFactory": null
+        "fallback": null
       }
     },
     {
       "id": "zukan-055",
       "name": "Relay-01",
       "element": "plasma",
-      "archetype": "construct",
       "source": "/characters/optimized/zukan-055.webp",
+      "sourceSha256": "24b188d06abe90eef0731bed440e08c061bc1cf95c7f6389faf5900a0364828a",
       "runtime": {
-        "format": "three-skinned-mesh",
-        "skeleton": "zukan-unified-v2",
-        "visualSeed": 55,
-        "materialSlots": [
-          "projection",
-          "body",
-          "limb",
-          "accent",
-          "eyes"
-        ],
+        "format": "glb",
+        "model": "/characters/models/zukan-055.glb",
+        "status": "pending",
         "actions": [
           "idle",
           "run",
@@ -1808,32 +1368,24 @@
           "hit",
           "ko"
         ],
-        "textureRoute": "segmented-front-projection-on-volumetric-shell",
         "sockets": [
-          "ability",
-          "head",
-          "core"
+          "socket_ability",
+          "socket_head",
+          "socket_core"
         ],
-        "heroFactory": null
+        "fallback": null
       }
     },
     {
       "id": "zukan-056",
       "name": "Aquavine",
       "element": "hydro",
-      "archetype": "serpentine",
       "source": "/characters/optimized/zukan-056.webp",
+      "sourceSha256": "a871ffa2ee1cf16a76458edba676176e655327d2ddc8590f6822c21a3afd8e31",
       "runtime": {
-        "format": "three-skinned-mesh",
-        "skeleton": "zukan-unified-v2",
-        "visualSeed": 56,
-        "materialSlots": [
-          "projection",
-          "body",
-          "limb",
-          "accent",
-          "eyes"
-        ],
+        "format": "glb",
+        "model": "/characters/models/zukan-056.glb",
+        "status": "pending",
         "actions": [
           "idle",
           "run",
@@ -1841,32 +1393,24 @@
           "hit",
           "ko"
         ],
-        "textureRoute": "segmented-front-projection-on-volumetric-shell",
         "sockets": [
-          "ability",
-          "head",
-          "core"
+          "socket_ability",
+          "socket_head",
+          "socket_core"
         ],
-        "heroFactory": null
+        "fallback": null
       }
     },
     {
       "id": "zukan-057",
       "name": "Velocity Veil",
       "element": "gale",
-      "archetype": "avian",
       "source": "/characters/optimized/zukan-057.webp",
+      "sourceSha256": "6325653f29e80c171c7724e663387dbf0ffa1ca336323972c9f96c055a9bf2aa",
       "runtime": {
-        "format": "three-skinned-mesh",
-        "skeleton": "zukan-unified-v2",
-        "visualSeed": 57,
-        "materialSlots": [
-          "projection",
-          "body",
-          "limb",
-          "accent",
-          "eyes"
-        ],
+        "format": "glb",
+        "model": "/characters/models/zukan-057.glb",
+        "status": "pending",
         "actions": [
           "idle",
           "run",
@@ -1874,32 +1418,24 @@
           "hit",
           "ko"
         ],
-        "textureRoute": "segmented-front-projection-on-volumetric-shell",
         "sockets": [
-          "ability",
-          "head",
-          "core"
+          "socket_ability",
+          "socket_head",
+          "socket_core"
         ],
-        "heroFactory": null
+        "fallback": null
       }
     },
     {
       "id": "zukan-058",
       "name": "Quiet Mint",
       "element": "void",
-      "archetype": "biped",
       "source": "/characters/optimized/zukan-058.webp",
+      "sourceSha256": "0545ee5ede0cd58342e4985ada38d94b31ce0e6169eb8d3d77723dbd3f3ef784",
       "runtime": {
-        "format": "three-skinned-mesh",
-        "skeleton": "zukan-unified-v2",
-        "visualSeed": 58,
-        "materialSlots": [
-          "projection",
-          "body",
-          "limb",
-          "accent",
-          "eyes"
-        ],
+        "format": "glb",
+        "model": "/characters/models/zukan-058.glb",
+        "status": "pending",
         "actions": [
           "idle",
           "run",
@@ -1907,32 +1443,24 @@
           "hit",
           "ko"
         ],
-        "textureRoute": "segmented-front-projection-on-volumetric-shell",
         "sockets": [
-          "ability",
-          "head",
-          "core"
+          "socket_ability",
+          "socket_head",
+          "socket_core"
         ],
-        "heroFactory": null
+        "fallback": null
       }
     },
     {
       "id": "zukan-059",
       "name": "Sunstone Scout",
       "element": "earth",
-      "archetype": "biped",
       "source": "/characters/optimized/zukan-059.webp",
+      "sourceSha256": "64ea6ec11164d4488755f0de3986cc355a771addd9d296bf4baaf5f112d017ad",
       "runtime": {
-        "format": "three-skinned-mesh",
-        "skeleton": "zukan-unified-v2",
-        "visualSeed": 59,
-        "materialSlots": [
-          "projection",
-          "body",
-          "limb",
-          "accent",
-          "eyes"
-        ],
+        "format": "glb",
+        "model": "/characters/models/zukan-059.glb",
+        "status": "pending",
         "actions": [
           "idle",
           "run",
@@ -1940,32 +1468,24 @@
           "hit",
           "ko"
         ],
-        "textureRoute": "segmented-front-projection-on-volumetric-shell",
         "sockets": [
-          "ability",
-          "head",
-          "core"
+          "socket_ability",
+          "socket_head",
+          "socket_core"
         ],
-        "heroFactory": null
+        "fallback": null
       }
     },
     {
       "id": "zukan-060",
       "name": "Nimbus Drop",
       "element": "hydro",
-      "archetype": "biped",
       "source": "/characters/optimized/zukan-060.webp",
+      "sourceSha256": "8e6b5a730be0cc98c1cb57dcddde5c41fbd78efa66d42f7630e106858b8af713",
       "runtime": {
-        "format": "three-skinned-mesh",
-        "skeleton": "zukan-unified-v2",
-        "visualSeed": 60,
-        "materialSlots": [
-          "projection",
-          "body",
-          "limb",
-          "accent",
-          "eyes"
-        ],
+        "format": "glb",
+        "model": "/characters/models/zukan-060.glb",
+        "status": "pending",
         "actions": [
           "idle",
           "run",
@@ -1973,32 +1493,24 @@
           "hit",
           "ko"
         ],
-        "textureRoute": "segmented-front-projection-on-volumetric-shell",
         "sockets": [
-          "ability",
-          "head",
-          "core"
+          "socket_ability",
+          "socket_head",
+          "socket_core"
         ],
-        "heroFactory": null
+        "fallback": null
       }
     },
     {
       "id": "zukan-061",
       "name": "Pale Rose Revenant",
       "element": "void",
-      "archetype": "biped",
       "source": "/characters/optimized/zukan-061.webp",
+      "sourceSha256": "e127211a991b099d5f6c4939f13d4377c64b2b12c60d9e3fb88da4164dbc60ce",
       "runtime": {
-        "format": "three-skinned-mesh",
-        "skeleton": "zukan-unified-v2",
-        "visualSeed": 61,
-        "materialSlots": [
-          "projection",
-          "body",
-          "limb",
-          "accent",
-          "eyes"
-        ],
+        "format": "glb",
+        "model": "/characters/models/zukan-061.glb",
+        "status": "pending",
         "actions": [
           "idle",
           "run",
@@ -2006,32 +1518,24 @@
           "hit",
           "ko"
         ],
-        "textureRoute": "segmented-front-projection-on-volumetric-shell",
         "sockets": [
-          "ability",
-          "head",
-          "core"
+          "socket_ability",
+          "socket_head",
+          "socket_core"
         ],
-        "heroFactory": null
+        "fallback": null
       }
     },
     {
       "id": "zukan-062",
       "name": "Trealin Tide",
       "element": "hydro",
-      "archetype": "serpentine",
       "source": "/characters/optimized/zukan-062.webp",
+      "sourceSha256": "817358c6109a4c1c30580e5fd72783c6d4324fee04a1309141ec6d87eb0f1813",
       "runtime": {
-        "format": "three-skinned-mesh",
-        "skeleton": "zukan-unified-v2",
-        "visualSeed": 62,
-        "materialSlots": [
-          "projection",
-          "body",
-          "limb",
-          "accent",
-          "eyes"
-        ],
+        "format": "glb",
+        "model": "/characters/models/zukan-062.glb",
+        "status": "pending",
         "actions": [
           "idle",
           "run",
@@ -2039,32 +1543,24 @@
           "hit",
           "ko"
         ],
-        "textureRoute": "segmented-front-projection-on-volumetric-shell",
         "sockets": [
-          "ability",
-          "head",
-          "core"
+          "socket_ability",
+          "socket_head",
+          "socket_core"
         ],
-        "heroFactory": null
+        "fallback": null
       }
     },
     {
       "id": "zukan-063",
       "name": "Cloverling",
       "element": "nature",
-      "archetype": "biped",
       "source": "/characters/optimized/zukan-063.webp",
+      "sourceSha256": "65e8e60187be75293120a062e500b5b6a6fba8475b478cd444e228a7ef16cf07",
       "runtime": {
-        "format": "three-skinned-mesh",
-        "skeleton": "zukan-unified-v2",
-        "visualSeed": 63,
-        "materialSlots": [
-          "projection",
-          "body",
-          "limb",
-          "accent",
-          "eyes"
-        ],
+        "format": "glb",
+        "model": "/characters/models/zukan-063.glb",
+        "status": "pending",
         "actions": [
           "idle",
           "run",
@@ -2072,32 +1568,24 @@
           "hit",
           "ko"
         ],
-        "textureRoute": "segmented-front-projection-on-volumetric-shell",
         "sockets": [
-          "ability",
-          "head",
-          "core"
+          "socket_ability",
+          "socket_head",
+          "socket_core"
         ],
-        "heroFactory": null
+        "fallback": null
       }
     },
     {
       "id": "zukan-064",
       "name": "Kora-9",
       "element": "plasma",
-      "archetype": "construct",
       "source": "/characters/optimized/zukan-064.webp",
+      "sourceSha256": "b7f85d9dddfc44bfa80891a9b08c1a742380f73ed64ebb98018592c7c821377a",
       "runtime": {
-        "format": "three-skinned-mesh",
-        "skeleton": "zukan-unified-v2",
-        "visualSeed": 64,
-        "materialSlots": [
-          "projection",
-          "body",
-          "limb",
-          "accent",
-          "eyes"
-        ],
+        "format": "glb",
+        "model": "/characters/models/zukan-064.glb",
+        "status": "pending",
         "actions": [
           "idle",
           "run",
@@ -2105,32 +1593,24 @@
           "hit",
           "ko"
         ],
-        "textureRoute": "segmented-front-projection-on-volumetric-shell",
         "sockets": [
-          "ability",
-          "head",
-          "core"
+          "socket_ability",
+          "socket_head",
+          "socket_core"
         ],
-        "heroFactory": null
+        "fallback": null
       }
     },
     {
       "id": "zukan-065",
       "name": "Starlace Warden",
       "element": "gale",
-      "archetype": "avian",
       "source": "/characters/optimized/zukan-065.webp",
+      "sourceSha256": "041de89fe27d62a7b6f1548c13698834134cdc195bd0f37ef68296bb94ef95f5",
       "runtime": {
-        "format": "three-skinned-mesh",
-        "skeleton": "zukan-unified-v2",
-        "visualSeed": 65,
-        "materialSlots": [
-          "projection",
-          "body",
-          "limb",
-          "accent",
-          "eyes"
-        ],
+        "format": "glb",
+        "model": "/characters/models/zukan-065.glb",
+        "status": "pending",
         "actions": [
           "idle",
           "run",
@@ -2138,32 +1618,24 @@
           "hit",
           "ko"
         ],
-        "textureRoute": "segmented-front-projection-on-volumetric-shell",
         "sockets": [
-          "ability",
-          "head",
-          "core"
+          "socket_ability",
+          "socket_head",
+          "socket_core"
         ],
-        "heroFactory": null
+        "fallback": null
       }
     },
     {
       "id": "zukan-066",
       "name": "Coral Pollen",
       "element": "nature",
-      "archetype": "biped",
       "source": "/characters/optimized/zukan-066.webp",
+      "sourceSha256": "bc04cbc5682a12f07235056e3b752e782a6ecbf3b05d20b9ed16f9f9141799a1",
       "runtime": {
-        "format": "three-skinned-mesh",
-        "skeleton": "zukan-unified-v2",
-        "visualSeed": 66,
-        "materialSlots": [
-          "projection",
-          "body",
-          "limb",
-          "accent",
-          "eyes"
-        ],
+        "format": "glb",
+        "model": "/characters/models/zukan-066.glb",
+        "status": "pending",
         "actions": [
           "idle",
           "run",
@@ -2171,32 +1643,24 @@
           "hit",
           "ko"
         ],
-        "textureRoute": "segmented-front-projection-on-volumetric-shell",
         "sockets": [
-          "ability",
-          "head",
-          "core"
+          "socket_ability",
+          "socket_head",
+          "socket_core"
         ],
-        "heroFactory": null
+        "fallback": null
       }
     },
     {
       "id": "zukan-067",
       "name": "Hushcloak",
       "element": "void",
-      "archetype": "biped",
       "source": "/characters/optimized/zukan-067.webp",
+      "sourceSha256": "53d7e95bf00a9557029da8695a1dac39abd1b9a74385cf5d9283939fbecb358f",
       "runtime": {
-        "format": "three-skinned-mesh",
-        "skeleton": "zukan-unified-v2",
-        "visualSeed": 67,
-        "materialSlots": [
-          "projection",
-          "body",
-          "limb",
-          "accent",
-          "eyes"
-        ],
+        "format": "glb",
+        "model": "/characters/models/zukan-067.glb",
+        "status": "pending",
         "actions": [
           "idle",
           "run",
@@ -2204,32 +1668,24 @@
           "hit",
           "ko"
         ],
-        "textureRoute": "segmented-front-projection-on-volumetric-shell",
         "sockets": [
-          "ability",
-          "head",
-          "core"
+          "socket_ability",
+          "socket_head",
+          "socket_core"
         ],
-        "heroFactory": null
+        "fallback": null
       }
     },
     {
       "id": "zukan-068",
       "name": "Longevita Aqua",
       "element": "hydro",
-      "archetype": "biped",
       "source": "/characters/optimized/zukan-068.webp",
+      "sourceSha256": "2f1071f2c8b916eb3b54ffd8dfa55fb1c855882dab901cfdc91a90cc457037a4",
       "runtime": {
-        "format": "three-skinned-mesh",
-        "skeleton": "zukan-unified-v2",
-        "visualSeed": 68,
-        "materialSlots": [
-          "projection",
-          "body",
-          "limb",
-          "accent",
-          "eyes"
-        ],
+        "format": "glb",
+        "model": "/characters/models/zukan-068.glb",
+        "status": "pending",
         "actions": [
           "idle",
           "run",
@@ -2237,13 +1693,12 @@
           "hit",
           "ko"
         ],
-        "textureRoute": "segmented-front-projection-on-volumetric-shell",
         "sockets": [
-          "ability",
-          "head",
-          "core"
+          "socket_ability",
+          "socket_head",
+          "socket_core"
         ],
-        "heroFactory": null
+        "fallback": null
       }
     }
   ]
