@@ -1,10 +1,8 @@
 import * as THREE from 'three';
-import { mergeGeometries } from 'three/addons/utils/BufferGeometryUtils.js';
-import type { ElementKind, FighterDefinition, RigArchetype, TeamKind } from '../types';
-import { assetUrl } from '../data/assets';
-import { createNyxaluneZukanFighterRigFamilyModel } from './generated/createNyxaluneModel';
-
-export type FighterAnimation = 'idle' | 'run' | 'cast' | 'hit' | 'ko';
+import { GLTFLoader, type GLTF } from 'three/addons/loaders/GLTFLoader.js';
+import type { FighterDefinition, TeamKind } from '../types';
+import { characterAsset, CharacterAssetError, REQUIRED_ACTIONS, type FighterAnimation } from '../assets/characterAssets';
+export type { FighterAnimation } from '../assets/characterAssets';
 
 export interface FighterRigRuntime {
   root: THREE.Group;
@@ -19,133 +17,143 @@ export interface FighterRigRuntime {
   dispose(): void;
 }
 
-export async function disposeFighterTextureCache(): Promise<void> {}
-
-/**
- * Temporary recovery implementation.
- * Full award-standard geometry/materials/animation polish is staged in the agent workspace
- * and will be applied in a follow-up commit on this branch once the large-file transfer is confirmed.
- * This version restores a functional createFighterRig so the game boots and Vercel builds succeed.
- */
-export function createFighterRig(fighter: FighterDefinition, quality: 'high' | 'low' = 'high'): FighterRigRuntime {
-  const root = new THREE.Group();
-  root.name = `FighterRig_${fighter.id}`;
-  root.userData.fighterId = fighter.id;
-
-  const bones: THREE.Bone[] = [];
-  const boneNames = ['RigRoot', 'Core', 'Spine', 'Head', 'LeftDrive', 'RightDrive', 'LeftTip', 'RightTip', 'WingL', 'WingR', 'Tail', 'TailTip'];
-  const positions = [
-    [0, 0, 0], [0, 0.95, 0], [0, 0.58, 0], [0, 0.62, 0.06],
-    [-0.48, -0.22, 0], [0.48, -0.22, 0], [-0.08, -0.72, 0], [0.08, -0.72, 0],
-    [-0.34, 0.15, 0], [0.34, 0.15, 0], [0, -0.1, -0.36], [0, -0.1, -0.7],
-  ];
-  const parents = [-1, 0, 1, 2, 1, 1, 4, 5, 2, 2, 1, 10];
-  for (let i = 0; i < boneNames.length; i++) {
-    const b = new THREE.Bone();
-    b.name = boneNames[i]!;
-    b.position.fromArray(positions[i]!);
-    bones.push(b);
-  }
-  for (let i = 0; i < bones.length; i++) {
-    const p = parents[i]!;
-    if (p < 0) root.add(bones[i]!);
-    else bones[p]!.add(bones[i]!);
-  }
-  const skeleton = new THREE.Skeleton(bones);
-
-  const geo = new THREE.CapsuleGeometry(0.4, 0.9, 8, 16);
-  const mat = new THREE.MeshPhysicalMaterial({
-    color: 0x9c75e6,
-    roughness: 0.4,
-    metalness: 0.1,
-    clearcoat: 0.5,
-    emissive: 0x201b52,
-    emissiveIntensity: 0.08,
-  });
-  const skinnedMesh = new THREE.SkinnedMesh(geo, mat);
-  skinnedMesh.name = 'CharacterVolume';
-  skinnedMesh.castShadow = quality === 'high';
-  skinnedMesh.receiveShadow = true;
-  root.add(skinnedMesh);
-  skinnedMesh.bind(skeleton);
-
-  // Nyxalune hero path
-  if (fighter.id === 'zukan-001' && quality === 'high') {
-    try {
-      const sculptShell = createNyxaluneZukanFighterRigFamilyModel({
-        castShadow: true,
-        receiveShadow: true,
-        qualityPriority: 'reference-fidelity',
-      });
-      if (sculptShell) {
-        sculptShell.name = 'Img2ThreeJsHeroShell';
-        const shellBounds = new THREE.Box3().setFromObject(sculptShell);
-        const shellHeight = Math.max(0.01, shellBounds.max.y - shellBounds.min.y);
-        const normalizedScale = 2.52 / shellHeight;
-        sculptShell.scale.setScalar(normalizedScale);
-        sculptShell.position.y = -shellBounds.min.y * normalizedScale;
-        skinnedMesh.visible = false;
-        root.add(sculptShell);
-      }
-    } catch {
-      // keep capsule fallback
+export function disposeModel(root: THREE.Object3D): void {
+  const geometries = new Set<THREE.BufferGeometry>();
+  const materials = new Set<THREE.Material>();
+  const textures = new Set<THREE.Texture>();
+  const skeletons = new Set<THREE.Skeleton>();
+  root.traverse((object) => {
+    if (!(object instanceof THREE.Mesh)) return;
+    geometries.add(object.geometry);
+    if (object instanceof THREE.SkinnedMesh) skeletons.add(object.skeleton);
+    for (const material of Array.isArray(object.material) ? object.material : [object.material]) {
+      materials.add(material);
+      for (const value of Object.values(material)) if (value instanceof THREE.Texture) textures.add(value);
     }
+  });
+  for (const item of [...geometries, ...materials, ...textures, ...skeletons]) item.dispose();
+  root.removeFromParent();
+}
+
+/** Validate actual deformation data, not the presence of a SkinnedMesh label. */
+export function validateCharacterModel(gltf: GLTF, id: string): THREE.SkinnedMesh {
+  const fail = (message: string): never => { throw new CharacterAssetError(id, message); };
+  const meshes: THREE.SkinnedMesh[] = [];
+  gltf.scene.updateMatrixWorld(true);
+  gltf.scene.traverse((object) => {
+    if (object instanceof THREE.SkinnedMesh) meshes.push(object);
+  });
+  if (!meshes.length) return fail('Model has no skinned character geometry');
+  for (const mesh of meshes) {
+    const positions = mesh.geometry.getAttribute('position');
+    const indices = mesh.geometry.getAttribute('skinIndex');
+    const weights = mesh.geometry.getAttribute('skinWeight');
+    if (!positions || !indices || !weights || indices.count !== positions.count || weights.count !== positions.count) {
+      fail('Incomplete skin attributes');
+    }
+    for (let i = 0; i < positions.count; i++) {
+      let total = 0;
+      for (let j = 0; j < 4; j++) {
+        const joint = indices.getComponent(i, j);
+        const weight = weights.getComponent(i, j);
+        if (!Number.isInteger(joint) || joint < 0 || joint >= mesh.skeleton.bones.length || !Number.isFinite(weight) || weight < 0) fail('Invalid skin joint or weight');
+        total += weight;
+      }
+      if (Math.abs(total - 1) > 0.01) fail('Unnormalized skin weights');
+      if (![positions.getX(i), positions.getY(i), positions.getZ(i)].every(Number.isFinite)) fail('Non-finite geometry');
+    }
+    const materials = Array.isArray(mesh.material) ? mesh.material : [mesh.material];
+    if (!materials.some((m) => m instanceof THREE.MeshStandardMaterial && m.map)) fail('Missing authored color texture');
   }
+  for (const action of REQUIRED_ACTIONS) {
+    const clip = gltf.animations.find(({ name }) => name === action);
+    if (!clip || clip.duration <= 0 || !clip.tracks.length) fail(`Missing animation: ${action}`);
+  }
+  for (const socket of ['ability', 'head', 'core']) {
+    if (!gltf.scene.getObjectByName(`socket_${socket}`)) fail(`Missing socket: ${socket}`);
+  }
+  for (const mesh of meshes) mesh.computeBoundingBox();
+  const size = new THREE.Box3().setFromObject(gltf.scene).getSize(new THREE.Vector3());
+  if (![size.x, size.y, size.z].every((n) => Number.isFinite(n) && n > 0.01)) fail('Model has no valid volume');
+  return meshes[0]!;
+}
 
-  const mixer = new THREE.AnimationMixer(root);
-  const idleClip = new THREE.AnimationClip('idle', 1.8, [
-    new THREE.NumberKeyframeTrack('Core.position[y]', [0, 0.9, 1.8], [0.95, 0.985, 0.95]),
-  ]);
-  let currentAction = mixer.clipAction(idleClip);
-  currentAction.play();
+/** One owned GLB per instance: disposal cannot invalidate another fighter. */
+export async function createFighterRig(fighter: FighterDefinition, quality: 'high' | 'low' = 'high'): Promise<FighterRigRuntime> {
+  const asset = characterAsset(fighter.id);
+  if (asset.status !== 'approved') throw new CharacterAssetError(fighter.id, 'Character reconstruction is not ready');
+  const gltf = await new GLTFLoader().loadAsync(asset.model);
+  try {
+    validateCharacterModel(gltf, fighter.id);
+    return rigFromModel(gltf, fighter.id, quality);
+  } catch (error) {
+    disposeModel(gltf.scene);
+    throw error;
+  }
+}
+
+export function rigFromModel(gltf: GLTF, id: string, quality: 'high' | 'low'): FighterRigRuntime {
+  const skinnedMesh = validateCharacterModel(gltf, id);
+  const root = new THREE.Group();
+  root.name = `FighterRig_${id}`;
+  root.userData.fighterId = id;
+  const visual = gltf.scene;
+  const bounds = new THREE.Box3().setFromObject(visual);
+  const center = bounds.getCenter(new THREE.Vector3());
+  const scale = 2.52 / (bounds.max.y - bounds.min.y);
+  // Normalize via a parent so animation tracks retain their authored local space.
+  const normalization = new THREE.Group();
+  normalization.scale.setScalar(scale);
+  normalization.position.set(-center.x * scale, -bounds.min.y * scale, -center.z * scale);
+  normalization.add(visual);
+  root.add(normalization);
+  visual.traverse((object) => {
+    if (object instanceof THREE.Mesh) {
+      object.castShadow = quality === 'high';
+      object.receiveShadow = true;
+    }
+  });
+  const mixer = new THREE.AnimationMixer(visual);
+  const actions = new Map(REQUIRED_ACTIONS.map((name) => [name, mixer.clipAction(gltf.animations.find((clip) => clip.name === name)!)]));
   let current: FighterAnimation = 'idle';
-
-  const sockets = new Map<string, THREE.Object3D>();
-  const abilitySocket = new THREE.Object3D();
-  abilitySocket.position.set(0, 0.1, 0.65);
-  bones[3]?.add(abilitySocket);
-  sockets.set('ability', abilitySocket);
-  sockets.set('head', bones[3] ?? root);
-  sockets.set('core', bones[1] ?? root);
-
-  const teamRing = new THREE.Mesh(
-    new THREE.RingGeometry(0.45, 0.62, 32),
-    new THREE.MeshBasicMaterial({ color: 0x66e6ff, transparent: true, opacity: 0.55, side: THREE.DoubleSide, depthWrite: false }),
-  );
-  teamRing.rotation.x = -Math.PI / 2;
-  teamRing.position.y = 0.025;
-  root.add(teamRing);
-
+  let locked = false;
+  let disposed = false;
+  actions.get('idle')!.play();
+  const play = (name: FighterAnimation, once = name !== 'idle' && name !== 'run'): void => {
+    if (disposed || current === 'ko' || (locked && (name === 'idle' || name === 'run')) || current === name) return;
+    const previous = actions.get(current)!;
+    const next = actions.get(name)!;
+    current = name;
+    locked = once;
+    next.reset().setLoop(once ? THREE.LoopOnce : THREE.LoopRepeat, once ? 1 : Infinity);
+    next.clampWhenFinished = once;
+    next.play();
+    previous.crossFadeTo(next, 0.12, false);
+  };
+  const onFinished = (): void => {
+    if (current === 'ko') return;
+    locked = false;
+    play('idle', false);
+  };
+  mixer.addEventListener('finished', onFinished);
+  const ring = new THREE.Mesh(new THREE.RingGeometry(0.48, 0.54, 48), new THREE.MeshBasicMaterial({ color: 0x66e6ff, side: THREE.DoubleSide, transparent: true, opacity: 0.8, depthWrite: false }));
+  ring.rotation.x = -Math.PI / 2;
+  ring.position.y = 0.02;
+  root.add(ring);
+  const sockets = new Map(['ability', 'head', 'core'].map((name) => [name, visual.getObjectByName(`socket_${name}`)!]));
   return {
-    root,
-    mixer,
-    skeleton,
-    skinnedMesh,
-    sockets,
-    colliders: [
-      { bone: 'Core', radius: 0.62, offset: new THREE.Vector3(0, 1.0, 0) },
-      { bone: 'Head', radius: 0.35, offset: new THREE.Vector3(0, 2.2, 0) },
-    ],
-    play(animation, once = animation !== 'idle' && animation !== 'run') {
-      if (current === 'ko') return;
-      current = animation;
-      // simple crossfade placeholder — full clip set restored in polish follow-up
-    },
-    update(delta) {
-      mixer.update(Math.min(delta, 0.05));
-    },
-    setTeam(team) {
-      (teamRing.material as THREE.MeshBasicMaterial).color.set(team === 'signal' ? 0x66e6ff : 0xff5d8f);
-    },
+    root, mixer, skinnedMesh, skeleton: skinnedMesh.skeleton, sockets,
+    colliders: [{ bone: 'core', radius: 0.62, offset: new THREE.Vector3(0, 1, 0) }, { bone: 'head', radius: 0.35, offset: new THREE.Vector3(0, 2.2, 0) }],
+    play,
+    update(delta) { if (!disposed) mixer.update(Math.max(0, Math.min(delta, 0.05))); },
+    setTeam(team: TeamKind) { ring.material.color.set(team === 'signal' ? 0x66e6ff : 0xff5d8f); },
     dispose() {
+      if (disposed) return;
+      disposed = true;
+      mixer.removeEventListener('finished', onFinished);
       mixer.stopAllAction();
-      root.traverse((object) => {
-        if (!(object instanceof THREE.Mesh)) return;
-        object.geometry.dispose();
-        const materials = Array.isArray(object.material) ? object.material : [object.material];
-        for (const item of new Set(materials)) item.dispose();
-      });
-      skeleton.dispose();
+      mixer.uncacheRoot(visual);
+      disposeModel(root);
     },
   };
 }

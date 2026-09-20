@@ -1,61 +1,36 @@
-# Solana Zukan Arena 3D
+# Zukan Arena — reference reconstruction (draft)
 
-A game-first reconstruction of the original Zukan Arena as a living 3D arena battler. The wallet gate and card billboards are gone: all 68 fighters now enter combat as textured `THREE.SkinnedMesh` characters with real bone weights, shared action contracts, morphology-specific bodies, physical materials, shadows, sockets, and hit volumes.
+**This branch is not release-ready. All 68 reference portraits are retained, but no replacement character GLBs are approved yet. Matches deliberately do not start with missing character models.**
 
-## Play
+Main at `e41cef8` contained a constructor that always threw and a shared purple capsule recovery rig. This branch restores the complete menu/combat controller, removes that rig, and introduces an authored GLB pipeline. It does not claim the requested exact-reference overhaul is complete.
 
-- Move with WASD or arrow keys.
-- Aim with the pointer and click (or press Space) to cast.
-- Press 1–6 to cast Fault Crown, Tidal Lens, Silk Cyclone, Arc Filament, Verdant Bind, or Eventide Well.
-- Press Escape to pause. Losing window focus pauses safely.
-- Touch controls and tap-to-cast are enabled on narrow screens.
+## Tools
 
-Each match is the recovered 3v4 Rift Skirmish: 120 seconds, 100 maximum energy, 9.5 energy regenerated per second, and the original cooldown, radius, range, impact timing, damage, slow, root, knockback, chain and drain behavior.
+Node.js 24+, Three.js (game renderer), Anime.js (menu motion), Babylon.js (independent model comparison in `/review.html`), Blender (authored mesh/rig export), glTF Transform and Khronos glTF Validator (asset preparation and validation).
 
-## What changed
-
-- Six morphology routes: biped, quadruped, avian, serpentine, construct, and swarm.
-- Five skeletal actions on every fighter: idle, run, cast, hit and KO.
-- Image-derived, background-segmented front projections wrapped onto volumetric meshes—never camera-facing portrait planes in combat.
-- A procedural PBR Porcelain Biome Colosseum with limestone, ceramic, bronze, traction stone, water channels, foliage, banners, pollen and crowd drones.
-- Rebuilt elemental effects with deterministic, bounded pools and reduced-motion variants.
-- A searchable, filterable 68-fighter archive with a large realtime 3D preview, identity, stats and signature ability.
-- Game-first boot: no wallet or chain connection is required.
-
-## Reconstruction scope
-
-The supplied references are single, opaque, mostly front-facing portraits; 20 are below 256 px in at least one dimension. A single image cannot contain the hidden rear/side anatomy needed for exact 360-degree recovery. The runtime therefore preserves the visible likeness through front-projected texture evidence and uses art-directed, element-matched material continuation on unseen surfaces. Nyxalune is the audited `img2threejs` hero specimen with camera solution, landmark extraction, detail inventory, strict sculpt specification and extracted PBR evidence in `docs/`.
-
-See `public/characters/rig-manifest.json` for the complete fighter-to-skeleton contract.
-
-## Development
-
-Requires Node.js 24 or newer.
-
-```bash
-npm install
+```sh
+npm ci
 npm run dev
-```
-
-Production verification:
-
-```bash
 npm run check
 ```
 
-This runs strict TypeScript, Vitest parity/rig-contract tests, and the Vite production build.
+`npm run check` verifies code and any approved assets. It is **not** visual acceptance. `npm run release:check` additionally requires all 68 characters to have hash-bound approvals and evidence; it currently fails intentionally because every character is pending.
 
-## Architecture
+## Reconstruction pipeline
 
-```text
-src/game/data/             canonical roster and six abilities
-src/game/simulation/       deterministic combat authority
-src/game/render/           living arena, skinned rigs and elemental VFX
-src/game/audio/            synthesized cast and impact sound
-src/game/Game.ts           renderer, input, camera and UI orchestration
-public/characters/         68 source portraits and runtime rig manifest
-docs/                      img2threejs evidence and reconstruction contract
-```
+1. Use the original portrait in `public/characters/optimized/` as the identity reference. Generate or sculpt a bespoke volumetric mesh. Do not substitute common primitive rigs, portrait billboards, or projected artwork wrapped over generic anatomy.
+2. Refine in Blender. Author UV/PBR materials, skeletal weights, `idle`, `run`, `cast`, `hit`, `ko` actions and `socket_ability`, `socket_head`, `socket_core` attachments.
+3. Export with `scripts/blender-character-export.py`, then run `node scripts/prepare-character.mjs source.glb public/characters/models/zukan-NNN.glb`. Keep the original source outside the runtime assets. No automatic geometry decimation is performed.
+4. Mark the character `review` in `model-approvals.json` to examine the GLB beside its reference in `/review.html`. The main game accepts only `approved` entries.
+5. Capture matched-camera evidence, inspect animation deformation and test in Three.js. Record actual approval evidence and SHA-256 hashes as documented in `docs/character-overhaul.md`. Never mark models approved solely because a tool generated them or automated checks pass.
+6. Run `npm run release:check` before release.
 
-Built with Three.js r185, Vite 8, TypeScript 7, Vitest 4 and Rapier 0.20.
+## Preserved combat rules
 
+The recovered controller retains the 3v4 Rift Skirmish simulation, 120-second matches, six elemental abilities, energy/cooldown/damage rules, aim, touch movement, pause, results and the 68-member roster. These rules pass simulation tests; end-to-end combat rendering still needs the replacement GLBs.
+
+WASD/arrows move; pointer aims; click/Space casts; 1–6 cast elemental forces; Escape pauses. Touch uses the directional pad and force buttons. Missing assets keep the archive available and prevent an incomplete match from starting.
+
+## Known blocker
+
+The reference-to-3D pilot was rejected before job creation because the connected Fal account has exhausted its balance. No generation job was started, and no reconstruction results exist. See `docs/character-overhaul.md` for the exact next steps and open acceptance gates.

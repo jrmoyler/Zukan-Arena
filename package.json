@@ -11,14 +11,23 @@
     "preview": "vite preview --host 0.0.0.0",
     "test": "vitest run",
     "typecheck": "tsc --noEmit",
-    "check": "npm run generate:manifest && npm run typecheck && npm run test && npm run build"
+    "check": "npm run generate:manifest && npm run verify:characters && npm run typecheck && npm run test && npm run build",
+    "verify:characters": "node scripts/verify-character-assets.mjs",
+    "release:check": "npm run check && node scripts/verify-character-assets.mjs --require-approved"
   },
   "dependencies": {
+    "@babylonjs/core": "^9.27.1",
+    "@babylonjs/loaders": "^9.27.1",
     "@dimforge/rapier3d-compat": "0.20.0",
-    "three": "0.185.1"
+    "animejs": "^4.5.0",
+    "three": "^0.185.1"
   },
   "devDependencies": {
+    "@gltf-transform/core": "^4.5.0",
+    "@gltf-transform/functions": "^4.5.0",
     "@types/three": "0.185.4",
+    "gltf-validator": "^2.0.0-dev.3.10",
+    "sharp": "^0.35.4",
     "typescript": "7.0.2",
     "vite": "8.2.1",
     "vitest": "4.1.10"
