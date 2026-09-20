@@ -1,3 +1,100 @@
-<!doctype html><html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><title>Zukan · Character review</title><style>
-*{box-sizing:border-box}body{margin:0;background:#eae7de;color:#292920;font:14px system-ui}header{display:flex;gap:16px;align-items:center;padding:20px;border-bottom:1px solid #bbb5a4;flex-wrap:wrap}select,button{min-height:44px;padding:10px;background:#faf8f0;border:1px solid #bdb6a1}main{display:grid;grid-template-columns:1fr 1fr;height:75vh}figure{margin:0;padding:18px;display:flex;flex-direction:column;min-height:0}img,canvas{width:100%;height:100%;min-height:0;object-fit:contain}figcaption{text-align:center;padding:12px;font-size:11px;text-transform:uppercase;letter-spacing:.12em}#status{padding:20px}a{color:inherit}@media(max-width:650px){main{height:auto;grid-template-columns:1fr}figure{height:50vh}}
-</style></head><body><header><a href="/">← Arena</a><strong>Character review</strong><select aria-label="Character" id="character"></select><select aria-label="Animation" id="animation"><option>idle</option><option>run</option><option>cast</option><option>hit</option><option>ko</option></select></header><main><figure><img id="reference" alt="Original character reference"/><figcaption>Original reference</figcaption></figure><figure><canvas id="model"></canvas><figcaption>Babylon.js · actual GLB · drag to orbit</figcaption></figure></main><p id="status" role="status"></p><script type="module" src="/src/review.ts"></script></body></html>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Zukan · Character review</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        background: #eae7de;
+        color: #292920;
+        font: 14px system-ui;
+      }
+      header {
+        display: flex;
+        gap: 16px;
+        align-items: center;
+        padding: 20px;
+        border-bottom: 1px solid #bbb5a4;
+        flex-wrap: wrap;
+      }
+      select,
+      button {
+        min-height: 44px;
+        padding: 10px;
+        background: #faf8f0;
+        border: 1px solid #bdb6a1;
+      }
+      main {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        height: 75vh;
+      }
+      figure {
+        margin: 0;
+        padding: 18px;
+        display: flex;
+        flex-direction: column;
+        min-height: 0;
+      }
+      img,
+      canvas {
+        width: 100%;
+        height: 100%;
+        min-height: 0;
+        object-fit: contain;
+      }
+      figcaption {
+        text-align: center;
+        padding: 12px;
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+      }
+      #status {
+        padding: 20px;
+      }
+      a {
+        color: inherit;
+      }
+      @media (max-width: 650px) {
+        main {
+          height: auto;
+          grid-template-columns: 1fr;
+        }
+        figure {
+          height: 50vh;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <a href="/">← Arena</a><strong>Character review</strong
+      ><select aria-label="Character" id="character"></select
+      ><select aria-label="Animation" id="animation">
+        <option>idle</option>
+        <option>run</option>
+        <option>cast</option>
+        <option>hit</option>
+        <option>ko</option>
+      </select>
+    </header>
+    <main>
+      <figure>
+        <img id="reference" alt="Original character reference" />
+        <figcaption>Original reference</figcaption>
+      </figure>
+      <figure>
+        <canvas id="model"></canvas>
+        <figcaption>Babylon.js · actual GLB · drag to orbit</figcaption>
+      </figure>
+    </main>
+    <p id="status" role="status"></p>
+    <script type="module" src="/src/review.ts"></script>
+  </body>
+</html>

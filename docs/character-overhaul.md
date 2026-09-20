@@ -53,3 +53,14 @@ The asset verifier checks hashes, embedded assets, distinct model files, glTF va
 5. Run full rendered combat, all-six-power checks, pause/resume, results/replay and resource recovery using the final assets.
 6. Validate desktop/mobile layouts and actual Galaxy A15 frame pacing and memory. Browser emulation is not physical-device evidence.
 7. Pass `npm run release:check` and retain the full 68-character scope.
+
+## Verification evidence
+
+- Blender 4.5.14 LTS official Linux build installed at `/workspace/tools/blender-4.5.14-linux-x64/blender`. Headless startup and glTF exporter availability both passed. The OS package path failed due to a libpython package-version conflict; the official portable build succeeded.
+- `npm run check`: 19/19 tests, TypeScript and Vite production build passed.
+- `node scripts/verify-character-assets.mjs --require-approved`: exits 1 with 0/68 approved, as required for this incomplete branch.
+- Vercel marked the first PR deployment Ready.
+- Cloud browser opened the actual deployment and displayed the WebGL 2 compatibility screen. This browser cannot supply rendered 3D or mobile fidelity evidence.
+- GitHub Actions job 106099084795 never started. Its check annotation states: "The job was not started because your account is locked due to a billing issue." This is an external CI blocker, not a passing gate.
+- The Blender export script rejects an unrigged default scene with missing authored actions, as expected.
+- Merge-ready PRs additionally run the all-68-approved asset gate; ready-for-review changes trigger the workflow.
