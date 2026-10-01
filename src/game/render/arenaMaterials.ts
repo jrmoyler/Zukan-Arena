@@ -146,7 +146,7 @@ function repeatMaps(maps: SurfaceMaps, x: number, y: number): void {
 export function createArenaMaterials(quality: ArenaQuality = 'high'): ArenaMaterialSet {
   const mapSize = quality === 'high' ? 192 : quality === 'medium' ? 128 : 64;
   const limestoneMaps = createSurfaceMaps(mapSize, 0x51a7e, '#d8cbb4', 0.14, 5.5, 0.82);
-  const tractionMaps = createSurfaceMaps(mapSize, 0x7ac710, '#172229', 0.2, 8, 0.6);
+  const tractionMaps = createSurfaceMaps(mapSize, 0x7ac710, '#2a3647', 0.08, 3.5, 0.5);
   repeatMaps(limestoneMaps, 7, 5);
   repeatMaps(tractionMaps, 9, 6);
 
@@ -173,11 +173,11 @@ export function createArenaMaterials(quality: ArenaQuality = 'high'): ArenaMater
     name: 'arena-traction',
     map: tractionMaps.color,
     normalMap: tractionMaps.normal,
-    normalScale: new THREE.Vector2(0.55, 0.55),
+    normalScale: new THREE.Vector2(0.22, 0.22),
     roughnessMap: tractionMaps.roughness,
-    color: '#26343b',
-    roughness: 0.62,
-    metalness: 0.07,
+    color: '#5d6f86',
+    roughness: 0.5,
+    metalness: 0.05,
   });
   const champagne = new THREE.MeshPhysicalMaterial({
     name: 'arena-champagne-metal',

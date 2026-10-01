@@ -1,0 +1,1502 @@
+{
+  "schemaVersion": 2,
+  "renderer": "hd2d-cutout",
+  "fighters": [
+    {
+      "id": "zukan-001",
+      "name": "Nyxalune",
+      "epithet": "The Abyss Oracle",
+      "element": "void",
+      "role": "Builder",
+      "archetype": "biped",
+      "sprite": {
+        "src": "/characters/cutout/zukan-001.webp",
+        "width": 497,
+        "height": 640,
+        "foot": [
+          0.4509,
+          0.9749
+        ],
+        "palette": [
+          "#303050",
+          "#505090",
+          "#505070"
+        ]
+      }
+    },
+    {
+      "id": "zukan-002",
+      "name": "Coralyn",
+      "epithet": "Bloomstar of the First Garden",
+      "element": "nature",
+      "role": "Creator",
+      "archetype": "biped",
+      "sprite": {
+        "src": "/characters/cutout/zukan-002.webp",
+        "width": 487,
+        "height": 640,
+        "foot": [
+          0.4403,
+          0.9751
+        ],
+        "palette": [
+          "#f0d0d0",
+          "#d0b0b0",
+          "#b09090"
+        ]
+      }
+    },
+    {
+      "id": "zukan-003",
+      "name": "Mallowkin",
+      "epithet": "The Cloudstep Familiar",
+      "element": "gale",
+      "role": "Strategist",
+      "archetype": "biped",
+      "sprite": {
+        "src": "/characters/cutout/zukan-003.webp",
+        "width": 640,
+        "height": 640,
+        "foot": [
+          0.3988,
+          0.9744
+        ],
+        "palette": [
+          "#f0d0b0",
+          "#d0b090",
+          "#b09070"
+        ]
+      }
+    },
+    {
+      "id": "zukan-004",
+      "name": "Tidel Pip",
+      "epithet": "Keeper of the Moonpool",
+      "element": "hydro",
+      "role": "Builder",
+      "archetype": "biped",
+      "sprite": {
+        "src": "/characters/cutout/zukan-004.webp",
+        "width": 539,
+        "height": 640,
+        "foot": [
+          0.5321,
+          0.9751
+        ],
+        "palette": [
+          "#b0d0d0",
+          "#70b0b0",
+          "#90b0b0"
+        ]
+      }
+    },
+    {
+      "id": "zukan-005",
+      "name": "Cirru Bluebell",
+      "epithet": "The Rain-Song Herald",
+      "element": "hydro",
+      "role": "Creator",
+      "archetype": "biped",
+      "sprite": {
+        "src": "/characters/cutout/zukan-005.webp",
+        "width": 409,
+        "height": 640,
+        "foot": [
+          0.5609,
+          0.9754
+        ],
+        "palette": [
+          "#b0d0d0",
+          "#d0d0f0",
+          "#b0d0f0"
+        ]
+      }
+    },
+    {
+      "id": "zukan-006",
+      "name": "Mossprig",
+      "epithet": "Seedling of the Green Signal",
+      "element": "nature",
+      "role": "Strategist",
+      "archetype": "biped",
+      "sprite": {
+        "src": "/characters/cutout/zukan-006.webp",
+        "width": 370,
+        "height": 640,
+        "foot": [
+          0.499,
+          0.9745
+        ],
+        "palette": [
+          "#709050",
+          "#707050",
+          "#90b070"
+        ]
+      }
+    },
+    {
+      "id": "zukan-007",
+      "name": "Prism Chorus",
+      "epithet": "The Sixty-Eightfold Spark",
+      "element": "plasma",
+      "role": "Builder",
+      "archetype": "swarm",
+      "sprite": {
+        "src": "/characters/cutout/zukan-007.webp",
+        "width": 1394,
+        "height": 640,
+        "foot": [
+          0.4737,
+          0.9437
+        ],
+        "palette": [
+          "#f0d070",
+          "#f0d090",
+          "#d0b050"
+        ]
+      }
+    },
+    {
+      "id": "zukan-008",
+      "name": "Vesper Talon",
+      "epithet": "Watcher Beyond the Lantern",
+      "element": "void",
+      "role": "Creator",
+      "archetype": "quadruped",
+      "sprite": {
+        "src": "/characters/cutout/zukan-008.webp",
+        "width": 639,
+        "height": 640,
+        "foot": [
+          0.5092,
+          0.975
+        ],
+        "palette": [
+          "#907050",
+          "#705030",
+          "#909070"
+        ]
+      }
+    },
+    {
+      "id": "zukan-009",
+      "name": "Sylva Crown",
+      "epithet": "Antlered Spirit of Dawn",
+      "element": "nature",
+      "role": "Strategist",
+      "archetype": "quadruped",
+      "sprite": {
+        "src": "/characters/cutout/zukan-009.webp",
+        "width": 459,
+        "height": 640,
+        "foot": [
+          0.378,
+          0.9751
+        ],
+        "palette": [
+          "#d0b090",
+          "#d0b0b0",
+          "#d0d0b0"
+        ]
+      }
+    },
+    {
+      "id": "zukan-010",
+      "name": "Aeris Nightwing",
+      "epithet": "Navigator of Pale Skies",
+      "element": "gale",
+      "role": "Builder",
+      "archetype": "avian",
+      "sprite": {
+        "src": "/characters/cutout/zukan-010.webp",
+        "width": 593,
+        "height": 640,
+        "foot": [
+          0.3183,
+          0.9749
+        ],
+        "palette": [
+          "#303050",
+          "#505070",
+          "#b0b090"
+        ]
+      }
+    },
+    {
+      "id": "zukan-011",
+      "name": "Tigris Undertow",
+      "epithet": "The Reefsteel Prowler",
+      "element": "hydro",
+      "role": "Creator",
+      "archetype": "quadruped",
+      "sprite": {
+        "src": "/characters/cutout/zukan-011.webp",
+        "width": 702,
+        "height": 640,
+        "foot": [
+          0.5638,
+          0.9731
+        ],
+        "palette": [
+          "#307070",
+          "#305050",
+          "#105050"
+        ]
+      }
+    },
+    {
+      "id": "zukan-012",
+      "name": "Brassburrow",
+      "epithet": "Delver Beneath the Arena",
+      "element": "earth",
+      "role": "Strategist",
+      "archetype": "quadruped",
+      "sprite": {
+        "src": "/characters/cutout/zukan-012.webp",
+        "width": 749,
+        "height": 640,
+        "foot": [
+          0.3714,
+          0.9706
+        ],
+        "palette": [
+          "#705030",
+          "#907050",
+          "#503030"
+        ]
+      }
+    },
+    {
+      "id": "zukan-013",
+      "name": "Gaiadorn",
+      "epithet": "Bearer of the Living Mesa",
+      "element": "earth",
+      "role": "Builder",
+      "archetype": "quadruped",
+      "sprite": {
+        "src": "/characters/cutout/zukan-013.webp",
+        "width": 753,
+        "height": 640,
+        "foot": [
+          0.5094,
+          0.9702
+        ],
+        "palette": [
+          "#b09070",
+          "#907050",
+          "#909050"
+        ]
+      }
+    },
+    {
+      "id": "zukan-014",
+      "name": "Umbra Thread",
+      "epithet": "Spinner of Silent Orbits",
+      "element": "void",
+      "role": "Creator",
+      "archetype": "serpentine",
+      "sprite": {
+        "src": "/characters/cutout/zukan-014.webp",
+        "width": 661,
+        "height": 640,
+        "foot": [
+          0.5797,
+          0.9747
+        ],
+        "palette": [
+          "#907070",
+          "#505070",
+          "#b09090"
+        ]
+      }
+    },
+    {
+      "id": "zukan-015",
+      "name": "Axolume",
+      "epithet": "The Luminous Current",
+      "element": "hydro",
+      "role": "Strategist",
+      "archetype": "quadruped",
+      "sprite": {
+        "src": "/characters/cutout/zukan-015.webp",
+        "width": 568,
+        "height": 640,
+        "foot": [
+          0.4207,
+          0.9754
+        ],
+        "palette": [
+          "#b0b090",
+          "#909070",
+          "#d0b0b0"
+        ]
+      }
+    },
+    {
+      "id": "zukan-016",
+      "name": "Oakenhart",
+      "epithet": "Warden of Root and Ring",
+      "element": "nature",
+      "role": "Builder",
+      "archetype": "quadruped",
+      "sprite": {
+        "src": "/characters/cutout/zukan-016.webp",
+        "width": 516,
+        "height": 640,
+        "foot": [
+          0.4409,
+          0.9755
+        ],
+        "palette": [
+          "#909070",
+          "#707050",
+          "#b0b090"
+        ]
+      }
+    },
+    {
+      "id": "zukan-017",
+      "name": "Onyx Mane",
+      "epithet": "The Rift-Crowned Colossus",
+      "element": "earth",
+      "role": "Creator",
+      "archetype": "quadruped",
+      "sprite": {
+        "src": "/characters/cutout/zukan-017.webp",
+        "width": 644,
+        "height": 640,
+        "foot": [
+          0.4738,
+          0.9744
+        ],
+        "palette": [
+          "#b09070",
+          "#909070",
+          "#907050"
+        ]
+      }
+    },
+    {
+      "id": "zukan-018",
+      "name": "Cairnhoof",
+      "epithet": "Ram of the Deep Foundation",
+      "element": "earth",
+      "role": "Strategist",
+      "archetype": "quadruped",
+      "sprite": {
+        "src": "/characters/cutout/zukan-018.webp",
+        "width": 657,
+        "height": 640,
+        "foot": [
+          0.436,
+          0.975
+        ],
+        "palette": [
+          "#907050",
+          "#707050",
+          "#503030"
+        ]
+      }
+    },
+    {
+      "id": "zukan-019",
+      "name": "Terra Shell",
+      "epithet": "Garden on the Moving Stone",
+      "element": "earth",
+      "role": "Builder",
+      "archetype": "quadruped",
+      "sprite": {
+        "src": "/characters/cutout/zukan-019.webp",
+        "width": 845,
+        "height": 640,
+        "foot": [
+          0.4489,
+          0.9675
+        ],
+        "palette": [
+          "#907050",
+          "#707050",
+          "#505030"
+        ]
+      }
+    },
+    {
+      "id": "zukan-020",
+      "name": "Zephyra Flare",
+      "epithet": "Petalblade of the Jetstream",
+      "element": "gale",
+      "role": "Creator",
+      "archetype": "avian",
+      "sprite": {
+        "src": "/characters/cutout/zukan-020.webp",
+        "width": 609,
+        "height": 640,
+        "foot": [
+          0.4249,
+          0.9756
+        ],
+        "palette": [
+          "#f0d0d0",
+          "#f0b0b0",
+          "#f0d0b0"
+        ]
+      }
+    },
+    {
+      "id": "zukan-021",
+      "name": "Rax Embercoil",
+      "epithet": "The Red Arc Unbound",
+      "element": "plasma",
+      "role": "Strategist",
+      "archetype": "quadruped",
+      "sprite": {
+        "src": "/characters/cutout/zukan-021.webp",
+        "width": 650,
+        "height": 640,
+        "foot": [
+          0.247,
+          0.9757
+        ],
+        "palette": [
+          "#d07070",
+          "#b07050",
+          "#b05050"
+        ]
+      }
+    },
+    {
+      "id": "zukan-022",
+      "name": "Pebbleward",
+      "epithet": "The Patient Rampart",
+      "element": "earth",
+      "role": "Builder",
+      "archetype": "quadruped",
+      "sprite": {
+        "src": "/characters/cutout/zukan-022.webp",
+        "width": 633,
+        "height": 640,
+        "foot": [
+          0.3185,
+          0.9745
+        ],
+        "palette": [
+          "#909070",
+          "#b0b090",
+          "#707050"
+        ]
+      }
+    },
+    {
+      "id": "zukan-023",
+      "name": "Riptide Wyrm",
+      "epithet": "Serpent of the Glass Sea",
+      "element": "hydro",
+      "role": "Creator",
+      "archetype": "serpentine",
+      "sprite": {
+        "src": "/characters/cutout/zukan-023.webp",
+        "width": 592,
+        "height": 640,
+        "foot": [
+          0.4396,
+          0.9745
+        ],
+        "palette": [
+          "#507070",
+          "#709090",
+          "#907050"
+        ]
+      }
+    },
+    {
+      "id": "zukan-024",
+      "name": "Briar Owl",
+      "epithet": "Sage of the Hollow Grove",
+      "element": "nature",
+      "role": "Strategist",
+      "archetype": "biped",
+      "sprite": {
+        "src": "/characters/cutout/zukan-024.webp",
+        "width": 624,
+        "height": 640,
+        "foot": [
+          0.4472,
+          0.9749
+        ],
+        "palette": [
+          "#503030",
+          "#505030",
+          "#705030"
+        ]
+      }
+    },
+    {
+      "id": "zukan-025",
+      "name": "Lunavex",
+      "epithet": "Dreamfox of the Violet Elsewhere",
+      "element": "void",
+      "role": "Builder",
+      "archetype": "quadruped",
+      "sprite": {
+        "src": "/characters/cutout/zukan-025.webp",
+        "width": 635,
+        "height": 640,
+        "foot": [
+          0.5123,
+          0.9751
+        ],
+        "palette": [
+          "#d0b0b0",
+          "#b09090",
+          "#d0b090"
+        ]
+      }
+    },
+    {
+      "id": "zukan-026",
+      "name": "Dunehop",
+      "epithet": "The Sandglass Courier",
+      "element": "earth",
+      "role": "Creator",
+      "archetype": "quadruped",
+      "sprite": {
+        "src": "/characters/cutout/zukan-026.webp",
+        "width": 647,
+        "height": 640,
+        "foot": [
+          0.4635,
+          0.9754
+        ],
+        "palette": [
+          "#b07050",
+          "#d09070",
+          "#907050"
+        ]
+      }
+    },
+    {
+      "id": "zukan-027",
+      "name": "Sirocco Ink",
+      "epithet": "Skyrider of the Black Current",
+      "element": "gale",
+      "role": "Strategist",
+      "archetype": "avian",
+      "sprite": {
+        "src": "/characters/cutout/zukan-027.webp",
+        "width": 635,
+        "height": 640,
+        "foot": [
+          0.468,
+          0.976
+        ],
+        "palette": [
+          "#b09070",
+          "#907050",
+          "#705050"
+        ]
+      }
+    },
+    {
+      "id": "zukan-028",
+      "name": "Bublune",
+      "epithet": "Heart of the Joyful Tide",
+      "element": "hydro",
+      "role": "Builder",
+      "archetype": "biped",
+      "sprite": {
+        "src": "/characters/cutout/zukan-028.webp",
+        "width": 560,
+        "height": 640,
+        "foot": [
+          0.4723,
+          0.9761
+        ],
+        "palette": [
+          "#b0f0f0",
+          "#b0d0f0",
+          "#70b0d0"
+        ]
+      }
+    },
+    {
+      "id": "zukan-029",
+      "name": "Rosette Drift",
+      "epithet": "The Cottonwind Dancer",
+      "element": "gale",
+      "role": "Creator",
+      "archetype": "biped",
+      "sprite": {
+        "src": "/characters/cutout/zukan-029.webp",
+        "width": 599,
+        "height": 640,
+        "foot": [
+          0.4431,
+          0.9948
+        ],
+        "palette": [
+          "#f0d0d0",
+          "#f0b0d0",
+          "#f090b0"
+        ]
+      }
+    },
+    {
+      "id": "zukan-030",
+      "name": "Helix Sprout",
+      "epithet": "Gardener of Living Code",
+      "element": "nature",
+      "role": "Strategist",
+      "archetype": "biped",
+      "sprite": {
+        "src": "/characters/cutout/zukan-030.webp",
+        "width": 534,
+        "height": 640,
+        "foot": [
+          0.4925,
+          0.9744
+        ],
+        "palette": [
+          "#50b0b0",
+          "#70d0d0",
+          "#309090"
+        ]
+      }
+    },
+    {
+      "id": "zukan-031",
+      "name": "Verdant Drake",
+      "epithet": "Leafscale of the Canopy",
+      "element": "nature",
+      "role": "Builder",
+      "archetype": "biped",
+      "sprite": {
+        "src": "/characters/cutout/zukan-031.webp",
+        "width": 541,
+        "height": 640,
+        "foot": [
+          0.4902,
+          0.9757
+        ],
+        "palette": [
+          "#307050",
+          "#70b070",
+          "#509070"
+        ]
+      }
+    },
+    {
+      "id": "zukan-032",
+      "name": "Volt Sentinel",
+      "epithet": "The Cerulean Dynamo",
+      "element": "plasma",
+      "role": "Creator",
+      "archetype": "construct",
+      "sprite": {
+        "src": "/characters/cutout/zukan-032.webp",
+        "width": 460,
+        "height": 640,
+        "foot": [
+          0.496,
+          0.9761
+        ],
+        "palette": [
+          "#d0f0f0",
+          "#b0f0f0",
+          "#70b0b0"
+        ]
+      }
+    },
+    {
+      "id": "zukan-033",
+      "name": "Marshal Amp",
+      "epithet": "Keeper of the Signal Law",
+      "element": "plasma",
+      "role": "Strategist",
+      "archetype": "construct",
+      "sprite": {
+        "src": "/characters/cutout/zukan-033.webp",
+        "width": 503,
+        "height": 640,
+        "foot": [
+          0.5063,
+          0.9746
+        ],
+        "palette": [
+          "#303050",
+          "#305070",
+          "#505090"
+        ]
+      }
+    },
+    {
+      "id": "zukan-034",
+      "name": "Solspark",
+      "epithet": "The Laughing Supernova",
+      "element": "plasma",
+      "role": "Builder",
+      "archetype": "biped",
+      "sprite": {
+        "src": "/characters/cutout/zukan-034.webp",
+        "width": 375,
+        "height": 640,
+        "foot": [
+          0.4667,
+          0.975
+        ],
+        "palette": [
+          "#f09090",
+          "#f0b0b0",
+          "#f0b090"
+        ]
+      }
+    },
+    {
+      "id": "zukan-035",
+      "name": "Copperwing",
+      "epithet": "Ace of the Endless Updraft",
+      "element": "gale",
+      "role": "Creator",
+      "archetype": "avian",
+      "sprite": {
+        "src": "/characters/cutout/zukan-035.webp",
+        "width": 477,
+        "height": 640,
+        "foot": [
+          0.5052,
+          0.9755
+        ],
+        "palette": [
+          "#f0d090",
+          "#705030",
+          "#b09050"
+        ]
+      }
+    },
+    {
+      "id": "zukan-036",
+      "name": "Glacielle",
+      "epithet": "Facet of the Frozen Deep",
+      "element": "hydro",
+      "role": "Strategist",
+      "archetype": "quadruped",
+      "sprite": {
+        "src": "/characters/cutout/zukan-036.webp",
+        "width": 456,
+        "height": 640,
+        "foot": [
+          0.6117,
+          0.9754
+        ],
+        "palette": [
+          "#90d0d0",
+          "#d0f0f0",
+          "#b0f0f0"
+        ]
+      }
+    },
+    {
+      "id": "zukan-037",
+      "name": "Arcloom",
+      "epithet": "Weaver of Electric Constellations",
+      "element": "plasma",
+      "role": "Builder",
+      "archetype": "construct",
+      "sprite": {
+        "src": "/characters/cutout/zukan-037.webp",
+        "width": 437,
+        "height": 640,
+        "foot": [
+          0.5046,
+          0.9758
+        ],
+        "palette": [
+          "#5070b0",
+          "#7090d0",
+          "#5070d0"
+        ]
+      }
+    },
+    {
+      "id": "zukan-038",
+      "name": "Auric Tinker",
+      "epithet": "Clocksmith of the Golden Strata",
+      "element": "earth",
+      "role": "Creator",
+      "archetype": "construct",
+      "sprite": {
+        "src": "/characters/cutout/zukan-038.webp",
+        "width": 371,
+        "height": 640,
+        "foot": [
+          0.5107,
+          0.9757
+        ],
+        "palette": [
+          "#f0d070",
+          "#d0b050",
+          "#b09030"
+        ]
+      }
+    },
+    {
+      "id": "zukan-039",
+      "name": "Thornkin",
+      "epithet": "The Bramblebound Artisan",
+      "element": "nature",
+      "role": "Strategist",
+      "archetype": "biped",
+      "sprite": {
+        "src": "/characters/cutout/zukan-039.webp",
+        "width": 482,
+        "height": 640,
+        "foot": [
+          0.4177,
+          0.9757
+        ],
+        "palette": [
+          "#705010",
+          "#f0d070",
+          "#b0b050"
+        ]
+      }
+    },
+    {
+      "id": "zukan-040",
+      "name": "Redline Ravager",
+      "epithet": "Breaker of the Voltage Limit",
+      "element": "plasma",
+      "role": "Builder",
+      "archetype": "biped",
+      "sprite": {
+        "src": "/characters/cutout/zukan-040.webp",
+        "width": 436,
+        "height": 640,
+        "foot": [
+          0.4496,
+          0.9756
+        ],
+        "palette": [
+          "#f05050",
+          "#b03030",
+          "#f07050"
+        ]
+      }
+    },
+    {
+      "id": "zukan-041",
+      "name": "Amethyst Rift",
+      "epithet": "Crystal Born Between Worlds",
+      "element": "void",
+      "role": "Creator",
+      "archetype": "biped",
+      "sprite": {
+        "src": "/characters/cutout/zukan-041.webp",
+        "width": 463,
+        "height": 640,
+        "foot": [
+          0.4924,
+          0.9755
+        ],
+        "palette": [
+          "#503090",
+          "#7050b0",
+          "#503070"
+        ]
+      }
+    },
+    {
+      "id": "zukan-042",
+      "name": "Bastion Block",
+      "epithet": "Fortress of the Blue Quarry",
+      "element": "earth",
+      "role": "Strategist",
+      "archetype": "quadruped",
+      "sprite": {
+        "src": "/characters/cutout/zukan-042.webp",
+        "width": 566,
+        "height": 640,
+        "foot": [
+          0.4989,
+          0.9754
+        ],
+        "palette": [
+          "#3070b0",
+          "#307090",
+          "#105070"
+        ]
+      }
+    },
+    {
+      "id": "zukan-043",
+      "name": "Circuit Cub",
+      "epithet": "The Teal Pulse Engine",
+      "element": "plasma",
+      "role": "Builder",
+      "archetype": "construct",
+      "sprite": {
+        "src": "/characters/cutout/zukan-043.webp",
+        "width": 440,
+        "height": 640,
+        "foot": [
+          0.5023,
+          0.975
+        ],
+        "palette": [
+          "#50b0b0",
+          "#30b0b0",
+          "#309090"
+        ]
+      }
+    },
+    {
+      "id": "zukan-044",
+      "name": "Skyglass",
+      "epithet": "Silent Blade of the Upper Air",
+      "element": "gale",
+      "role": "Creator",
+      "archetype": "avian",
+      "sprite": {
+        "src": "/characters/cutout/zukan-044.webp",
+        "width": 885,
+        "height": 640,
+        "foot": [
+          0.4314,
+          0.9659
+        ],
+        "palette": [
+          "#707090",
+          "#709090",
+          "#9090b0"
+        ]
+      }
+    },
+    {
+      "id": "zukan-045",
+      "name": "Maris Bell",
+      "epithet": "Jellylight of the Shallows",
+      "element": "hydro",
+      "role": "Strategist",
+      "archetype": "biped",
+      "sprite": {
+        "src": "/characters/cutout/zukan-045.webp",
+        "width": 533,
+        "height": 640,
+        "foot": [
+          0.5073,
+          0.9757
+        ],
+        "palette": [
+          "#d0f0d0",
+          "#b0d0d0",
+          "#b0f0d0"
+        ]
+      }
+    },
+    {
+      "id": "zukan-046",
+      "name": "Basalt Claw",
+      "epithet": "The Magma-Ridge Vanguard",
+      "element": "earth",
+      "role": "Builder",
+      "archetype": "quadruped",
+      "sprite": {
+        "src": "/characters/cutout/zukan-046.webp",
+        "width": 589,
+        "height": 640,
+        "foot": [
+          0.5181,
+          0.9983
+        ],
+        "palette": [
+          "#f09050",
+          "#d07030",
+          "#905030"
+        ]
+      }
+    },
+    {
+      "id": "zukan-047",
+      "name": "Astra Owl",
+      "epithet": "Golden Eye of the Zenith",
+      "element": "gale",
+      "role": "Creator",
+      "archetype": "avian",
+      "sprite": {
+        "src": "/characters/cutout/zukan-047.webp",
+        "width": 566,
+        "height": 640,
+        "foot": [
+          0.5259,
+          0.9983
+        ],
+        "palette": [
+          "#f0d070",
+          "#f0d090",
+          "#d0b050"
+        ]
+      }
+    },
+    {
+      "id": "zukan-048",
+      "name": "Nullstar",
+      "epithet": "Radiance at the Edge of Nothing",
+      "element": "void",
+      "role": "Strategist",
+      "archetype": "biped",
+      "sprite": {
+        "src": "/characters/cutout/zukan-048.webp",
+        "width": 454,
+        "height": 640,
+        "foot": [
+          0.4642,
+          0.9746
+        ],
+        "palette": [
+          "#f0d0b0",
+          "#d0b090",
+          "#d0d0b0"
+        ]
+      }
+    },
+    {
+      "id": "zukan-049",
+      "name": "Glitchwisp",
+      "epithet": "The Unresolved Signal",
+      "element": "void",
+      "role": "Builder",
+      "archetype": "construct",
+      "sprite": {
+        "src": "/characters/cutout/zukan-049.webp",
+        "width": 607,
+        "height": 640,
+        "foot": [
+          0.4487,
+          0.9761
+        ],
+        "palette": [
+          "#9090d0",
+          "#7070b0",
+          "#b0b0d0"
+        ]
+      }
+    },
+    {
+      "id": "zukan-050",
+      "name": "Luminor Loam",
+      "epithet": "The Gentle Earthen Light",
+      "element": "earth",
+      "role": "Creator",
+      "archetype": "biped",
+      "sprite": {
+        "src": "/characters/cutout/zukan-050.webp",
+        "width": 483,
+        "height": 640,
+        "foot": [
+          0.5,
+          0.9743
+        ],
+        "palette": [
+          "#d0b070",
+          "#b09050",
+          "#f0d090"
+        ]
+      }
+    },
+    {
+      "id": "zukan-051",
+      "name": "Gilded Bud",
+      "epithet": "Small Keeper of Great Forests",
+      "element": "nature",
+      "role": "Strategist",
+      "archetype": "biped",
+      "sprite": {
+        "src": "/characters/cutout/zukan-051.webp",
+        "width": 499,
+        "height": 640,
+        "foot": [
+          0.3952,
+          0.9756
+        ],
+        "palette": [
+          "#f0d090",
+          "#d0b070",
+          "#f0d0b0"
+        ]
+      }
+    },
+    {
+      "id": "zukan-052",
+      "name": "Crimson Surge",
+      "epithet": "Spirit of the Scarlet Circuit",
+      "element": "plasma",
+      "role": "Builder",
+      "archetype": "biped",
+      "sprite": {
+        "src": "/characters/cutout/zukan-052.webp",
+        "width": 398,
+        "height": 640,
+        "foot": [
+          0.5408,
+          0.976
+        ],
+        "palette": [
+          "#f07070",
+          "#f09090",
+          "#f0b0b0"
+        ]
+      }
+    },
+    {
+      "id": "zukan-053",
+      "name": "Viridian Skyrake",
+      "epithet": "The Archive Wind",
+      "element": "gale",
+      "role": "Creator",
+      "archetype": "avian",
+      "sprite": {
+        "src": "/characters/cutout/zukan-053.webp",
+        "width": 860,
+        "height": 640,
+        "foot": [
+          0.4079,
+          0.9667
+        ],
+        "palette": [
+          "#90b070",
+          "#709050",
+          "#507030"
+        ]
+      }
+    },
+    {
+      "id": "zukan-054",
+      "name": "Shardshade",
+      "epithet": "Fox of the Fractured Veil",
+      "element": "void",
+      "role": "Strategist",
+      "archetype": "biped",
+      "sprite": {
+        "src": "/characters/cutout/zukan-054.webp",
+        "width": 468,
+        "height": 640,
+        "foot": [
+          0.5568,
+          0.9747
+        ],
+        "palette": [
+          "#b090d0",
+          "#9070b0",
+          "#d0b0d0"
+        ]
+      }
+    },
+    {
+      "id": "zukan-055",
+      "name": "Relay-01",
+      "epithet": "First Node of the New Network",
+      "element": "plasma",
+      "role": "Builder",
+      "archetype": "construct",
+      "sprite": {
+        "src": "/characters/cutout/zukan-055.webp",
+        "width": 603,
+        "height": 640,
+        "foot": [
+          0.5761,
+          0.9753
+        ],
+        "palette": [
+          "#b0b090",
+          "#b09090",
+          "#909070"
+        ]
+      }
+    },
+    {
+      "id": "zukan-056",
+      "name": "Aquavine",
+      "epithet": "Tendril of the Azure Delta",
+      "element": "hydro",
+      "role": "Creator",
+      "archetype": "serpentine",
+      "sprite": {
+        "src": "/characters/cutout/zukan-056.webp",
+        "width": 645,
+        "height": 640,
+        "foot": [
+          0.6134,
+          0.9748
+        ],
+        "palette": [
+          "#70b0b0",
+          "#509090",
+          "#307070"
+        ]
+      }
+    },
+    {
+      "id": "zukan-057",
+      "name": "Velocity Veil",
+      "epithet": "The White Horizon Swift",
+      "element": "gale",
+      "role": "Strategist",
+      "archetype": "avian",
+      "sprite": {
+        "src": "/characters/cutout/zukan-057.webp",
+        "width": 512,
+        "height": 640,
+        "foot": [
+          0.3398,
+          0.9755
+        ],
+        "palette": [
+          "#d0b0b0",
+          "#705050",
+          "#907070"
+        ]
+      }
+    },
+    {
+      "id": "zukan-058",
+      "name": "Quiet Mint",
+      "epithet": "Whisper from the Soft Beyond",
+      "element": "void",
+      "role": "Builder",
+      "archetype": "biped",
+      "sprite": {
+        "src": "/characters/cutout/zukan-058.webp",
+        "width": 654,
+        "height": 640,
+        "foot": [
+          0.5456,
+          0.9755
+        ],
+        "palette": [
+          "#d0d0d0",
+          "#f0f0f0",
+          "#f0f0d0"
+        ]
+      }
+    },
+    {
+      "id": "zukan-059",
+      "name": "Sunstone Scout",
+      "epithet": "Pathfinder of the Bright Mesa",
+      "element": "earth",
+      "role": "Creator",
+      "archetype": "biped",
+      "sprite": {
+        "src": "/characters/cutout/zukan-059.webp",
+        "width": 466,
+        "height": 640,
+        "foot": [
+          0.5032,
+          0.9748
+        ],
+        "palette": [
+          "#f0d0d0",
+          "#f0f0d0",
+          "#d0b090"
+        ]
+      }
+    },
+    {
+      "id": "zukan-060",
+      "name": "Nimbus Drop",
+      "epithet": "The Little Monsoon",
+      "element": "hydro",
+      "role": "Strategist",
+      "archetype": "biped",
+      "sprite": {
+        "src": "/characters/cutout/zukan-060.webp",
+        "width": 601,
+        "height": 640,
+        "foot": [
+          0.4975,
+          0.9745
+        ],
+        "palette": [
+          "#b0d0d0",
+          "#90b0b0",
+          "#90b0d0"
+        ]
+      }
+    },
+    {
+      "id": "zukan-061",
+      "name": "Pale Rose Revenant",
+      "epithet": "Thorn of the Forgotten Moon",
+      "element": "void",
+      "role": "Builder",
+      "archetype": "biped",
+      "sprite": {
+        "src": "/characters/cutout/zukan-061.webp",
+        "width": 505,
+        "height": 640,
+        "foot": [
+          0.4743,
+          0.9753
+        ],
+        "palette": [
+          "#f0d0d0",
+          "#d0b0b0",
+          "#d0d0b0"
+        ]
+      }
+    },
+    {
+      "id": "zukan-062",
+      "name": "Trealin Tide",
+      "epithet": "Dancer of the Spiral Current",
+      "element": "hydro",
+      "role": "Creator",
+      "archetype": "serpentine",
+      "sprite": {
+        "src": "/characters/cutout/zukan-062.webp",
+        "width": 370,
+        "height": 640,
+        "foot": [
+          0.5,
+          0.976
+        ],
+        "palette": [
+          "#d0d0b0",
+          "#f0d0b0",
+          "#b0b090"
+        ]
+      }
+    },
+    {
+      "id": "zukan-063",
+      "name": "Cloverling",
+      "epithet": "The Hope That Took Root",
+      "element": "nature",
+      "role": "Strategist",
+      "archetype": "biped",
+      "sprite": {
+        "src": "/characters/cutout/zukan-063.webp",
+        "width": 347,
+        "height": 640,
+        "foot": [
+          0.4699,
+          0.9747
+        ],
+        "palette": [
+          "#d0d0b0",
+          "#b0b090",
+          "#90b090"
+        ]
+      }
+    },
+    {
+      "id": "zukan-064",
+      "name": "Kora-9",
+      "epithet": "Wayfinder of the White Circuit",
+      "element": "plasma",
+      "role": "Builder",
+      "archetype": "construct",
+      "sprite": {
+        "src": "/characters/cutout/zukan-064.webp",
+        "width": 395,
+        "height": 640,
+        "foot": [
+          0.4977,
+          0.9758
+        ],
+        "palette": [
+          "#b0b090",
+          "#b09090",
+          "#d0b0b0"
+        ]
+      }
+    },
+    {
+      "id": "zukan-065",
+      "name": "Starlace Warden",
+      "epithet": "Guardian of the Upper Quiet",
+      "element": "gale",
+      "role": "Creator",
+      "archetype": "avian",
+      "sprite": {
+        "src": "/characters/cutout/zukan-065.webp",
+        "width": 392,
+        "height": 640,
+        "foot": [
+          0.4918,
+          0.9749
+        ],
+        "palette": [
+          "#d0d0b0",
+          "#b0b090",
+          "#f0f0d0"
+        ]
+      }
+    },
+    {
+      "id": "zukan-066",
+      "name": "Coral Pollen",
+      "epithet": "The Blooming Signal",
+      "element": "nature",
+      "role": "Strategist",
+      "archetype": "biped",
+      "sprite": {
+        "src": "/characters/cutout/zukan-066.webp",
+        "width": 791,
+        "height": 640,
+        "foot": [
+          0.5809,
+          0.97
+        ],
+        "palette": [
+          "#f0d0d0",
+          "#f0b0b0",
+          "#f0d0b0"
+        ]
+      }
+    },
+    {
+      "id": "zukan-067",
+      "name": "Hushcloak",
+      "epithet": "The Unseen Pilgrim",
+      "element": "void",
+      "role": "Builder",
+      "archetype": "biped",
+      "sprite": {
+        "src": "/characters/cutout/zukan-067.webp",
+        "width": 660,
+        "height": 640,
+        "foot": [
+          0.3884,
+          0.9739
+        ],
+        "palette": [
+          "#d0d0b0",
+          "#d0b0b0",
+          "#b0b090"
+        ]
+      }
+    },
+    {
+      "id": "zukan-068",
+      "name": "Longevita Aqua",
+      "epithet": "Memory of the First Ocean",
+      "element": "hydro",
+      "role": "Creator",
+      "archetype": "biped",
+      "sprite": {
+        "src": "/characters/cutout/zukan-068.webp",
+        "width": 401,
+        "height": 640,
+        "foot": [
+          0.5579,
+          0.9755
+        ],
+        "palette": [
+          "#b0d0d0",
+          "#90b0b0",
+          "#90d0d0"
+        ]
+      }
+    }
+  ]
+}

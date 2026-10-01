@@ -592,11 +592,11 @@ export class LivingArena extends THREE.Group {
 
   private buildLighting(castShadows: boolean): THREE.DirectionalLight {
     // Cinematic porcelain-colosseum lighting: warm key, cool rim, soft sky fill + subtle bounce
-    const sky = new THREE.HemisphereLight('#fff6e8', '#1e2f36', 1.55);
+    const sky = new THREE.HemisphereLight('#fff6e8', '#27344a', 0.85);
     sky.name = 'arena-warm-sky-fill';
     this.add(sky);
 
-    const key = new THREE.DirectionalLight('#ffe8c8', 3.35);
+    const key = new THREE.DirectionalLight('#ffe8c8', 2.2);
     key.name = 'arena-sun-key';
     key.position.set(-8.2, 14.2, 9.0);
     key.castShadow = castShadows;
@@ -613,7 +613,7 @@ export class LivingArena extends THREE.Group {
     key.shadow.radius = this.quality === 'high' ? 2.5 : 1.2;
     this.add(key);
 
-    const rim = new THREE.DirectionalLight('#7fd4cc', 0.95);
+    const rim = new THREE.DirectionalLight('#7fd4cc', 0.7);
     rim.name = 'arena-cool-rim';
     rim.position.set(9.5, 6.5, -11.5);
     this.add(rim);

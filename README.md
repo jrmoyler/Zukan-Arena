@@ -1,61 +1,96 @@
-# Solana Zukan Arena 3D
+# Zukan Arena
 
-A game-first reconstruction of the original Zukan Arena as a living 3D arena battler. The wallet gate and card billboards are gone: all 68 fighters now enter combat as textured `THREE.SkinnedMesh` characters with real bone weights, shared action contracts, morphology-specific bodies, physical materials, shadows, sockets, and hit volumes.
+An elemental 3D arena battler starring all 68 Zukan. Pick a fighter, draft a squad, and win best-of-three rounds in a porcelain colosseum — on desktop, mobile or gamepad, installed as an app, online or offline.
 
 ## Play
 
-- Move with WASD or arrow keys.
-- Aim with the pointer and click (or press Space) to cast.
-- Press 1–6 to cast Fault Crown, Tidal Lens, Silk Cyclone, Arc Filament, Verdant Bind, or Eventide Well.
-- Press Escape to pause. Losing window focus pauses safely.
-- Touch controls and tap-to-cast are enabled on narrow screens.
+| Action | Keyboard & mouse | Gamepad | Touch |
+| --- | --- | --- | --- |
+| Move | `WASD` / arrows | Left stick | Drag the left half of the screen |
+| Aim | Mouse | Right stick (or aim assist) | Automatic, or drag a skill button |
+| Basic bolt | Hold left click / `J` | `RT` | Hold the gold button |
+| Signature | Right click / `Q` | `X` / `LB` | Hold, drag to aim, release |
+| Dash | `Space` / `Shift` | `A` / `LT` | Dash button |
+| Ultimate | `E` / `R` / middle click | `Y` / `RB` | Hold ★, drag to aim, release |
+| Pause | `Esc` / `P` | `Start` | Pause button |
 
-Each match is the recovered 3v4 Rift Skirmish: 120 seconds, 100 maximum energy, 9.5 energy regenerated per second, and the original cooldown, radius, range, impact timing, damage, slow, root, knockback, chain and drain behavior.
+Menus work with mouse, keyboard (arrows / Tab / Enter / Esc) and gamepad (d-pad, `A`, `B`).
 
-## What changed
+## Game systems
 
-- Six morphology routes: biped, quadruped, avian, serpentine, construct, and swarm.
-- Five skeletal actions on every fighter: idle, run, cast, hit and KO.
-- Image-derived, background-segmented front projections wrapped onto volumetric meshes—never camera-facing portrait planes in combat.
-- A procedural PBR Porcelain Biome Colosseum with limestone, ceramic, bronze, traction stone, water channels, foliage, banners, pollen and crowd drones.
-- Rebuilt elemental effects with deterministic, bounded pools and reduced-motion variants.
-- A searchable, filterable 68-fighter archive with a large realtime 3D preview, identity, stats and signature ability.
-- Game-first boot: no wallet or chain connection is required.
+- **Kits.** Every fighter carries four slots: a role-shaped basic bolt (Builders hit hard, Creators fire fast, Strategists pierce), the canonical elemental signature, a dash with invulnerability frames, and an ultimate charged by dealing and taking damage.
+- **Telegraphs.** Signatures and ultimates mark the ground before they land. The Rift's markers are red, so you can step out or dash through them.
+- **Elemental resonance.** There are two triangles: Earth › Plasma › Hydro › Earth and Gale › Nature › Void › Gale. A resonant hit deals +25% damage and a resisted hit deals −20%.
+- **Arena.** Four porcelain plinths block movement and bolts. A Resonance Bloom surfaces at the centre and heals whoever claims it and charges their ultimate.
+- **Rounds.** The first team to two rounds wins. A round ends on a full squad knockout, or on remaining vitality when the 75-second clock runs out.
+- **Modes:**
+  - **Skirmish:** 1v1, 2v2 or 3v3, against Novice, Adept or Master AI.
+  - **Rift Gauntlet:** an eight-stage ladder that ends against a colossal Sovereign boss.
+  - **Training Grounds:** regenerating dummies and a damage-per-second readout.
+- **Progression:** Archivist level, Glimmer currency, a mastery rank for each fighter, win streaks, and a Zukan encyclopedia. You record an entry by fielding that fighter or facing it in battle.
+- **AI.** It uses utility scoring. It picks targets by distance and vitality, keeps its distance by role, dodges telegraphs, uses cover, contests the Bloom, and saves ultimates for clusters. Difficulty changes reaction time, aim, dodge rate and focus fire. It never changes stats.
+- **Feel.** Hit-stop, slow motion on knockouts and ultimates, trauma-based camera shake, zoom punches, cut-in banners for ultimates, a damage vignette, floating combat text and a kill feed.
+- **Audio.** Everything is synthesized with Web Audio: per-element sound effects, generative menu and battle music whose battle layers respond to match intensity, and a stereo convolution reverb. There are no audio files.
+- **Accessibility.** Reduced motion follows the system setting or can be forced on or off. Other options: colour-safe team colours, HUD scaling, screen-shake strength, toggles for damage numbers and aim assist, and full keyboard and gamepad navigation.
 
-## Reconstruction scope
+## Progressive Web App
 
-The supplied references are single, opaque, mostly front-facing portraits; 20 are below 256 px in at least one dimension. A single image cannot contain the hidden rear/side anatomy needed for exact 360-degree recovery. The runtime therefore preserves the visible likeness through front-projected texture evidence and uses art-directed, element-matched material continuation on unseen surfaces. Nyxalune is the audited `img2threejs` hero specimen with camera solution, landmark extraction, detail inventory, strict sculpt specification and extracted PBR evidence in `docs/`.
+- An installable manifest that opens fullscreen in landscape, with maskable icons.
+- A hand-written service worker, emitted by `build/pwa.ts`, precaches the app shell and all 68 fighter sprites. After the first visit the game works fully offline.
+- New versions wait in the background, and an in-game toast offers **Update** to switch over.
+- An in-game **Install app** entry appears when the browser offers installation.
 
-See `public/characters/rig-manifest.json` for the complete fighter-to-skeleton contract.
+## Visual direction
+
+Fighters are staged HD-2D-style: each original portrait is segmented into a cutout, then posed in the 3D arena as a paper-craft sprite. A custom shader gives every sprite:
+
+- a team outline, hit flash, a dissolve on knockout and a jelly lean;
+- contact occlusion where it meets the floor;
+- fog and shadow casting.
+
+All motion is procedural: breathing, hop cycles, squash and stretch, paper-turn mirroring, dash afterimages and victory hops.
 
 ## Development
 
-Requires Node.js 24 or newer.
+Requires Node.js 24+.
 
 ```bash
 npm install
-npm run dev
+npm run dev        # http://localhost:5173
+npm run check      # manifest + typecheck + tests + production build
 ```
 
-Production verification:
+The service worker is only emitted by `vite build`; use `npm run build && npm run preview` to test offline behaviour.
+
+### Art pipeline
+
+The fighter sprites are generated offline and committed, so the game never segments images at runtime.
 
 ```bash
-npm run check
+pip install "rembg[cpu]"
+npm run generate:cutouts     # art/portraits → public/characters/cutout + src/game/data/cutouts.json
+npm run generate:manifest    # public/characters/manifest.json (checked in CI)
+npm run generate:icons       # PWA icons from the SVG crest (uses Playwright's Chromium)
 ```
-
-This runs strict TypeScript, Vitest parity/rig-contract tests, and the Vite production build.
 
 ## Architecture
 
 ```text
-src/game/data/             canonical roster and six abilities
-src/game/simulation/       deterministic combat authority
-src/game/render/           living arena, skinned rigs and elemental VFX
-src/game/audio/            synthesized cast and impact sound
-src/game/Game.ts           renderer, input, camera and UI orchestration
-public/characters/         68 source portraits and runtime rig manifest
-docs/                      img2threejs evidence and reconstruction contract
+src/main.ts                    boot splash, WebGL check, App start
+src/game/App.ts                shell: screens, modals, frame loop, match flow, PWA hooks
+src/game/simulation/           deterministic combat model, AI, arena geometry
+src/game/battle/               BattleController: sim → sprites, effects, audio, HUD
+src/game/render/               Stage (renderer, camera rig, post), FighterSprite (HD-2D),
+                               BattleEffects, ElementalVfx, LivingArena, MenuScene
+src/game/ui/                   HUD, world overlay, screens, panels, icons
+src/game/core/                 input (keyboard/mouse/gamepad/touch), settings, profile
+src/game/data/                 roster, abilities, kits, gauntlet, drafting, sprite metadata
+src/game/audio/AudioEngine.ts  procedural music and sound
+src/pwa/register.ts            service-worker registration, install and update API
+build/pwa.ts                   Vite plugin that writes dist/sw.js
+art/portraits/                 source portraits (pipeline input, not deployed)
 ```
 
-Built with Three.js r185, Vite 8, TypeScript 7, Vitest 4 and Rapier 0.20.
+The simulation is the single source of truth. It advances on a fixed 60 Hz step and emits events (shots, casts, impacts, damage, knockouts, rounds). Presentation code only reads state and drains those events, so the same seed always replays the same match. This is covered by the Vitest suite.
 
+Built with Three.js r185, Vite 8, TypeScript 7 and Vitest 4.
