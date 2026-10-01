@@ -604,7 +604,7 @@ class GaleEffect extends ElementEffect {
             float head = 1.0 - smoothstep(uProgress, uProgress + 0.15, vUv.x);
             float ribbon = smoothstep(0.0, 0.2, vUv.y) * (1.0 - smoothstep(0.8, 1.0, vUv.y));
             vec3 color = mix(vec3(0.34, 0.74, 0.78), vec3(0.84, 1.0, 0.96), vUv.x);
-            gl_FragColor = vec4(color, head * ribbon * uFade * 0.72);
+            gl_FragColor = vec4(color, head * ribbon * uFade * 0.4);
           }
         `,
       });
@@ -662,7 +662,7 @@ class GaleEffect extends ElementEffect {
     this.tornado.scale.set(0.45 + tornadoProgress * 0.55, tornadoProgress, 0.45 + tornadoProgress * 0.55);
     this.tornado.rotation.y += deltaSeconds * 5.5 * (this.reducedMotion ? 0 : 1);
     for (let index = 0; index < this.tornadoMaterials.length; index += 1) {
-      this.tornadoMaterials[index]!.opacity = tornadoFade * (0.78 - index * 0.18);
+      this.tornadoMaterials[index]!.opacity = tornadoFade * (0.5 - index * 0.12);
     }
   }
 }

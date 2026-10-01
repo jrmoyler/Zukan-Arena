@@ -3,11 +3,16 @@ import { describe, expect, it } from 'vitest';
 
 import { ABILITIES } from '../src/game/data/abilities';
 import { ROSTER } from '../src/game/data/roster';
+import { effectivenessOf, kitFor, ULTIMATES } from '../src/game/data/kits';
 import {
   ARENA_BOUNDS,
-  MATCH_DURATION_SECONDS,
+  COUNTDOWN_SECONDS,
   CombatSimulation,
-  type CombatSimulationHooks,
+  PICKUP_HEAL,
+  PILLARS,
+  VITALITY_SCALE,
+  type CombatEvent,
+  type MatchConfig,
 } from '../src/game/simulation/CombatSimulation';
 import type { ElementKind, FighterDefinition, FighterRole } from '../src/game/types';
 
@@ -98,33 +103,50 @@ function fighter(
     archetype: 'biped',
     portrait: `/test-${index}.webp`,
     maxHp: 200,
-    speed: 0,
+    speed: 4,
     power: 1,
     ...overrides,
   };
 }
 
-function createSimulation(
-  playerElement: ElementKind = 'earth',
-  hooks: CombatSimulationHooks = {},
-  seed = 0x5eed,
-): CombatSimulation {
-  return new CombatSimulation(
-    fighter(1, playerElement, 'Builder', { speed: 10 }),
-    [fighter(2, 'hydro'), fighter(3, 'gale')],
-    [fighter(4, 'earth'), fighter(5, 'hydro'), fighter(6, 'gale'), fighter(7, 'plasma')],
-    hooks,
-    seed,
-  );
+function createSimulation(overrides: Partial<MatchConfig> = {}): CombatSimulation {
+  return new CombatSimulation({
+    signal: [fighter(1, 'earth'), fighter(2, 'hydro'), fighter(3, 'gale')],
+    rift: [fighter(4, 'earth'), fighter(5, 'hydro'), fighter(6, 'gale')],
+    difficulty: 'adept',
+    roundsToWin: 2,
+    roundSeconds: 75,
+    seed: 0x5eed,
+    ...overrides,
+  });
 }
 
-function advance(simulation: CombatSimulation, seconds: number): void {
+/** A 1v1 duel with AI disabled so mechanics can be measured precisely. */
+function createDuel(playerElement: ElementKind, enemyElement: ElementKind, overrides: Partial<MatchConfig> = {}): CombatSimulation {
+  const simulation = createSimulation({
+    signal: [fighter(1, playerElement)],
+    rift: [fighter(4, enemyElement)],
+    ...overrides,
+  });
+  for (const state of simulation.snapshot()) state.aiEnabled = false;
+  advance(simulation, COUNTDOWN_SECONDS + 0.01);
+  return simulation;
+}
+
+function advance(simulation: CombatSimulation, seconds: number): CombatEvent[] {
+  const events: CombatEvent[] = [];
   let remaining = seconds;
-  while (remaining > 0) {
-    const step = Math.min(0.05, remaining);
+  while (remaining > 1e-9) {
+    const step = Math.min(1 / 60, remaining);
     simulation.update(step);
+    events.push(...simulation.drainEvents());
     remaining -= step;
   }
+  return events;
+}
+
+function place(simulation: CombatSimulation, id: string, x: number, z: number): void {
+  simulation.fighters.get(id)!.position.set(x, 0, z);
 }
 
 describe('roster canon', () => {
@@ -212,144 +234,236 @@ describe('ability canon', () => {
   });
 });
 
+describe('kits and resonance', () => {
+  it('derives a four-slot kit from element and role', () => {
+    const kit = kitFor({ element: 'void', role: 'Strategist' });
+    expect(kit.skill).toBe(ABILITIES.void);
+    expect(kit.basic.pierce).toBe(true);
+    expect(kit.ultimate).toBe(ULTIMATES.void);
+    expect(kit.dash.invulnerability).toBeGreaterThan(0.2);
+  });
+
+  it('forms two closed resonance triangles', () => {
+    expect(effectivenessOf('earth', 'plasma')).toBe('resonant');
+    expect(effectivenessOf('plasma', 'hydro')).toBe('resonant');
+    expect(effectivenessOf('hydro', 'earth')).toBe('resonant');
+    expect(effectivenessOf('gale', 'nature')).toBe('resonant');
+    expect(effectivenessOf('nature', 'void')).toBe('resonant');
+    expect(effectivenessOf('void', 'gale')).toBe('resonant');
+    expect(effectivenessOf('plasma', 'earth')).toBe('resisted');
+    expect(effectivenessOf('earth', 'gale')).toBe('neutral');
+  });
+});
+
 describe('CombatSimulation', () => {
-  it('starts the exact 3v4 formation inside the recovered arena bounds', () => {
+  it('opens each round with a countdown that freezes fighters inside the arena', () => {
     const simulation = createSimulation();
-    const snapshot = simulation.snapshot();
-
-    expect(snapshot.map(({ team }) => team)).toEqual([
-      'signal', 'signal', 'signal', 'rift', 'rift', 'rift', 'rift',
-    ]);
-    const expectedPositions = [
-      [-6.6, 0, -1.4], [-5.25, 0, 0], [-3.9, 0, 1.4],
-      [5.1, 0, -3.2], [6.4, 0, -1.15], [5.1, 0, 0.9], [6.4, 0, 2.95],
-    ];
-    snapshot.forEach(({ position }, index) => {
-      const expected = expectedPositions[index];
-      expect(expected).toBeDefined();
-      expect(position.x).toBeCloseTo(expected![0]!, 10);
-      expect(position.y).toBeCloseTo(expected![1]!, 10);
-      expect(position.z).toBeCloseTo(expected![2]!, 10);
-    });
-    expect(ARENA_BOUNDS).toEqual({ x: 9.2, z: 5.6 });
-    expect(MATCH_DURATION_SECONDS).toBe(120);
-  });
-
-  it('clamps movement to bounds while regenerating 9.5 energy per second', () => {
-    const simulation = createSimulation();
-    simulation.input.movement.copy(new Vector2(-1, 0));
-
-    advance(simulation, 1);
-
-    expect(simulation.player.position.x).toBe(-9.2);
-    expect(simulation.player.position.z).toBe(-1.4);
-    expect(simulation.player.energy).toBe(100);
-  });
-
-  it('spends energy, starts cooldown, resolves delayed damage, and applies earth slow', () => {
-    const damage: Array<{ targetId: string; amount: number; critical: boolean }> = [];
-    const simulation = createSimulation('earth', { onDamage: (event) => damage.push(event) });
-    simulation.input.movement.copy(new Vector2(1, 0));
-    advance(simulation, 0.65);
-    simulation.input.movement.set(0, 0);
-    const target = simulation.snapshot().find(({ id }) => id === 'test-4');
-    expect(target).toBeDefined();
-
-    expect(simulation.tryCast('test-1', 'earth', target!.position.clone())).toBe(true);
-    expect(simulation.player.energy).toBe(76);
-    expect(simulation.player.cooldowns.earth).toBe(5.6);
-    expect(target!.hp).toBe(200);
-
-    advance(simulation, 0.5);
-
-    expect(target!.hp).toBe(167);
-    expect(target!.slowedFor).toBeGreaterThan(1.4);
-    expect(damage).toContainEqual({ targetId: 'test-4', amount: 33, critical: true });
-    expect(simulation.player.energy).toBeCloseTo(80.75, 5);
-    expect(simulation.player.cooldowns.earth).toBeCloseTo(5.1, 5);
-  });
-
-  it('rejects unavailable casts and constrains cast targets to ability range and arena bounds', () => {
-    const casts: Array<{ target: Vector3 }> = [];
-    const simulation = createSimulation('plasma', {
-      onCast: ({ target }) => casts.push({ target: target.clone() }),
-    });
-
-    expect(simulation.tryCast('test-1', 'plasma', new Vector3(500, 40, -500))).toBe(true);
-    expect(simulation.tryCast('test-1', 'plasma', new Vector3())).toBe(false);
-    expect(casts).toHaveLength(1);
-    expect(casts[0]!.target.y).toBe(0);
-    expect(casts[0]!.target.x).toBeGreaterThanOrEqual(-9.2);
-    expect(casts[0]!.target.x).toBeLessThanOrEqual(9.2);
-    expect(casts[0]!.target.z).toBeGreaterThanOrEqual(-5.6);
-    expect(casts[0]!.target.z).toBeLessThanOrEqual(5.6);
-    expect(casts[0]!.target.distanceTo(simulation.player.position)).toBeLessThanOrEqual(8.8);
-  });
-
-  it('roots with nature and knocks targets away from gale impact centers', () => {
-    const natureSimulation = createSimulation('nature');
-    natureSimulation.input.movement.set(1, 0);
-    advance(natureSimulation, 0.65);
-    natureSimulation.input.movement.set(0, 0);
-    const rootedTarget = natureSimulation.snapshot().find(({ id }) => id === 'test-4')!;
-    expect(natureSimulation.tryCast('test-1', 'nature', rootedTarget.position.clone())).toBe(true);
-    advance(natureSimulation, 0.7);
-    expect(rootedTarget.rootedFor).toBeGreaterThan(1.15);
-
-    const galeSimulation = createSimulation('gale');
-    galeSimulation.input.movement.set(1, 0);
-    advance(galeSimulation, 0.65);
-    galeSimulation.input.movement.set(0, 0);
-    const pushedTarget = galeSimulation.snapshot().find(({ id }) => id === 'test-4')!;
-    const beforeX = pushedTarget.position.x;
-    const impactCenter = pushedTarget.position.clone().add(new Vector3(-1, 0, 0));
-    expect(galeSimulation.tryCast('test-1', 'gale', impactCenter)).toBe(true);
-    advance(galeSimulation, 0.55);
-    expect(pushedTarget.position.x).toBeCloseTo(beforeX + 1.15, 5);
-  });
-
-  it('is deterministic for equal seeds and diverges for different seeds', () => {
-    const first = createSimulation('earth', {}, 12345);
-    const second = createSimulation('earth', {}, 12345);
-    const other = createSimulation('earth', {}, 54321);
-    for (const simulation of [first, second, other]) {
-      for (const state of simulation.snapshot()) {
-        if (state.id !== simulation.playerId) state.definition.speed = 4;
-      }
+    expect(simulation.phase).toBe('countdown');
+    const before = simulation.snapshot().map(({ position }) => position.clone());
+    simulation.input.movement.set(1, 0);
+    advance(simulation, COUNTDOWN_SECONDS - 0.1);
+    simulation.snapshot().forEach(({ position }, index) => expect(position.distanceTo(before[index]!)).toBeLessThan(1e-6));
+    advance(simulation, 0.2);
+    expect(simulation.phase).toBe('fight');
+    for (const { position, team } of simulation.snapshot()) {
+      expect(Math.abs(position.x)).toBeLessThanOrEqual(ARENA_BOUNDS.x);
+      expect(Math.abs(position.z)).toBeLessThanOrEqual(ARENA_BOUNDS.z);
+      expect(Math.sign(position.x)).toBe(team === 'signal' ? -1 : 1);
     }
-    advance(first, 8);
-    advance(second, 8);
-    advance(other, 8);
-
-    const compact = (simulation: CombatSimulation) => simulation.snapshot().map((state) => ({
-      id: state.id,
-      hp: state.hp,
-      energy: state.energy,
-      position: state.position.toArray(),
-      cooldowns: state.cooldowns,
-    }));
-
-    expect(compact(first)).toEqual(compact(second));
-    expect(compact(first)).not.toEqual(compact(other));
   });
 
-  it('ends unresolved matches at 120 seconds with the canonical reward summary', () => {
-    const summaries: Parameters<NonNullable<CombatSimulationHooks['onMatchEnd']>>[0][] = [];
-    const simulation = createSimulation('earth', { onMatchEnd: (summary) => summaries.push(summary) });
-    simulation.player.definition.speed = 0;
+  it('scales canonical vitality for combat', () => {
+    const simulation = createSimulation();
+    expect(simulation.player!.maxHp).toBe(Math.round(200 * VITALITY_SCALE));
+    expect(simulation.player!.hp).toBe(simulation.player!.maxHp);
+  });
 
-    advance(simulation, 120.1);
+  it('clamps player movement to the arena bounds', () => {
+    const simulation = createDuel('earth', 'gale');
+    simulation.input.movement.copy(new Vector2(-1, 0));
+    advance(simulation, 2);
+    expect(simulation.player!.position.x).toBeCloseTo(-ARENA_BOUNDS.x, 5);
+  });
 
+  it('fires basic bolts that travel, hit, and respect cooldown', () => {
+    const simulation = createDuel('earth', 'gale');
+    place(simulation, 'test-1', -2, 0);
+    place(simulation, 'test-4', 2, 0);
+    const target = simulation.fighters.get('test-4')!;
+    expect(simulation.tryBasic('test-1', target.position)).toBe(true);
+    expect(simulation.tryBasic('test-1', target.position)).toBe(false);
+    const events = advance(simulation, 0.5);
+    const hit = events.find((event) => event.type === 'damage');
+    expect(hit).toMatchObject({ targetId: 'test-4', kind: 'basic', amount: kitFor({ element: 'earth', role: 'Builder' }).basic.damage });
+    expect(target.hp).toBeLessThan(target.maxHp);
+  });
+
+  it('blocks bolts with porcelain pillars', () => {
+    const simulation = createDuel('earth', 'gale');
+    const pillar = PILLARS[0]!;
+    place(simulation, 'test-1', pillar.x - 2, pillar.z);
+    place(simulation, 'test-4', pillar.x + 2, pillar.z);
+    expect(simulation.hasLineOfSight(simulation.player!.position, simulation.fighters.get('test-4')!.position)).toBe(false);
+    simulation.tryBasic('test-1', simulation.fighters.get('test-4')!.position);
+    const events = advance(simulation, 0.6);
+    expect(events.some((event) => event.type === 'damage')).toBe(false);
+    expect(events.some((event) => event.type === 'projectileEnd' && !event.hit)).toBe(true);
+  });
+
+  it('telegraphs signatures, spends energy, and applies canonical earth damage and slow', () => {
+    const simulation = createDuel('earth', 'gale');
+    place(simulation, 'test-1', -2, 0);
+    place(simulation, 'test-4', 2, 0);
+    const target = simulation.fighters.get('test-4')!;
+    expect(simulation.tryCast('test-1', target.position.clone())).toBe(true);
+    expect(simulation.player!.energy).toBe(76);
+    expect(simulation.player!.cooldowns.skill).toBe(ABILITIES.earth.cooldown);
+    expect(simulation.impacts).toHaveLength(1);
+    expect(target.hp).toBe(target.maxHp);
+    const events = advance(simulation, ABILITIES.earth.impactDelay + 0.02);
+    // 27 base damage, centred (x1.22 critical), neutral matchup.
+    expect(events).toContainEqual(expect.objectContaining({ type: 'damage', targetId: 'test-4', amount: 33, critical: true, kind: 'skill' }));
+    expect(target.slowedFor).toBeGreaterThan(1.4);
+  });
+
+  it('scales damage by elemental resonance', () => {
+    const resonant = createDuel('hydro', 'earth');
+    const resisted = createDuel('hydro', 'plasma');
+    for (const simulation of [resonant, resisted]) {
+      place(simulation, 'test-1', -2, 0);
+      place(simulation, 'test-4', 2, 0);
+      simulation.tryBasic('test-1', simulation.fighters.get('test-4')!.position);
+    }
+    const resonantHit = advance(resonant, 0.5).find((event) => event.type === 'damage');
+    const resistedHit = advance(resisted, 0.5).find((event) => event.type === 'damage');
+    const bolt = kitFor({ element: 'hydro', role: 'Builder' }).basic.damage;
+    expect(resonantHit).toMatchObject({ effectiveness: 'resonant', amount: Math.round(bolt * 1.25) });
+    expect(resistedHit).toMatchObject({ effectiveness: 'resisted', amount: Math.round(bolt * 0.8) });
+  });
+
+  it('roots with nature and knocks fighters away from gale impact centres', () => {
+    const nature = createDuel('nature', 'earth');
+    place(nature, 'test-1', -2, 0);
+    place(nature, 'test-4', 2, 0);
+    nature.tryCast('test-1', nature.fighters.get('test-4')!.position.clone());
+    advance(nature, ABILITIES.nature.impactDelay + 0.02);
+    expect(nature.fighters.get('test-4')!.rootedFor).toBeGreaterThan(1.15);
+
+    const gale = createDuel('gale', 'earth');
+    place(gale, 'test-1', -2, 0);
+    place(gale, 'test-4', 2, 0);
+    const pushed = gale.fighters.get('test-4')!;
+    gale.tryCast('test-1', new Vector3(1, 0, 0));
+    advance(gale, ABILITIES.gale.impactDelay + 0.02);
+    expect(pushed.position.x).toBeCloseTo(3.15, 5);
+  });
+
+  it('grants dash invulnerability that negates impacts', () => {
+    const simulation = createDuel('earth', 'gale');
+    place(simulation, 'test-1', -2, 0);
+    place(simulation, 'test-4', 2, 0);
+    const enemy = simulation.fighters.get('test-4')!;
+    enemy.aiEnabled = false;
+    simulation.tryCast('test-4', simulation.player!.position.clone());
+    advance(simulation, ABILITIES.gale.impactDelay - 0.1);
+    expect(simulation.tryDash('test-1', new Vector3(0, 0, 1))).toBe(true);
+    expect(simulation.player!.invulnerableFor).toBeGreaterThan(0);
+    advance(simulation, 0.15);
+    expect(simulation.player!.hp).toBe(simulation.player!.maxHp);
+    expect(simulation.player!.position.z).toBeGreaterThan(2);
+  });
+
+  it('charges ultimates from combat and amplifies the signature', () => {
+    const simulation = createDuel('earth', 'gale');
+    place(simulation, 'test-1', -2, 0);
+    place(simulation, 'test-4', 2, 0);
+    const player = simulation.player!;
+    expect(simulation.tryUltimate('test-1', new Vector3(2, 0, 0))).toBe(false);
+    player.ult = 100;
+    expect(simulation.tryUltimate('test-1', new Vector3(2, 0, 0))).toBe(true);
+    expect(player.ult).toBe(0);
+    const events = advance(simulation, ULTIMATES.earth.impactDelay + 0.02);
+    const hit = events.find((event) => event.type === 'damage' && event.kind === 'ultimate');
+    expect(hit && hit.type === 'damage' ? hit.amount : 0).toBeGreaterThan(55);
+    expect(simulation.fighters.get('test-4')!.stunnedFor).toBeGreaterThan(1);
+    expect(player.ult).toBeGreaterThan(0);
+  });
+
+  it('awards a round on elimination and ends a best-of-three match', () => {
+    const simulation = createDuel('earth', 'gale');
+    const enemy = simulation.fighters.get('test-4')!;
+    const finish = () => {
+      place(simulation, 'test-1', -1, 0);
+      place(simulation, 'test-4', 1, 0);
+      enemy.hp = 1;
+      simulation.tryBasic('test-1', enemy.position);
+      return advance(simulation, 0.4);
+    };
+    const first = finish();
+    expect(first).toContainEqual(expect.objectContaining({ type: 'knockout', targetId: 'test-4' }));
+    expect(first).toContainEqual(expect.objectContaining({ type: 'roundEnd', winner: 'signal', round: 1 }));
+    advance(simulation, 3 + COUNTDOWN_SECONDS);
+    expect(simulation.round).toBe(2);
+    expect(simulation.phase).toBe('fight');
+    expect(enemy.hp).toBe(enemy.maxHp);
+    for (const state of simulation.snapshot()) state.aiEnabled = false;
+    finish();
+    const tail = advance(simulation, 3.2);
+    const end = tail.find((event) => event.type === 'matchEnd');
+    expect(end && end.type === 'matchEnd' ? end.summary : undefined).toMatchObject({ result: 'win', roundsWon: 2, roundsLost: 0, knockouts: 2, mvpId: 'test-1' });
     expect(simulation.ended).toBe(true);
-    expect(summaries).toHaveLength(1);
-    expect(summaries[0]).toMatchObject({
-      seasonId: 'S01',
-      result: 'loss',
-      durationMs: 120_000,
-      knockouts: 0,
-      xp: 20,
-      glb: 10,
-      rosterIds: ['test-1', 'test-2', 'test-3'],
-    });
+  });
+
+  it('decides timed-out rounds on remaining vitality', () => {
+    const simulation = createDuel('earth', 'gale', { roundSeconds: 5 });
+    simulation.fighters.get('test-4')!.hp = 50;
+    const events = advance(simulation, 5.1);
+    expect(events).toContainEqual(expect.objectContaining({ type: 'roundEnd', winner: 'signal' }));
+  });
+
+  it('keeps training dummies alive and restores them', () => {
+    const simulation = createDuel('earth', 'gale', { training: true });
+    const dummy = simulation.fighters.get('test-4')!;
+    place(simulation, 'test-1', -1, 0);
+    place(simulation, 'test-4', 1, 0);
+    dummy.hp = 2;
+    dummy.sinceDamaged = 0;
+    simulation.tryBasic('test-1', dummy.position);
+    advance(simulation, 0.3);
+    expect(dummy.alive).toBe(true);
+    expect(dummy.hp).toBe(1);
+    advance(simulation, 2.6);
+    expect(dummy.hp).toBe(dummy.maxHp);
+  });
+
+  it('spawns a centre bloom that heals and charges whoever claims it', () => {
+    const simulation = createDuel('earth', 'gale');
+    const player = simulation.player!;
+    player.hp = 100;
+    const spawn = advance(simulation, 8.1);
+    expect(spawn.some((event) => event.type === 'pickupSpawn')).toBe(true);
+    place(simulation, 'test-1', 0, 0);
+    const claim = advance(simulation, 0.05);
+    expect(claim).toContainEqual({ type: 'pickup', fighterId: 'test-1' });
+    expect(player.hp).toBe(100 + PICKUP_HEAL);
+    expect(player.ult).toBeGreaterThan(20);
+  });
+
+  it('plays out full AI matches deterministically per seed', () => {
+    const run = (seed: number) => {
+      const simulation = createSimulation({ seed, playerControlled: false });
+      advance(simulation, 200);
+      return {
+        ended: simulation.ended,
+        score: { ...simulation.score },
+        hp: simulation.snapshot().map(({ hp }) => hp),
+        damage: simulation.snapshot().map(({ stats }) => stats.damageDealt),
+      };
+    };
+    const first = run(12345);
+    expect(first).toEqual(run(12345));
+    expect(first).not.toEqual(run(54321));
+    expect(first.ended).toBe(true);
+    expect(first.damage.every((value) => value > 0)).toBe(true);
   });
 });

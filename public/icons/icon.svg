@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <title>Zukan Arena</title>
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="42%" r="70%">
+      <stop offset="0" stop-color="#16213d"/>
+      <stop offset="1" stop-color="#0b1020"/>
+    </radialGradient>
+    <linearGradient id="gold" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0" stop-color="#e8c27a"/>
+      <stop offset=".55" stop-color="#f1d595"/>
+      <stop offset="1" stop-color="#f6e2b0"/>
+    </linearGradient>
+    <radialGradient id="crestFill" cx="50%" cy="38%" r="65%">
+      <stop offset="0" stop-color="#1c2a4c"/>
+      <stop offset="1" stop-color="#0e1529"/>
+    </radialGradient>
+    <radialGradient id="halo" cx="50%" cy="50%" r="50%">
+      <stop offset=".55" stop-color="#e8c27a" stop-opacity="0"/>
+      <stop offset=".9" stop-color="#e8c27a" stop-opacity=".10"/>
+      <stop offset="1" stop-color="#e8c27a" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="lift" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="6" stdDeviation="7" flood-color="#000" flood-opacity=".55"/>
+    </filter>
+  </defs>
+  <rect x="8" y="8" width="496" height="496" rx="112" fill="url(#bg)"/>
+    <rect x="9.5" y="9.5" width="493" height="493" rx="110.5" fill="none" stroke="#f6e2b0" stroke-opacity=".14" stroke-width="3"/>
+  
+    <g transform="translate(256 256) scale(1) translate(-256 -256)">
+      <!-- soft gold halo behind the crest -->
+      <circle cx="256" cy="256" r="170" fill="url(#halo)"/>
+      <!-- crest -->
+      <polygon points="256,70 417.08,163 417.08,349 256,442 94.92,349 94.92,163" fill="url(#crestFill)" stroke="url(#gold)" stroke-width="5" stroke-linejoin="round"/>
+      <polygon points="256,86 403.22,171 403.22,341 256,426 108.78,341 108.78,171" fill="none" stroke="#e8c27a" stroke-opacity=".45" stroke-width="1.5" stroke-linejoin="round"/>
+      <rect x="332.04" y="112" width="9" height="9" transform="rotate(75 336.54 116.5)" fill="#f6e2b0" stroke="#0b1020" stroke-width="2.5"/><rect x="412.58" y="251.5" width="9" height="9" transform="rotate(135 417.08 256)" fill="#f6e2b0" stroke="#0b1020" stroke-width="2.5"/><rect x="332.04" y="391" width="9" height="9" transform="rotate(195 336.54 395.5)" fill="#f6e2b0" stroke="#0b1020" stroke-width="2.5"/><rect x="170.96" y="391" width="9" height="9" transform="rotate(255 175.46 395.5)" fill="#f6e2b0" stroke="#0b1020" stroke-width="2.5"/><rect x="90.42" y="251.5" width="9" height="9" transform="rotate(315 94.92 256)" fill="#f6e2b0" stroke="#0b1020" stroke-width="2.5"/><rect x="170.96" y="112" width="9" height="9" transform="rotate(375 175.46 116.5)" fill="#f6e2b0" stroke="#0b1020" stroke-width="2.5"/>
+      <!-- monogram -->
+      <g filter="url(#lift)">
+        <path d="M 192 156 L 332 156 L 344 168 L 344 196 L 232 316 L 344 316 L 344 332 L 320 356 L 180 356 L 168 344 L 168 316 L 280 196 L 168 196 L 168 180 Z" fill="url(#gold)" />
+      </g>
+      <path d="M 192 156 L 332 156 L 344 168 L 344 171 L 177 171 Z" fill="#fff8e6" fill-opacity=".45"/>
+      <!-- element dots on the crest vertices -->
+      <circle cx="256" cy="70" r="18" fill="#0b1020"/>
+      <circle cx="256" cy="70" r="13" fill="#f4cf4a"/>
+      <circle cx="252.5" cy="66" r="4" fill="#fff" fill-opacity=".45"/>
+      <circle cx="417.08" cy="163" r="18" fill="#0b1020"/>
+      <circle cx="417.08" cy="163" r="13" fill="#4fd1e8"/>
+      <circle cx="413.58" cy="159" r="4" fill="#fff" fill-opacity=".45"/>
+      <circle cx="417.08" cy="349" r="18" fill="#0b1020"/>
+      <circle cx="417.08" cy="349" r="13" fill="#6cc96e"/>
+      <circle cx="413.58" cy="345" r="4" fill="#fff" fill-opacity=".45"/>
+      <circle cx="256" cy="442" r="18" fill="#0b1020"/>
+      <circle cx="256" cy="442" r="13" fill="#c99a5b"/>
+      <circle cx="252.5" cy="438" r="4" fill="#fff" fill-opacity=".45"/>
+      <circle cx="94.92" cy="349" r="18" fill="#0b1020"/>
+      <circle cx="94.92" cy="349" r="13" fill="#a07cf0"/>
+      <circle cx="91.42" cy="345" r="4" fill="#fff" fill-opacity=".45"/>
+      <circle cx="94.92" cy="163" r="18" fill="#0b1020"/>
+      <circle cx="94.92" cy="163" r="13" fill="#bfeee4"/>
+      <circle cx="91.42" cy="159" r="4" fill="#fff" fill-opacity=".45"/>
+    </g>
+</svg>

@@ -9,3 +9,6 @@ coverage/
 playwright-report/
 test-results/
 
+
+# Local agent worktrees
+.claude/

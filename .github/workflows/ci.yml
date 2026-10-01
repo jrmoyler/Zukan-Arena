@@ -20,7 +20,7 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm run generate:manifest
-      - run: git diff --exit-code -- public/characters/rig-manifest.json
+      - run: git diff --exit-code -- public/characters/manifest.json
       - run: npm run typecheck
       - run: npm test
       - run: npm run build

@@ -40,28 +40,3 @@ export interface CastEvent {
   team: TeamKind;
   power: number;
 }
-
-export interface DamageEvent {
-  targetId: string;
-  amount: number;
-  critical: boolean;
-}
-
-export interface KnockoutEvent {
-  targetId: string;
-  sourceId: string;
-}
-
-export interface MatchSummary {
-  result: MatchResult;
-  durationMs: number;
-  knockouts: number;
-  rosterIds: string[];
-}
-
-export interface RuntimeQuality {
-  shadows: boolean;
-  particles: number;
-  postprocessing: boolean;
-  pixelRatio: number;
-}
